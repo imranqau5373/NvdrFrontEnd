@@ -1,0 +1,137 @@
+<section class="signup pt-5">
+  <div class=" container mb-3">
+    <h1 class="text-center  text-white">Try EasyBooking</h1>
+    <p class="text-center  text-white">Why not try for free before buying</p>
+  </div>
+  <div class="container d-flex justify-content-center">
+    <div class="signup-container ">
+      <div class="card  shadow">
+        <div class="card-body">
+          <form name="form" (ngSubmit)="signUpForm.form.valid && SignUp()" #signUpForm="ngForm"
+            [mustMatch]="['password', 'confirmPassword']">
+            <div class="form-group">
+              <label for="InputFirstName">First Name</label>
+              <input type="text" class="form-control" name="FirstName" aria-describedby="FirstNameHelp"
+                placeholder="Enter your first name" [(ngModel)]="signUpModel.firstName" #firstName="ngModel"
+                [ngClass]="{ 'is-invalid': signUpForm.submitted && firstName.invalid}" minlength="3" required>
+              <div *ngIf="signUpForm.submitted && firstName.invalid" class="invalid-feedback">
+                <div *ngIf="firstName.errors?.required">First Name is required</div>
+                <div *ngIf="firstName.errors?.minlength">First Name must be at least 8 characters</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="InputLastName">Last Name</label>
+              <input type="text" class="form-control" name="LastName" aria-describedby="LastNameHelp"
+                placeholder="Enter your last name" [(ngModel)]="signUpModel.lastName" #lastName="ngModel"
+                [ngClass]="{ 'is-invalid': signUpForm.submitted && lastName.invalid}" minlength="3" required>
+              <div *ngIf="signUpForm.submitted && lastName.invalid" class="invalid-feedback">
+                <div *ngIf="lastName.errors?.required">Last Name is required</div>
+                <div *ngIf="lastName.errors?.minlength">Last Name must be at least 8 characters</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="InputCompany">Hospital Name</label>
+              <input type="text" class="form-control" name="CompanyName" aria-describedby="CompanyNameHelp"
+                placeholder="Enter your company name" [(ngModel)]="signUpModel.companyName" #companyName="ngModel"
+                [ngClass]="{ 'is-invalid': signUpForm.submitted && companyName.invalid}" minlength="8" required>
+              <div *ngIf="signUpForm.submitted && companyName.invalid" class="invalid-feedback">
+                <div *ngIf="companyName.errors?.required">Company Name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="validationCustomUsername">Company Private URL</label>
+              <div class="input-group">
+              
+                <input type="url" (input)="search(signUpModel.companyPrivateUrl)" class="form-control" name="InputCell"
+                  aria-describedby="InputCellHelp" placeholder="Enter your company url"
+                  [(ngModel)]="signUpModel.companyPrivateUrl"
+                  [ngClass]="{ 'is-invalid': signUpForm.submitted && companyPrivateUrl.invalid}"
+                  #companyPrivateUrl="ngModel" minlength="1" pattern=".*" required>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">.speek.io:443</span>
+                  </div>
+                  
+                <div *ngIf="companyPrivateUrl.errors?.required" class="invalid-feedback">Please choose a Company Url.
+                </div>
+                <div *ngIf="companyPrivateUrl.errors?.pattern" class="invalid-feedback">Company Url is not valid</div>
+                <div *ngIf="companyPrivateUrl.errors?.minlength" class="invalid-feedback">Company Url must be at least 1
+                  characters</div>
+              </div>
+              <div *ngIf="isValidUrl && signUpModel.companyPrivateUrl.length > 0" class="text-success">Company Url is
+                avaliable</div>
+              <div *ngIf="isValidUrl==false" class="text-danger">Company Url is not avaliable</div>
+            </div>
+            <div class="form-group">
+              <label for="InputEmail">Email</label>
+              <input autocomplete="off" type="email" class="form-control" name="email" id="email"
+                aria-describedby="InputEmailHelp" [placeholder]="'Email'" [(ngModel)]="signUpModel.email"
+                #email="ngModel" [ngClass]="{ 'is-invalid': signUpForm.submitted && email.invalid}"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+              <div *ngIf="signUpForm.submitted && email.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors?.required">Email is required</div>
+                <div *ngIf="email.errors?.pattern">This is not a valid Email!!!</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="InputCell">Phone</label>
+              <input type="number" class="form-control" name="Phone" aria-describedby="PhoneInputCell"
+                placeholder="Enter your phone number" [(ngModel)]="signUpModel.phone" #phone="ngModel"
+                [ngClass]="{ 'is-invalid': signUpForm.submitted && phone.invalid}" minlength="8" required>
+              <div *ngIf="signUpForm.submitted && phone.invalid" class="invalid-feedback">
+                <div *ngIf="phone.errors?.required">Phone Number is required</div>
+                <div *ngIf="phone.errors?.minlength">Phone Number must be at least 8 characters</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="InputPassword">Password</label>
+              <input type="password" class="form-control" name="password" aria-describedby="InputPasswordHelp"
+                placeholder="Enter your password" [(ngModel)]="signUpModel.password" #password="ngModel"
+                [ngClass]="{ 'is-invalid': signUpForm.submitted && password.invalid}" minlength="8" required>
+              <div *ngIf="signUpForm.submitted && password.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors?.required">Password is required</div>
+                <div *ngIf="password.errors?.minlength">Password must be at least 8 characters</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="InputPassword1">Confirm Password</label>
+              <input type="password" class="form-control" name="confirmPassword" aria-describedby="InputPasswordHelp1"
+                placeholder="Re-Enter your password" [(ngModel)]="signUpModel.confirmPassword"
+                #confirmPassword="ngModel" [ngClass]="{ 'is-invalid': signUpForm.submitted && confirmPassword.invalid}"
+                minlength="8" required>
+              <div *ngIf="signUpForm.submitted && confirmPassword.invalid" class="invalid-feedback">
+                <div *ngIf="confirmPassword.errors?.required">Confirm Password is required</div>
+                <div *ngIf="confirmPassword.errors?.minlength">Minimum length for Confirm Password is 8 charachter long
+                </div>
+                <div *ngIf="confirmPassword.errors?.mustMatch">Passwords must match</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="InputTimeZone">Time Zone</label>
+                      
+                <select
+                 [(ngModel)]="signUpModel.timezone"  
+                 name="InputTimeZone" #InputTimeZone="ngModel" class="form-control" aria-describedby="TimeZoneHelp" 
+                 [ngClass]="{ 'is-invalid': signUpForm.submitted && InputTimeZone.invalid}"
+                 required>
+                  <option  [ngValue]="''" disabled>Choose Time zone...</option>
+                   <option [ngValue]="zone.value" *ngFor="let zone of timezones">{{zone.text}}</option> 
+                </select>
+                <div *ngIf="signUpForm.submitted && InputTimeZone.invalid" class="invalid-feedback">
+                  <div *ngIf="InputTimeZone.errors?.required">Time zone is required</div>
+                </div>                
+            </div>
+         
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary w-100">Start my free trial</button>
+
+              <!-- need to add term url -->
+              <div class="text-muted mt-2"> By signing up, you agree to our <a href="terms.html" target="_blank"
+                  class="text-primary ">Terms of Agreement</a> </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

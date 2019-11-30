@@ -1,0 +1,1 @@
+{"version":3,"sources":["custom.scss"],"names":[],"mappings":"AAAA,EAAE,CACF;EACI,SAAS,EAAE,IAAI;CAElB","file":"../custom.css","sourcesContent":["h1\r\n{\r\n    font-size: 24px;\r\n  \r\n}"]}

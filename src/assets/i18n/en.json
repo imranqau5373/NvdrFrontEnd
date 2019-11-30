@@ -1,0 +1,20 @@
+{
+    "label": {
+        "email": "Email",
+        "password" : "Password",
+        "confirmpassword" : "Confirm Password",
+        "firstname" : "First Name",
+        "lastname" : "Last Name",
+        "phone" : "Phone",
+        "companyname" : "Company Name",
+        "companyprivateurl" : "Company Private URL",
+        "startfreetrail" : "Start my free trial",
+        "":""
+    },
+    "button" : {
+        "signin" : "Sign in",
+        "recoveraccount":"Recover Account"
+    },    "HOME":{
+        "TITLE" : "Danish Select"
+    }
+}
