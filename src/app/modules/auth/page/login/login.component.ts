@@ -6,6 +6,7 @@ import { LoginModel } from './login.model';
 import { Router } from '@angular/router';
 import { AlertService } from '../../../../shared/_alert';
 import { ForgetPasswordModel } from './forgetpassword.model';
+import { AuthenticationService } from '@core/service/authenticationService';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _accountService : AccountService,
     private router: Router, 
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authenticationService: AuthenticationService
   ) {
 
   
@@ -36,11 +38,21 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.alertService.clear();
-    localStorage.setItem('authenticationToken', "asdftse234324234234234");
-    localStorage.setItem('userName', "Jermey");
-  
-    this.router.navigate(['/admin/home']);
+    this._accountService.UserLogin(this.signInModel).subscribe(result => {
+      if (result && result.body && result.body.successful) {
+        // localStorage.setItem('authenticationToken', result.body.authenticationToken);
+        // localStorage.setItem('userName', result.body.UserName);
+        this.alertService.success(result.body.message);
+        this.authenticationService.loginAndRedirectToHome(result.body);
+        // this.authenticationService.saveUser(result.body);
+        // this.router.navigate(['/admin/home']);
+      }
+      else {
+        this.alertService.error(result.body.message);
+      }
 
+
+    });
   }
 
   RecoverAccount(){

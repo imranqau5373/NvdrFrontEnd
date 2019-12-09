@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://service.local.speekio.com/api/'
+  apiUrl: 'http://localhost:53381/api/'
 };
 
 /*
