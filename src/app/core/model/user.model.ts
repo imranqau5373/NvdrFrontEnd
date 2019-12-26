@@ -4,4 +4,5 @@ export class UserModel {
     userName: string;
     pictureUrl: string;
     adminRole: string;
+    completeName:string;
 }

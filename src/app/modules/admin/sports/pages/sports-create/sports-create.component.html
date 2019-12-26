@@ -1,0 +1,61 @@
+<div class="container mt-4 mb-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <form>
+            <div class="card-body">
+              <h5 class="card-title mb-4">Adding New Sprots</h5>
+              <!-- <form> -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="NameField" class="font-weight-bolder">Name</label>
+                      <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                        formControlName="name" id="nametext" aria-describedby="DateHelp" placeholder="Enter Text">
+                      <small id="emailHelp" *ngIf="submitted && f.name.errors?.required"
+                        class="form-text text-muted">Please enter
+                        name</small> </div>
+                  </div>
+        
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="JobRef" class="font-weight-bolder">Sports Description</label>
+                      <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                    </div>
+                  </div>
+              
+                  <div class="col-lg-12">
+      
+                  </div>
+                </div>
+              </div>
+              <h5 class="card-title">Sports details</h5>
+              <p>Fill out these fields related to the sports and its company..</p>
+              <form>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-4 mb-3">
+                      <label for="NameField" class="font-weight-bolder">Select Company For Sports</label>
+                      <div class="dropdown ">
+                        <button class="btn btn-outline-dark dropdown-toggle border-form" type="button" id="dropdownMenuButtonLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select Company </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> 
+                            <a class="dropdown-item" href="#">Floor 1</a> 
+                            <a class="dropdown-item" href="#">Floor 2</a> 
+                            <a class="dropdown-item" href="#">Floor 3</a> 
+                        </div>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer"> <a (click)="addSports()" class="btn btn-primary float-right mr-2">Add Sports</a>
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

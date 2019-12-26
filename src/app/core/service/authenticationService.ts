@@ -10,6 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthenticationService {
   private loggedIn = new BehaviorSubject<boolean>(this.isUserLoggedIn());
+  private loggedInUser = new BehaviorSubject<UserModel>(this.getUser());
+  index = 1;
   constructor(
     private _httpService: HttpService,
     private router: Router
@@ -17,6 +19,10 @@ export class AuthenticationService {
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  get getUserAsync() {
+    return this.loggedInUser.asObservable();
   }
 
   isUserLoggedIn() {

@@ -22,6 +22,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/admin/home/home.module').then(m => m.HomeModule),
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@modules/admin/sports/sports.module').then(m => m.SportsModule)
+      },
     ]
   },
   {
