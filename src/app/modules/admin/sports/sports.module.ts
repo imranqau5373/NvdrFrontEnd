@@ -5,6 +5,7 @@ import { AdminHomeComponent } from '../home/pages/admin-home/admin-home.componen
 import { SportsListComponent } from './pages/sports-list/sports-list.component';
 import { SportsCreateComponent } from './pages/sports-create/sports-create.component';
 import { SportsUpdateComponent } from './pages/sports-update/sports-update.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { SportsUpdateComponent } from './pages/sports-update/sports-update.compo
   declarations: [SportsListComponent, SportsCreateComponent, SportsUpdateComponent],
   imports: [
     CommonModule,
-    SportsRoutingModule
+    SportsRoutingModule,
+    FormsModule
   ]
 })
 export class SportsModule { }
