@@ -21,8 +21,8 @@ export const routes: Routes = [
     component: SportsCreateComponent
   },
   {
-    path: 'sports-update',
-    component: SportsUpdateComponent
+    path: 'sports-update/:id',
+    component: SportsCreateComponent
   }
 ];
 

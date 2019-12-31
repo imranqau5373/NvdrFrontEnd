@@ -12,7 +12,7 @@
                     <div class="form-group">
                       <label for="NameField" class="font-weight-bolder">Name</label>
                       <input type="text" class="form-control" name="Name"
-                      placeholder="Enter your sports name" [(ngModel)]="addSportsData.Name" #Name="ngModel"
+                      placeholder="Enter your sports name" [(ngModel)]="addSportsData.name" #Name="ngModel"
                       [ngClass]="{ 'is-invalid': addSportsForm.submitted && Name.invalid}" minlength="2" required>
                     <div *ngIf="addSportsForm.submitted && Name.invalid" class="invalid-feedback">
                       <div *ngIf="Name.errors?.required">Sports Name is required</div>
@@ -25,7 +25,7 @@
                     <div class="form-group">
                       <label for="DescriptionField" class="font-weight-bolder">Sports Description</label>
                       <textarea class="form-control"  name="Description" 
-                      [(ngModel)]="addSportsData.Description" #Description="ngModel" rows="3"
+                      [(ngModel)]="addSportsData.description" #Description="ngModel" rows="3"
                         
                         ></textarea>
                     </div>
@@ -39,7 +39,7 @@
                   <div class="row">
                     <div class="col-lg-4 mb-3">
                       <label for="CompanyField" class="font-weight-bolder">Select Company For Sports</label>
-                      <select  [(ngModel)]="addSportsData.CompanyId"
+                      <select  [(ngModel)]="addSportsData.companyId"
                       name="CompanyId" class="form-control" #CompanyId="ngModel" required>
                        <option  [ngValue]="''" disabled>Select Sports Company...</option>
                         <option [ngValue]="company.id" *ngFor="let company of companyList">{{company.name}}</option> 
@@ -50,7 +50,9 @@
   
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary float-right mr-2">Add Sports</button>
+                <button *ngIf="!isUpdated" type="submit" class="btn btn-primary float-right mr-2">Add Sports</button>
+
+                <button *ngIf="sportsId && sportsId > 0" type="submit" class="btn btn-primary float-right mr-2">Update Sports</button>
 
               
                 </div>

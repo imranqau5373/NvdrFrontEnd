@@ -22,11 +22,20 @@ export class SportsCreateComponent implements OnInit {
 
   companyList: any[];
   addSportsData : AddSportsModel;
+  sportsId : number = 0;
+  isUpdated : boolean = false;
 
   ngOnInit() {
+    debugger;
     this.addSportsData = new AddSportsModel();
     this.getSportsCompany();
-    this.getSports(2);
+    this.sportsId = this.activatedRoute.snapshot.params['id'];
+    if(this.sportsId > 0){
+      this.isUpdated = true;
+      this.getSports(this.sportsId);
+    }
+
+
 
 
   }
@@ -44,12 +53,12 @@ export class SportsCreateComponent implements OnInit {
   }
 
   selectCompany(companyId){
-    this.addSportsData.CompanyId = companyId;
+    this.addSportsData.companyId = companyId;
   }
 
   addSports(){
+    
     this.sportsService.addSports(this.addSportsData).subscribe(result => {
-      debugger;
       if (result && result.successful) {
         this.toastService.showSuccess(result.body.message);
         this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
@@ -62,18 +71,19 @@ export class SportsCreateComponent implements OnInit {
   }
 
   getSports(sportsId:number){
-    debugger;
     this.sportsService.getSports(sportsId).subscribe(result => {
       debugger;
       if (result && result.successful) {
-        this.toastService.showSuccess(result.body.message);
-        this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
-        
+        this.addSportsData = result;
       }
       else {
         this.toastService.showError(result.message);
       }
     });
+  }
+
+  updateSports(){
+
   }
 
 }
