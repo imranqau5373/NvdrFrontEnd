@@ -27,6 +27,31 @@ const routes: Routes = [
         loadChildren: () =>
           import('@modules/admin/sports/sports.module').then(m => m.SportsModule)
       },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@modules/admin/users/users.module').then(m => m.UsersModule)
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@modules/admin/courts/courts.module').then(m => m.CourtsModule)
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@modules/admin/court-duration/court-duration.module').then(m => m.CourtDurationModule)
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@modules/admin/court-booking/court-booking.module').then(m => m.CourtBookingModule)
+      },
+      {
+        path: '',
+        loadChildren: () =>
+          import('@modules/admin/company/company.module').then(m => m.CompanyModule)
+      },
     ]
   },
   {
