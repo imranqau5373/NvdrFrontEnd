@@ -1,1 +1,56 @@
-<p>create-company works!</p>
+<div class="container mt-4 mb-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <form name="form" (ngSubmit)="addCompanyForm.form.valid && addCompany()" #addCompanyForm="ngForm">
+            <div class="card-body">
+              <h5 class="card-title mb-4">Adding New Company</h5>
+              <!-- <form> -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="NameField" class="font-weight-bolder">Name</label>
+                      <input type="text" class="form-control" name="Name"
+                      placeholder="Enter your Company name" [(ngModel)]="addCompanyData.name" #Name="ngModel"
+                      [ngClass]="{ 'is-invalid': addCompanyForm.submitted && Name.invalid}" minlength="2" required>
+                    <div *ngIf="addCompanyForm.submitted && Name.invalid" class="invalid-feedback">
+                      <div *ngIf="Name.errors?.required">Company Name is required</div>
+                      <div *ngIf="Name.errors?.minlength">Company Name must be at least 2 characters</div>
+                    </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="DescriptionField" class="font-weight-bolder">Company Description</label>
+                      <textarea class="form-control"  name="Description"
+                      [(ngModel)]="addCompanyData.description" #Description="ngModel" rows="3"
+                        ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="Url"
+                      placeholder="Enter your Company Url" [(ngModel)]="addCompanyData.url" #Name="ngModel"
+                      [ngClass]="{ 'is-invalid': addCompanyForm.submitted && Url.invalid}" minlength="5"
+                      pattern="[a-z]+.[a-z0-9.-]+.[a-z]{2,4}$" required>
+                    <div *ngIf="addCompanyForm.submitted && Url.invalid" class="invalid-feedback">
+                      <div *ngIf="Url.errors?.required">Url Name is required</div>
+                      <div *ngIf="Url.errors?.minlength">Company Name must be at least 5 characters</div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class="container">
+                <button *ngIf="!isUpdated" type="submit" class="btn btn-primary float-right mr-2">Add Company</button>
+                <button *ngIf="sportsId && sportsId > 0" type="submit" class="btn btn-primary float-right mr-2">Update Company</button>
+                </div>
+            <!-- <div class="card-footer"> <a (click)="addSports()" class="btn btn-primary float-right mr-2">Add Company</a>
+               -->
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

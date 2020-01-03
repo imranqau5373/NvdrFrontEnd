@@ -26,7 +26,7 @@ export class SportsCreateComponent implements OnInit {
   isUpdated : boolean = false;
 
   ngOnInit() {
-    debugger;
+  
     this.addSportsData = new AddSportsModel();
     this.getSportsCompany();
     this.sportsId = this.activatedRoute.snapshot.params['id'];
@@ -34,12 +34,7 @@ export class SportsCreateComponent implements OnInit {
       this.isUpdated = true;
       this.getSports(this.sportsId);
     }
-
-
-
-
   }
-
   getSportsCompany(){
     this.sportsService.getSportsCompany().subscribe(result => {
       if (result && result.successful) {
@@ -57,12 +52,12 @@ export class SportsCreateComponent implements OnInit {
   }
 
   addSports(){
-    
+
     this.sportsService.addSports(this.addSportsData).subscribe(result => {
       if (result && result.successful) {
         this.toastService.showSuccess(result.body.message);
         this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
-        
+
       }
       else {
         this.toastService.showError(result.message);

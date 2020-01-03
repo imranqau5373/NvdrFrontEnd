@@ -11,10 +11,10 @@ export class SportsService {
 
   constructor(
     private _httpApiService: HttpApiService
-    
+
     ) { }
 
-    
+
     Method():Observable<any>{
       return this._httpApiService.get("","");
     }
@@ -31,7 +31,7 @@ export class SportsService {
         return this._httpApiService.post("Sports/AddSports",model);
       }
 
-      
+
       updateSports(model: AddSportsModel):Observable<any>{
         return this._httpApiService.post("Sports/AddSports",model);
       }
@@ -46,5 +46,3 @@ export class SportsService {
 
 
 }
-
-

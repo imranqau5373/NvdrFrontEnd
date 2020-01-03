@@ -27,7 +27,7 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
     public activatedRoute: ActivatedRoute,
     public router: Router,
     private customRouter: CustomRouter
-  ) { 
+  ) {
     super();
   }
 
@@ -47,14 +47,14 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
   pageChange(newPage: number) {
 
     this.paggerConfig.currentPage = newPage;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'categories-list', { page: newPage });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list', { page: newPage });
     this.refresh();
   }
 
   changePageSize(pageSize: number) {
 
     this.paggerConfig.itemsPerPage = pageSize;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'categories-list', { itemsPerPage: pageSize });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list', { itemsPerPage: pageSize });
     this.refresh();
   }
 
@@ -71,7 +71,7 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
           if (!result || !result.body) {
             return;
           };
-    
+
           var response = result.body;
           if (!response.successful) {
             this.toastService.showError(response.message);
@@ -84,15 +84,10 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
           }
 
         });
-
   }
-
   ngOnDestroy() {
     this.destroy$.next(true);
     // Unsubscribe from the subject
     this.destroy$.unsubscribe();
   }
-
-
-
 }

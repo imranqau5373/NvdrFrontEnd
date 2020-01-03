@@ -17,8 +17,8 @@
             <form autocomplete="off" (ngSubmit)="signInForm.form.valid && login()" #signInForm="ngForm">
               <div class="form-group">
                 <label for="InputEmail">{{ 'label.email' | translate }}</label>
-                <input autocomplete="off" type="email" class="form-control" name="email" id="email" aria-describedby="InputEmailHelp" [placeholder]="'Email'" [(ngModel)]="signInModel.email" 
-                #email="ngModel" [ngClass]="{ 'is-invalid': signInForm.submitted && email.invalid}"  
+                <input autocomplete="off" type="email" class="form-control" name="email" id="email" aria-describedby="InputEmailHelp" [placeholder]="'Email'" [(ngModel)]="signInModel.email"
+                #email="ngModel" [ngClass]="{ 'is-invalid': signInForm.submitted && email.invalid}"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                 <div *ngIf="signInForm.submitted && email.invalid" class="invalid-feedback">
                         <div *ngIf="email.errors?.required">Email is required</div>
@@ -28,16 +28,16 @@
 
               <div class="form-group">
                 <label for="InputPassword">{{ 'label.password' | translate }}</label>
-                <input autocomplete="off" type="password" class="form-control" name="password" id="password" aria-describedby="InputPasswordHelp" [placeholder]="'Password'" [(ngModel)]="signInModel.password" 
-                #password="ngModel" [ngClass]="{ 'is-invalid': signInForm.submitted && password.invalid}" minlength="8"  required />
+                <input autocomplete="off" type="password" class="form-control" name="password" id="password" aria-describedby="InputPasswordHelp" [placeholder]="'Password'" [(ngModel)]="signInModel.password"
+                #password="ngModel" [ngClass]="{ 'is-invalid': signInForm.submitted && password.invalid}"   required />
                 <div *ngIf="signInForm.submitted && password.invalid" class="invalid-feedback">
                         <div *ngIf="password.errors?.required">Password is required</div>
                         <div *ngIf="password.errors?.minlength">Minimum length for password is 8 charachter</div>
                 </div>
               </div>
-              <div class="text-center mt-4"> 
+              <div class="text-center mt-4">
                   <button class="btn btn-primary w-100" >Sign in</button>
-            
+
                 <div class="text-muted mt-2"> <a href="#" class="text-primary " data-toggle="modal" data-target="#exampleModal">Forgot your password? </a> </div>
               </div>
             </form>
@@ -57,8 +57,8 @@
               <div class="modal-body">
                 <div class="form-group">
                   <label for="InputEmail">Enter your Email</label>
-                  <input autocomplete="off" type="email" class="form-control" name="forgetEmail" id="forgetEmail" aria-describedby="InputEmailHelp" [placeholder]="'Email'" [(ngModel)]="ForgetPasswordModel.forgetEmail" 
-                  #forgetEmail="ngModel" [ngClass]="{ 'is-invalid': ResetPasswordForm.submitted && forgetEmail.invalid}"  
+                  <input autocomplete="off" type="email" class="form-control" name="forgetEmail" id="forgetEmail" aria-describedby="InputEmailHelp" [placeholder]="'Email'" [(ngModel)]="ForgetPasswordModel.forgetEmail"
+                  #forgetEmail="ngModel" [ngClass]="{ 'is-invalid': ResetPasswordForm.submitted && forgetEmail.invalid}"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                   <div *ngIf="ResetPasswordForm.submitted && forgetEmail.invalid" class="invalid-feedback">
                           <div *ngIf="forgetEmail.errors?.required">Email is required</div>
@@ -66,7 +66,7 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-footer"> 
+              <div class="modal-footer">
                 <button class="btn btn-primary" >Recover Account</button>
               </div>
             </form>

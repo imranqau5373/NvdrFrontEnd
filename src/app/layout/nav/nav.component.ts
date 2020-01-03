@@ -24,7 +24,7 @@ export class NavComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private connectionService: ConnectionService
     ) {
-    
+
     this.userName = localStorage.getItem("userName");
 
   }
@@ -38,7 +38,7 @@ export class NavComponent implements OnInit {
     // userModel = this.authenticationService.getUser();
     this.authenticationService.getUserAsync.subscribe(user => {
       this.pictureUrl = null;
-      this.userName = user.userName;
+    //  this.userName = user.userName;
       this.completeName = user.completeName;
       let apiUrl = this.connectionService.getApiUrl();
       if (user.pictureUrl == null) {

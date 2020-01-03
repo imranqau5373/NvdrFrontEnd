@@ -23,16 +23,16 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _accountService : AccountService,
-    private router: Router, 
+    private router: Router,
     private alertService: AlertService,
     private authenticationService: AuthenticationService
   ) {
 
-  
+
   }
 
 
-  ngOnInit() { 
+  ngOnInit() {
 
   }
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     this._accountService.UserLogin(this.signInModel).subscribe(result => {
       if (result && result.body && result.body.successful) {
         // localStorage.setItem('authenticationToken', result.body.authenticationToken);
-        // localStorage.setItem('userName', result.body.UserName);
+         localStorage.setItem('userName', result.body.UserName);
         this.alertService.success(result.body.message);
         this.authenticationService.loginAndRedirectToHome(result.body);
         // this.authenticationService.saveUser(result.body);
@@ -67,13 +67,13 @@ export class LoginComponent implements OnInit {
         this.alertService.error(result.body.message);
       }
 
- 
+
     });
 
   }
 
- 
 
-  
+
+
 
 }
