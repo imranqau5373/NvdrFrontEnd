@@ -18,7 +18,7 @@ export class ListCourtdurationComponent extends PagedListingComponentBase<Courts
 
 
   paggingModel: PagingModel = new PagingModel();
-  courtsBookingList: CourtsDurationListModelPagged = new CourtsDurationListModelPagged();
+  courtsDurationList: CourtsDurationListModelPagged = new CourtsDurationListModelPagged();
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
@@ -71,7 +71,7 @@ export class ListCourtdurationComponent extends PagedListingComponentBase<Courts
           }
 
           if (response.items && response.items.length > 0) {
-            this.courtsBookingList.courts = response.items;
+            this.courtsDurationList.courts = response.items;
             this.paggerConfig.totalItems = response.totalCount;
           }
 

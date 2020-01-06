@@ -19,37 +19,25 @@ export class CreateCourtdurationComponent implements OnInit {
     public router: Router,
     private customRouter: CustomRouter,
     ) { }
-    //companyList: any[];
+    sportsList: any[];
     courtsList: any[];
   addCourtsDuratoinData : AddCourtsDurationModel;
   courtsDurationId : number = 0;
   isUpdated : boolean = false;
-
+  companyId: number =0;
+  sportsId: number =0;
   ngOnInit() {
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
-    this.getCourtsDurationCompany();
-    this.getCourts();
+    this.getSports(); //get sports in cmpny
+    this.getCourts(); //get courts in sport for cmpny
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
     if(this.courtsDurationId > 0){
       this.isUpdated = true;
       this.getCourtsDuration(this.courtsDurationId);
   }
 }
-// getCourtsDurationCompany(){
-//   this.courtsDurationService.getCourtsDurationCompany().subscribe(result => {
-//     if (result && result.successful) {
-//       this.companyList = result.companyList;
-//     }
-//     else {
-//       this.toastService.showError(result.message);
-//     }
-//   });
-// }
-// selectCompany(companyId){
-//   this.addCourtsDuratoinData.CompanyId = companyId;
-// }
-getCourts(){
-  this.courtsDurationService.getCourts().subscribe(result => {
+getCourts(){   //get list of courts for cmp in selected sports
+  this.courtsDurationService.getCourts(this.companyId,this.sportsId).subscribe(result => {
     if (result && result.successful) {
       this.courtsList = result.usersList;
     }
@@ -58,8 +46,21 @@ getCourts(){
     }
   });
 }
+getSports(){   //get list of sports for cmp
+  this.courtsDurationService.getSports(this.companyId).subscribe(result => {
+    if (result && result.successful) {
+      this.sportsList = result.usersList;
+    }
+    else {
+      this.toastService.showError(result.message);
+    }
+  });
+}
 selectCourt(courtId){
   this.addCourtsDuratoinData.CourtId = courtId;
+}
+selectSport(sportId){
+  this.addCourtsDuratoinData.SportId = sportId;
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {

@@ -1,1 +1,91 @@
-<p>create-courtduration works!</p>
+
+<div class="container mt-4 mb-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <form name="form" (ngSubmit)="addDurationForm.form.valid && addCourtsBooking()" #addDurationForm="ngForm">
+            <div class="card-body">
+              <h5 class="card-title mb-4">Set Court Duration</h5>
+              <!-- <form> -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="NameField" class="font-weight-bolder">Name</label>
+                      <input type="text" class="form-control" name="Name"
+                      placeholder="Enter your Duration Name" [(ngModel)]="addCourtsDuratoinData.name" #Name="ngModel"
+                      [ngClass]="{ 'is-invalid': addDurationForm.submitted && Name.invalid}" minlength="2" required>
+                    <div *ngIf="addDurationForm.submitted && Name.invalid" class="invalid-feedback">
+                      <div *ngIf="Name.errors?.required">Name is required</div>
+                      <div *ngIf="Name.errors?.minlength">Name must be at least 2 characters</div>
+                    </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="DescriptionField" class="font-weight-bolder">Duration Description</label>
+                      <textarea class="form-control"  name="Description"
+                      [(ngModel)]="addCourtsDuratoinData.description" #Description="ngModel" rows="3"
+                        ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 mb-3">
+                    <label for="SportField" class="font-weight-bolder">Select Sport</label>
+                    <select  [(ngModel)]="addDurationForm.SportId"
+                    name="SportId" class="form-control" #SportId="ngModel" required>
+                     <option  [ngValue]="''" disabled>Select Sport...</option>
+                      <option [ngValue]="sport.id" *ngFor="let sport of sportsList">{{sport.name}}</option>
+                   </select>
+                   <div *ngIf="addDurationForm.submitted && SportId.invalid" class="invalid-feedback">
+                    <div *ngIf="SportId.errors?.required">Sport name is required</div>
+                  </div>
+                  </div>
+                  <div class="col-lg-4 mb-3">
+                    <label for="CourtField" class="font-weight-bolder">Select Court</label>
+                    <select  [(ngModel)]="addDurationForm.CourtId"
+                    name="CourtId" class="form-control" #CourtId="ngModel" required>
+                     <option  [ngValue]="''" disabled>Select court...</option>
+                      <option [ngValue]="court.id" *ngFor="let court of courtsList">{{court.name}}</option>
+                   </select>
+                   <div *ngIf="addDurationForm.submitted && CourtId.invalid" class="invalid-feedback">
+                    <div *ngIf="CourtId.errors?.required">Court name is required</div>
+                  </div>
+                  </div>
+                  </div>
+                    <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="NameField" class="font-weight-bolder">Court Start Time</label>
+                      <input type="datetime-local" class="form-control" name="CourtStartTime"
+                      [(ngModel)]="addCourtsDuratoinData.CourtStartTime" #Name="ngModel"
+                      [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtStartTime.invalid}" required>
+                    <div *ngIf="addDurationForm.submitted && CourtStartTime.invalid" class="invalid-feedback">
+                      <div *ngIf="CourtStartTime.errors?.required">Start Time is required</div>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label for="NameField" class="font-weight-bolder">Court End Time</label>
+                      <input type="datetime-local" class="form-control" name="CourtEndTime"
+                      [(ngModel)]="addCourtsDuratoinData.CourtEndTime" #Name="ngModel"
+                      [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtEndTime.invalid}" required>
+                    <div *ngIf="addDurationForm.submitted && CourtEndTime.invalid" class="invalid-feedback">
+                      <div *ngIf="CourtEndTime.errors?.required">End Time is required</div>
+                    </div>
+                    </div>
+                  </div>
+              </div>
+                <div class="container">
+                <button *ngIf="!isUpdated" type="submit" class="btn btn-primary float-right mr-2">Add CourtBooking</button>
+                <button *ngIf="id && id > 0" type="submit" class="btn btn-primary float-right mr-2">Update CourtBooking</button>
+                </div>
+            <!-- <div class="card-footer"> <a (click)="addSports()" class="btn btn-primary float-right mr-2">Add CourtBooking</a>
+               -->
+           </div>
+           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

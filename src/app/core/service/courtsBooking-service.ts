@@ -22,14 +22,18 @@ export class CourtsBookingService {
     getCourtsBookingList(model: GetCourtsBookingModel):Observable<any>{
         return this._httpApiService.post("CourtsBooking/GetCourtsBookingList",model);
       }
-      //Get list of courts for Booking in cmp in sports
-      getBookingCourt():Observable<any>{
-        return this._httpApiService.get("CourtsBooking/getBookingCourt",'');
+      //Get list of courts in cmpany in sports
+      getCourt(companyId:number,sportsId:number):Observable<any>{
+        let Myobject: any = {
+           "companyId": companyId,
+           "sportsId":sportsId   }
+        return this._httpApiService.get("Courts/GetCourtsByCompanySportsId",Myobject);
       }
-//User
-// getCourtsUsers():Observable<any>{
-//   return this._httpApiService.get("CourtsBooking/getCourtsUsers",'');
-// }
+      //Get Sports for currnt cmpany
+      getSports(companyId: number):Observable<any>{
+          let Myobject: any = { "companyId": companyId }
+        return this._httpApiService.get("Sports/GetSportsByCompanyId",Myobject);
+      }
       addCourtsBooking(model: AddCourtsBookingModel):Observable<any>{
         return this._httpApiService.post("CourtsBooking/AddCourtsBooking",model);
       }

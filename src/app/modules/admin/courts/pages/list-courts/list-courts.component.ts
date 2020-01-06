@@ -73,7 +73,6 @@ export class ListCourtsComponent extends PagedListingComponentBase<CourtsListMod
             this.courtsList.courts = response.items;
             this.paggerConfig.totalItems = response.totalCount;
           }
-
         });
   }
   ngOnDestroy() {

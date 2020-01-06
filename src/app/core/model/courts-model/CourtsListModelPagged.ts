@@ -7,6 +7,5 @@ export class CourtModel {
 }
 
 export class CourtsListModelPagged {
-
     courts : CourtModel[];
 }

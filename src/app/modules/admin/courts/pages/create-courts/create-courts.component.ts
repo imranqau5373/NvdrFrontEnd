@@ -19,52 +19,37 @@ export class CreateCourtsComponent implements OnInit {
     public router: Router,
     private customRouter: CustomRouter,
   ) { }
-  companyList: any[];
   sportsList: any[];
-addCourtsData : AddCourtsModel;
-courtId : number = 0;
-isUpdated : boolean = false;
-
+  addCourtsData : AddCourtsModel;
+  courtId : number = 0;
+  isUpdated : boolean = false;
+  companyId: number = 0;
   ngOnInit() {
     this.addCourtsData = new AddCourtsModel();
-    //this.getCourtsCompany();
-  
+    this.getSports();
     this.courtId = this.activatedRoute.snapshot.params['id'];
     if(this.courtId > 0){
       this.isUpdated = true;
       this.getCourts(this.courtId);
   }
 }
-//need work on get sports nd cmpny in service
-// getSports(){
-//   this.courtsService.getSports().subscribe(result => {
-//     if (result && result.successful) {
-//       this.sportsList = result.sportsList;
-//     }
-//     else {
-//       this.toastService.showError(result.message);
-//     }
-//    });
-//   }
+
+getSports(){
+  this.courtsService.getSports(this.companyId).subscribe(result => {
+    if (result && result.successful) {
+      this.sportsList = result.sportsList;
+    }
+    else {
+      this.toastService.showError(result.message);
+    }
+   });
+  }
 selectSport(sportId){
   this.addCourtsData.SportsId = sportId;
 }
-// getCourtsCompany(){
-//   this.courtsService.getCourtsCompany().subscribe(result => {
-//     if (result && result.successful) {
-//       this.companyList = result.companyList;
-//     }
-//     else {
-//       this.toastService.showError(result.message);
-//     }
-//   });
-// }
-selectCompany(companyId){
-  this.addCourtsData.CompanyId = companyId;
-}
 getCourts(courtId:number){
   this.courtsService.getCourts(courtId).subscribe(result => {
-    debugger;
+
     if (result && result.successful) {
       this.addCourtsData = result;
     }
