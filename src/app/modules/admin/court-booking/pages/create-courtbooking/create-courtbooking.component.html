@@ -34,7 +34,7 @@
                     <select  [(ngModel)]="addCourtsBookingData.SportId"
                     name="SportId" class="form-control" #SportId="ngModel" required>
                      <option  [ngValue]="''" disabled>Select Sport...</option>
-                      <option [ngValue]="sport.id" *ngFor="let sport of sportsList">{{sport.name}}</option>
+                      <option [ngValue]="sport.Id" *ngFor="let sport of sportsList">{{sport.name}}</option>
                    </select>
                    <div *ngIf="addBookingForm.submitted && SportId.invalid" class="invalid-feedback">
                     <div *ngIf="SportId.errors?.required">Sport name is required</div>

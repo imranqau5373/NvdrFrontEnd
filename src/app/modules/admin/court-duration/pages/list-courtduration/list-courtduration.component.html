@@ -1,6 +1,6 @@
 <section class="candidate-manager">
     <div class="container mt-4">
-      <h2 class="mb-3 font-weight-bolder">Coruts Durations List</h2>
+      <h2 class="mb-3 font-weight-bolder">Courts Durations List</h2>
       <hr>
       <div class="row">
         <div class="col-md-12 col-lg-6 ">
@@ -31,7 +31,7 @@
               <th scope="col">Company Name</th>
               <th scope="col">Court Start Time</th>
               <th scope="col">Court End Time</th>
-              <th scope="col">Court Duration</th>
+              <th scope="col">Slot Duration</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -41,11 +41,11 @@
 
               <td>{{booking.name}}</td>
               <td> {{booking.description}} </td>
-              <td>{{booking.CourtId}}</td>
-              <td>{{booking.CompanyId}}</td>
-              <td> {{booking.CourtStartTime}} </td>
-              <td>{{booking.CourtEndTime}}</td>
-              <td> {{booking.CourtDuration}} </td>
+              <td>{{booking.courtName}}</td>
+              <td>{{booking.companyName}}</td>
+              <td> {{booking.courtStartTime}} </td>
+              <td>{{booking.courtEndTime}}</td>
+              <td> {{booking.slotDuration}} </td>
               <td class="text-center d-flex">
                 <span class=" " data-toggle="tooltip" data-placement="top"
                   data-original-title="Delete">

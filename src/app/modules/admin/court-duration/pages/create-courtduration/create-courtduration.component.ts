@@ -24,8 +24,8 @@ export class CreateCourtdurationComponent implements OnInit {
   addCourtsDuratoinData : AddCourtsDurationModel;
   courtsDurationId : number = 0;
   isUpdated : boolean = false;
-  companyId: number = localStorage.getItem('companyId');
-  sportsId: number ; //to be assigned from dropdown
+  companyId: number = 1;// +localStorage.getItem('companyId');
+  sportsId: number =1; //to be assigned from dropdown
   ngOnInit() {
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];

@@ -2,12 +2,12 @@ export class CourtDurationModel {
   id: number;
   name: string;
   description: string;
-  CourtId : number; //get name
-  CompanyId : number;// --
-  CourtStartTime : Date;
-  CourtEndTime : Date;
-  CourtDuration: Date;
-  // add sports id too
+  courtName :  string;
+  companyName:string;
+  courtId : number; //get name
+  courtStartTime : Date;
+  courtEndTime : Date;
+  slotDuration: number;
 }
 
 export class CourtsDurationListModelPagged {

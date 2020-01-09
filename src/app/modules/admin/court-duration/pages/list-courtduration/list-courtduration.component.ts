@@ -71,6 +71,7 @@ export class ListCourtdurationComponent extends PagedListingComponentBase<Courts
           }
 
           if (response.items && response.items.length > 0) {
+            debugger;
             this.courtsDurationList.courts = response.items;
             this.paggerConfig.totalItems = response.totalCount;
           }

@@ -20,6 +20,7 @@ export class CourtsBookingService {
     }
 
     getCourtsBookingList(model: GetCourtsBookingModel):Observable<any>{
+          debugger;
         return this._httpApiService.post("CourtsBooking/GetCourtsBookingList",model);
       }
       //Get list of courts in cmpany in sports

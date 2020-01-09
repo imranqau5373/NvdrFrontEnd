@@ -14,6 +14,7 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./list-company.component.css']
 })
 export class ListCompanyComponent extends PagedListingComponentBase<CompanysListModelPagged> implements OnInit {
+  
   paggingModel: PagingModel = new PagingModel();
   companyList: CompanysListModelPagged = new CompanysListModelPagged();
 destroy$: Subject<boolean> = new Subject<boolean>();
