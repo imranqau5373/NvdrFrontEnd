@@ -27,10 +27,10 @@ export class CourtsDurationService {
         return this._httpApiService.get("Sports/GetSportsByCompanyId",Myobject);
       }
       //Get list of courts in cmpany in sports
-      getCourts(companyId:number,sportsId:number):Observable<any>{
+      getCourts(companyId:number,sportId:number):Observable<any>{
           let Myobject: any = {
              "companyId": companyId,
-             "sportsId":sportsId   }
+             "sportsId":sportId   }
         return this._httpApiService.get("Courts/GetCourtsByCompanySportsId",Myobject);
       }
       addCourtsDuration(model: AddCourtsDurationModel):Observable<any>{

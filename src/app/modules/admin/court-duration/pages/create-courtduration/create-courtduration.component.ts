@@ -24,32 +24,36 @@ export class CreateCourtdurationComponent implements OnInit {
   addCourtsDuratoinData : AddCourtsDurationModel;
   courtsDurationId : number = 0;
   isUpdated : boolean = false;
-  companyId: number =0;
-  sportsId: number =0;
+  companyId: number = localStorage.getItem('companyId');
+  sportsId: number ; //to be assigned from dropdown
   ngOnInit() {
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
-    this.getSports(); //get sports in cmpny
-    this.getCourts(); //get courts in sport for cmpny
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
+      this.getSports(this.companyId);
     if(this.courtsDurationId > 0){
       this.isUpdated = true;
       this.getCourtsDuration(this.courtsDurationId);
   }
 }
-getCourts(){   //get list of courts for cmp in selected sports
-  this.courtsDurationService.getCourts(this.companyId,this.sportsId).subscribe(result => {
+
+getSports(companyId:number){   //get list of sports for cmp
+  this.courtsDurationService.getSports(companyId).subscribe(result => {
     if (result && result.successful) {
-      this.courtsList = result.usersList;
+
+      this.sportsList = result.sportsList;
     }
     else {
       this.toastService.showError(result.message);
     }
   });
 }
-getSports(){   //get list of sports for cmp
-  this.courtsDurationService.getSports(this.companyId).subscribe(result => {
+selectSport(){
+    this.getCourts(this.companyId,this.sportsId);
+}
+getCourts(companyId:number,sportId:number){   //get list of courts for cmp in selected sports
+  this.courtsDurationService.getCourts(companyId,sportId).subscribe(result => {
     if (result && result.successful) {
-      this.sportsList = result.usersList;
+      this.courtsList = result.courtsList;
     }
     else {
       this.toastService.showError(result.message);
@@ -58,9 +62,6 @@ getSports(){   //get list of sports for cmp
 }
 selectCourt(courtId){
   this.addCourtsDuratoinData.CourtId = courtId;
-}
-selectSport(sportId){
-  this.addCourtsDuratoinData.SportId = sportId;
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {
@@ -74,6 +75,7 @@ getCourtsDuration(courtsDurationId:number){
   });
 }
 addCourtsDuration(){
+  debugger;
     this.courtsDurationService.addCourtsDuration(this.addCourtsDuratoinData).subscribe(result => {
     if (result && result.successful) {
       this.toastService.showSuccess(result.body.message);

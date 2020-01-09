@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       if (result && result.body && result.body.successful) {
         // localStorage.setItem('authenticationToken', result.body.authenticationToken);
          localStorage.setItem('userName', result.body.UserName);
+         localStorage.setItem('companyId', result.body.CompanyId);
         this.alertService.success(result.body.message);
         this.authenticationService.loginAndRedirectToHome(result.body);
         // this.authenticationService.saveUser(result.body);
