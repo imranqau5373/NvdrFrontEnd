@@ -23,7 +23,7 @@
                   <div class="col-lg-12">
                     <div class="form-group">
                       <label for="DescriptionField" class="font-weight-bolder">Company Description</label>
-                      <textarea class="form-control"  name="Description"
+                      <textarea class="form-control"  name="description"
                       [(ngModel)]="addCompanyData.description" #Description="ngModel" rows="3"
                         ></textarea>
                     </div>
@@ -32,11 +32,11 @@
                     <div class="form-group">
                       <input type="text" class="form-control" name="Url"
                       placeholder="Enter your Company Url" [(ngModel)]="addCompanyData.url" #Name="ngModel"
-                      [ngClass]="{ 'is-invalid': addCompanyForm.submitted && Url.invalid}" minlength="5"
+                      [ngClass]="{ 'is-invalid': addCompanyForm.submitted && url.invalid}" minlength="5"
                       pattern="[a-z]+.[a-z0-9.-]+.[a-z]{2,4}$" required>
-                    <div *ngIf="addCompanyForm.submitted && Url.invalid" class="invalid-feedback">
-                      <div *ngIf="Url.errors?.required">Url Name is required</div>
-                      <div *ngIf="Url.errors?.minlength">Company Name must be at least 5 characters</div>
+                    <div *ngIf="addCompanyForm.submitted && url.invalid" class="invalid-feedback">
+                      <div *ngIf="url.errors?.required">Url Name is required</div>
+                      <div *ngIf="url.errors?.minlength">Company Name must be at least 5 characters</div>
                     </div>
                     </div>
                   </div>

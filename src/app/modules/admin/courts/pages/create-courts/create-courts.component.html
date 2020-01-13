@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <form name="form" (ngSubmit)="addCourtForm.form.valid && addCompany()" #addCourtForm="ngForm">
+          <form name="form" (ngSubmit)="addCourtForm.form.valid && addCourts()" #addCourtForm="ngForm">
             <div class="card-body">
               <h5 class="card-title mb-4">Adding New Court</h5>
               <!-- <form> -->
@@ -35,8 +35,8 @@
                      <option  [ngValue]="''" disabled>Select Sport...</option>
                       <option [ngValue]="sport.id" *ngFor="let sport of sportsList">{{sport.name}}</option>
                    </select>
-                   <div *ngIf="addCourtForm.submitted && SportId.invalid" class="invalid-feedback">
-                    <div *ngIf="SportId.errors?.required">Sport name is required</div>
+                   <div *ngIf="addCourtForm.submitted && SportsId.invalid" class="invalid-feedback">
+                    <div *ngIf="SportsId.errors?.required">Sport name is required</div>
                   </div>
                   </div>
                 </div>
