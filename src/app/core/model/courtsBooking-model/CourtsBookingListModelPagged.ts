@@ -2,12 +2,15 @@ export class CourtBookingModel {
   id: number;
   name: string;
   description: string;
-  CourtId : number;
-  UserId : number;
-  BookingStartTime : Date;
-  BookingEndTime : Date;
-  IsBooked: boolean;
-  IsEmailed: boolean;
+  courtName: string;
+  userName: string;
+  courtId : number;  //Show name instead
+  userId : number;  // ----
+  bookingStartTime : Date;
+  bookingEndTime : Date;
+  isBooked: boolean;
+  isEmailed: boolean;
+  //add sports id too
 }
 
 export class CourtsBookingListModelPagged {

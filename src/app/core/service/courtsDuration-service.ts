@@ -18,31 +18,29 @@ export class CourtsDurationService {
     Method():Observable<any>{
       return this._httpApiService.get("","");
     }
-
     getCourtsDurationList(model: GetCourtsDurationModel):Observable<any>{
         return this._httpApiService.post("CourtsDuration/GetCourtsDurationList",model);
       }
-      //Get list of courts for Duration in cmpany in sports
-      getCourts():Observable<any>{
-        return this._httpApiService.get("CourtsDuration/getCourts",'');
+      //Get Sports for currnt cmpany
+      getSports(companyId: number):Observable<any>{
+          let Myobject: any = { "companyId": companyId }
+        return this._httpApiService.get("Sports/GetSportsByCompanyId",Myobject);
       }
-//Get Company Name for court duration
-      // getCourtsDurationCompany():Observable<any>{
-      //   return this._httpApiService.get("CourtsDuration/getCourtsDurationCompany",'');
-      // }
-
+      //Get list of courts in cmpany in sports
+      getCourts(companyId:number,sportId:number):Observable<any>{
+          let Myobject: any = {
+             "companyId": companyId,
+             "sportsId":sportId   }
+        return this._httpApiService.get("Courts/GetCourtsByCompanySportsId",Myobject);
+      }
       addCourtsDuration(model: AddCourtsDurationModel):Observable<any>{
         return this._httpApiService.post("CourtsDuration/AddCourtsDuration",model);
       }
-
-
-      updateCourtsDuration(model: AddCourtsDurationModel):Observable<any>{
+        updateCourtsDuration(model: AddCourtsDurationModel):Observable<any>{
         return this._httpApiService.post("CourtsDuration/UpdateCourtsDuration",model);
       }
-
       getCourtsDuration(id: number):Observable<any>{
         let Myobject: any = { "id": id }
         return this._httpApiService.get("CourtsDuration/GetCourtsDuration",Myobject);
       }
-
 }

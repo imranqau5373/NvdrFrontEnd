@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminHomeComponent } from '../home/pages/admin-home/admin-home.component';
-import { ListCompanyComponent } from './pages/list-company/list-company.component';
-import { CreateCompanyComponent } from './pages/create-company/create-company.component';
+
+import { ListCompanyComponent } from '../company/pages/list-company/list-company.component';
+import { CreateCompanyComponent } from '../company/pages/create-company/create-company.component';
 
 
 export const routes: Routes = [

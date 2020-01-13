@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminHomeComponent } from '../home/pages/admin-home/admin-home.component';
-import { CreateCourtbookingComponent } from './pages/create-courtbooking/create-courtbooking.component';
-import { ListCourtbookingComponent } from './pages/list-courtbooking/list-courtbooking.component';
+
+import { CreateCourtbookingComponent } from '../court-booking/pages/create-courtbooking/create-courtbooking.component';
+import { ListCourtbookingComponent } from '../court-booking/pages/list-courtbooking/list-courtbooking.component';
 
 
 export const routes: Routes = [

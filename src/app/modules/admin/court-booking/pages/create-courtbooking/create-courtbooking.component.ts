@@ -19,35 +19,39 @@ export class CreateCourtbookingComponent implements OnInit {
     public router: Router,
     private customRouter: CustomRouter,
   ) { }
-    //usersList: any[];
+    sportsList: any[];
     courtsList: any[];
   addCourtsBookingData : AddCourtsBookingModel;
   courtsBookingId : number = 0;
+  companyId: number =1;
+  sportsId: number =1;
   isUpdated : boolean = false;
 
   ngOnInit() {
     this.addCourtsBookingData = new AddCourtsBookingModel();
-  //  this.getUsers();
-    this.getCourts();
+    this.getSports(); //for the cmpany
+    this.getCourts();    // for sport in cmpany
     this.courtsBookingId = this.activatedRoute.snapshot.params['id'];
     if(this.courtsBookingId > 0){
       this.isUpdated = true;
       this.getCourtsBooking(this.courtsBookingId);
   }
 }
-// getUsers(){
-//   this.courtsBookingService.getCourtsUsers().subscribe(result => {
-//     if (result && result.successful) {
-//       this.usersList = result.usersList;
-//     }
-//     else {
-//       this.toastService.showError(result.message);
-//     }
-//   });
-// }
-//Get list of courts available for this company sports booking
-getCourts(){
-  this.courtsBookingService.getBookingCourt().subscribe(result => {
+getSports(){   //get list of sports for cmp
+  this.courtsBookingService.getSports(this.companyId).subscribe(result => {
+    if (result && result.successful) {
+      this.sportsList = result.usersList;
+    }
+    else {
+      this.toastService.showError(result.message);
+    }
+  });
+}
+selectSport(sportId){
+  this.addCourtsBookingData.SportId = sportId;
+}
+getCourts(){  //get list of courts for cmp in selected sports
+  this.courtsBookingService.getCourt(this.companyId,this.sportsId).subscribe(result => {
     if (result && result.successful) {
       this.courtsList = result.usersList;
     }
@@ -55,9 +59,6 @@ getCourts(){
       this.toastService.showError(result.message);
     }
   });
-}
-selectUser(userId){
-  this.addCourtsBookingData.UserId = userId;
 }
 selectCourt(courtId){
   this.addCourtsBookingData.CourtId = courtId;

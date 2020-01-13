@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminHomeComponent } from '../home/pages/admin-home/admin-home.component';
-import { ListUsersComponent } from './pages/list-users/list-users.component';
-import { CreateUsersComponent } from './pages/create-users/create-users.component';
+
+import { ListUsersComponent } from '../users/pages/list-users/list-users.component';
+import { CreateUsersComponent } from '../users/pages/create-users/create-users.component';
 
 
 export const routes: Routes = [
