@@ -26,14 +26,14 @@ export class CreateCourtdurationComponent implements OnInit {
   isUpdated : boolean = false;
 
   ngOnInit() {
-    this.addCourtsDuratoinData = new AddCourtsDurationModel();
-    this.getCourtsDurationCompany();
-    this.getCourts();
-    this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
-    if(this.courtsDurationId > 0){
-      this.isUpdated = true;
-      this.getCourtsDuration(this.courtsDurationId);
-  }
+  //   this.addCourtsDuratoinData = new AddCourtsDurationModel();
+  //   this.getCourtsDurationCompany();
+  //   this.getCourts();
+  //   this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
+  //   if(this.courtsDurationId > 0){
+  //     this.isUpdated = true;
+  //     this.getCourtsDuration(this.courtsDurationId);
+  // }
 }
 // getCourtsDurationCompany(){
 //   this.courtsDurationService.getCourtsDurationCompany().subscribe(result => {
