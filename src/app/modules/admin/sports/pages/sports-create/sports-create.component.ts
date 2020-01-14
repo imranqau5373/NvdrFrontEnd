@@ -51,10 +51,18 @@ export class SportsCreateComponent implements OnInit {
     this.addSportsData.companyId = companyId;
   }
 
-  addSports(){
+  saveSports(){
+    if(this.addSportsData.id > 0){
+      this.updateSports();
+    }
+    else{
+      this.addSports();
+    }
+  }
 
+  addSports(){
     this.sportsService.addSports(this.addSportsData).subscribe(result => {
-      if (result && result.successful) {
+      if (result.body && result.body.successful) {
         this.toastService.showSuccess(result.body.message);
         this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
 
@@ -78,7 +86,16 @@ export class SportsCreateComponent implements OnInit {
   }
 
   updateSports(){
+    this.sportsService.updateSports(this.addSportsData).subscribe(result => {
+      if (result.body && result.body.successful) {
+        this.toastService.showSuccess(result.body.message);
+        this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
 
+      }
+      else {
+        this.toastService.showError(result.message);
+      }
+    });
   }
 
 }

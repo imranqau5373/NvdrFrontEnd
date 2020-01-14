@@ -4,6 +4,7 @@ export class CourtModel {
     description: string;
   CompanyId : number;
   SportsId : number;
+  sportsName : string;
 }
 
 export class CourtsListModelPagged {

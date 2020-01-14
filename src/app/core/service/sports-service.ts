@@ -33,7 +33,7 @@ export class SportsService {
 
 
       updateSports(model: AddSportsModel):Observable<any>{
-        return this._httpApiService.post("Sports/AddSports",model);
+        return this._httpApiService.post("Sports/UpdateSports",model);
       }
 
       getSports(id: number):Observable<any>{

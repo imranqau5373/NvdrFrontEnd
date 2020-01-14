@@ -52,6 +52,7 @@ selectSport(){
 }
 getCourts(companyId:number,sportId:number){   //get list of courts for cmp in selected sports
   this.courtsDurationService.getCourts(companyId,sportId).subscribe(result => {
+    debugger;
     if (result && result.successful) {
       this.courtsList = result.courtsList;
     }

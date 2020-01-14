@@ -25,22 +25,22 @@ export class CreateCourtsComponent implements OnInit {
   isUpdated : boolean = false;
   companyId: number = 1;
   ngOnInit() {
+    debugger;
     this.addCourtsData = new AddCourtsModel();
     this.courtId = this.activatedRoute.snapshot.params['id'];
-  
-    //this.companyId = +localStorage.getItem("companyId");
     this.getSports(this.companyId);
-    if(this.courtId > 0){
-      this.isUpdated = true;
-      this.getCourts(this.courtId);
 
-  }
 }
 
 getSports(companyId:number){
   this.courtsService.getSports(companyId).subscribe(result => {
     if (result && result.successful) {
       this.sportsList = result.sportsList;
+      if(this.courtId > 0){
+        this.isUpdated = true;
+        this.getCourts(this.courtId);
+  
+      }
     }
     else {
       this.toastService.showError(result.message);
@@ -52,9 +52,10 @@ selectSport(sportId){
 }
 getCourts(courtId:number){
   this.courtsService.getCourts(courtId).subscribe(result => {
-
     if (result && result.successful) {
       this.addCourtsData = result;
+      this.selectSport(result.sportsId);
+
     }
     else {
       this.toastService.showError(result.message);
@@ -62,6 +63,7 @@ getCourts(courtId:number){
   });
 }
 addCourts(){
+  debugger;
     this.courtsService.addCourts(this.addCourtsData).subscribe(result => {
     if (result && result.successful) {
       this.toastService.showSuccess(result.body.message);
