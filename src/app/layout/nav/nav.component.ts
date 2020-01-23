@@ -38,8 +38,7 @@ export class NavComponent implements OnInit {
     // userModel = this.authenticationService.getUser();
     this.authenticationService.getUserAsync.subscribe(user => {
       this.pictureUrl = null;
-    //  this.userName = user.userName;
-      this.completeName = user.completeName;
+      this.completeName = user.userName;
       let apiUrl = this.connectionService.getApiUrl();
       if (user.pictureUrl == null) {
         this.pictureUrl = 'assets/img/img_avatar.png';

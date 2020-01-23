@@ -56,7 +56,7 @@ companyId: number = +localStorage.getItem('companyId');
     this.updateSports();
     else{
     this.sportsService.addSports(this.addSportsData).subscribe(result => {
-      if (result && result.successful) {
+      if (result.body && result.body.successful) {
         this.toastService.showSuccess(result.body.message);
         this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
 
@@ -79,10 +79,11 @@ companyId: number = +localStorage.getItem('companyId');
   }
 
   updateSports(){
-    this.sportsService.updateSports(this.addSportsData).subscribe(result =>{
-      if(result && result.successful) {
+    this.sportsService.updateSports(this.addSportsData).subscribe(result => {
+      if (result.body && result.body.successful) {
         this.toastService.showSuccess(result.body.message);
         this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'sports-list');
+
       }
       else {
         this.toastService.showError(result.message);
