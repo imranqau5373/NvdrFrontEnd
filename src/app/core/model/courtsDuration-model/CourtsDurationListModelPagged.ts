@@ -5,6 +5,7 @@ export class CourtDurationModel {
   courtName :  string;
   companyName:string;
   courtId : number; //get name
+  //sportId : number;
   courtStartTime : Date;
   courtEndTime : Date;
   slotDuration: number;

@@ -24,22 +24,27 @@ export class CreateCourtdurationComponent implements OnInit {
   addCourtsDuratoinData : AddCourtsDurationModel;
   courtsDurationId : number = 0;
   isUpdated : boolean = false;
-  companyId: number = 1;// +localStorage.getItem('companyId');
-  sportsId: number =1; //to be assigned from dropdown
+  uId: number = +localStorage.getItem('userId');
+  companyId: number = +localStorage.getItem('companyId');
+
+  sportsId: number; //to be assigned from dropdown
   ngOnInit() {
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
+
+      this.addCourtsDuratoinData.userId = this.uId;
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
       this.getSports(this.companyId);
     if(this.courtsDurationId > 0){
       this.isUpdated = true;
       this.getCourtsDuration(this.courtsDurationId);
+
   }
 }
 
 getSports(companyId:number){   //get list of sports for cmp
+
   this.courtsDurationService.getSports(companyId).subscribe(result => {
     if (result && result.successful) {
-
       this.sportsList = result.sportsList;
     }
     else {
@@ -48,6 +53,7 @@ getSports(companyId:number){   //get list of sports for cmp
   });
 }
 selectSport(){
+
     this.getCourts(this.companyId,this.sportsId);
 }
 getCourts(companyId:number,sportId:number){   //get list of courts for cmp in selected sports
@@ -61,13 +67,17 @@ getCourts(companyId:number,sportId:number){   //get list of courts for cmp in se
   });
 }
 selectCourt(courtId){
-  this.addCourtsDuratoinData.CourtId = courtId;
+
+  this.addCourtsDuratoinData.courtId = courtId;
+  this.addCourtsDuratoinData.userId = this.uId;
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {
-    debugger;
+
     if (result && result.successful) {
       this.addCourtsDuratoinData = result;
+      this.sportsId = result.sportId;
+      this.getCourts(this.companyId,result.sportId);
     }
     else {
       this.toastService.showError(result.message);
@@ -75,7 +85,9 @@ getCourtsDuration(courtsDurationId:number){
   });
 }
 addCourtsDuration(){
-  debugger;
+if(this.isUpdated == true)
+this.updateCourtsDuration();
+else{
     this.courtsDurationService.addCourtsDuration(this.addCourtsDuratoinData).subscribe(result => {
     if (result && result.successful) {
       this.toastService.showSuccess(result.body.message);
@@ -85,6 +97,7 @@ addCourtsDuration(){
       this.toastService.showError(result.message);
     }
   });
+  }
 }
 updateCourtsDuration(){
 this.courtsDurationService.updateCourtsDuration(this.addCourtsDuratoinData).subscribe(result =>{

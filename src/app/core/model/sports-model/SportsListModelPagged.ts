@@ -3,6 +3,7 @@ export class SportsModel {
     id: number;
     Name: string;
     Description: string;
+    //CompanyId : number;
     // questionsList: QuestionModel[] = [];
 }
 

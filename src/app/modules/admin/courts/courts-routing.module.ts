@@ -18,6 +18,10 @@ export const routes: Routes = [
     path: 'courts-create',
     component: CreateCourtsComponent
   },
+  {
+    path: 'courts-create/:id',
+    component: CreateCourtsComponent
+  }
 ];
 
 @NgModule({

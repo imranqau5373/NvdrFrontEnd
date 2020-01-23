@@ -19,6 +19,10 @@ export const routes: Routes = [
     path: 'company-create',
     component: CreateCompanyComponent
   },
+  {
+    path: 'company-create/:id',
+    component: CreateCompanyComponent
+  }
 ];
 
 @NgModule({

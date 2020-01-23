@@ -61,19 +61,19 @@ export class ListCourtbookingComponent  extends PagedListingComponentBase<Courts
         )
         .subscribe(result => {
           if (!result || !result.body) {
+
             return;
           };
 
           var response = result.body;
           if (!response.successful) {
-              debugger;
             this.toastService.showError(response.message);
             return;
           }
 
           if (response.items && response.items.length > 0) {
-        debugger;
             this.courtsBookingList.CourtBooking = response.items;
+
             this.paggerConfig.totalItems = response.totalCount;
           }
 
