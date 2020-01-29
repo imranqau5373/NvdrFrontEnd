@@ -25,7 +25,6 @@ export class CreateCourtsComponent implements OnInit {
   isUpdated : boolean = false;
   companyId: number = 1;
   ngOnInit() {
-    debugger;
     this.addCourtsData = new AddCourtsModel();
     this.courtId = this.activatedRoute.snapshot.params['id'];
     this.getSports(this.companyId);
@@ -63,9 +62,8 @@ getCourts(courtId:number){
   });
 }
 addCourts(){
-  debugger;
     this.courtsService.addCourts(this.addCourtsData).subscribe(result => {
-    if (result && result.successful) {
+    if (result.body && result.body.successful) {
       this.toastService.showSuccess(result.body.message);
       this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courts-list');
     }

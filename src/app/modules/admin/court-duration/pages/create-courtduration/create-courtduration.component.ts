@@ -27,6 +27,7 @@ export class CreateCourtdurationComponent implements OnInit {
   companyId: number = 1;// +localStorage.getItem('companyId');
   sportsId: number =1; //to be assigned from dropdown
   ngOnInit() {
+    debugger;
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
       this.getSports(this.companyId);
@@ -39,22 +40,23 @@ export class CreateCourtdurationComponent implements OnInit {
 getSports(companyId:number){   //get list of sports for cmp
   this.courtsDurationService.getSports(companyId).subscribe(result => {
     if (result && result.successful) {
-
       this.sportsList = result.sportsList;
+      if(this.sportsList && this.sportsList.length > 0){
+        this.getCourts(this.sportsList[0].id);
+      }
+      
     }
     else {
       this.toastService.showError(result.message);
     }
   });
 }
-selectSport(){
-    this.getCourts(this.companyId,this.sportsId);
-}
-getCourts(companyId:number,sportId:number){   //get list of courts for cmp in selected sports
-  this.courtsDurationService.getCourts(companyId,sportId).subscribe(result => {
-    debugger;
+getCourts(sportId:number){   //get list of courts for cmp in selected sports
+  this.courtsDurationService.getCourts(sportId).subscribe(result => {
     if (result && result.successful) {
       this.courtsList = result.courtsList;
+      this.addCourtsDuratoinData.CourtId = this.courtsList[0].id;
+  
     }
     else {
       this.toastService.showError(result.message);
@@ -63,6 +65,7 @@ getCourts(companyId:number,sportId:number){   //get list of courts for cmp in se
 }
 selectCourt(courtId){
   this.addCourtsDuratoinData.CourtId = courtId;
+
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {
@@ -76,7 +79,7 @@ getCourtsDuration(courtsDurationId:number){
   });
 }
 addCourtsDuration(){
-  debugger;
+
     this.courtsDurationService.addCourtsDuration(this.addCourtsDuratoinData).subscribe(result => {
     if (result && result.successful) {
       this.toastService.showSuccess(result.body.message);

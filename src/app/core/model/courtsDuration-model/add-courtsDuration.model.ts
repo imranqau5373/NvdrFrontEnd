@@ -6,5 +6,7 @@ export class AddCourtsDurationModel {
     CourtId : number;
     CourtStartTime : Date;
     CourtEndTime : Date;
+    CourtDate : Date;
+    
     SlotDuration: number;
 }

@@ -60,6 +60,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('@modules/auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path: 'booking',
+    component: ContentLayoutComponent,
+    loadChildren: () =>
+      import('@modules/booking/booking.module').then(m => m.BookingModule)
+  },
 
  
 
