@@ -19,9 +19,9 @@ export const routes: Routes = [
     component: CreateCourtsComponent
   },
   {
-    path: 'courts-update/:id',
+    path: 'courts-create/:id',
     component: CreateCourtsComponent
-  },
+  }
 ];
 
 @NgModule({

@@ -27,6 +27,8 @@ export class CreateCourtsComponent implements OnInit {
   ngOnInit() {
     this.addCourtsData = new AddCourtsModel();
     this.courtId = this.activatedRoute.snapshot.params['id'];
+
+    //this.companyId = +localStorage.getItem("companyId");
     this.getSports(this.companyId);
 
 }
@@ -38,7 +40,7 @@ getSports(companyId:number){
       if(this.courtId > 0){
         this.isUpdated = true;
         this.getCourts(this.courtId);
-  
+
       }
     }
     else {
@@ -62,6 +64,12 @@ getCourts(courtId:number){
   });
 }
 addCourts(){
+<<<<<<< HEAD
+=======
+  if(this.isUpdated == true)
+  this.updateCourts();
+  else{
+>>>>>>> 3a6ebde80642d271ccacc91c8e488d557952b477
     this.courtsService.addCourts(this.addCourtsData).subscribe(result => {
     if (result.body && result.body.successful) {
       this.toastService.showSuccess(result.body.message);
@@ -71,6 +79,7 @@ addCourts(){
       this.toastService.showError(result.message);
     }
   });
+}
 }
 updateCourts(){
 this.courtsService.updateCourts(this.addCourtsData).subscribe(result =>{

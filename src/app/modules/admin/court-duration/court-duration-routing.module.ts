@@ -17,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'courtduration-list',
     component: ListCourtdurationComponent
+  },
+  {
+    path: 'courtduration-create/:id',
+    component: CreateCourtdurationComponent
   }
 ];
 
