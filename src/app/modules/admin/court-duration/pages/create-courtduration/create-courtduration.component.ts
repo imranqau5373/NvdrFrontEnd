@@ -29,6 +29,7 @@ export class CreateCourtdurationComponent implements OnInit {
 
   sportsId: number; //to be assigned from dropdown
   ngOnInit() {
+    debugger;
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
 
       this.addCourtsDuratoinData.userId = this.uId;
@@ -46,6 +47,10 @@ getSports(companyId:number){   //get list of sports for cmp
   this.courtsDurationService.getSports(companyId).subscribe(result => {
     if (result && result.successful) {
       this.sportsList = result.sportsList;
+      if(this.sportsList && this.sportsList.length > 0){
+        this.getCourts(this.sportsList[0].id);
+      }
+
     }
     else {
       this.toastService.showError(result.message);
@@ -60,6 +65,8 @@ getCourts(companyId:number,sportId:number){   //get list of courts for cmp in se
   this.courtsDurationService.getCourts(companyId,sportId).subscribe(result => {
     if (result && result.successful) {
       this.courtsList = result.courtsList;
+      this.addCourtsDuratoinData.CourtId = this.courtsList[0].id;
+
     }
     else {
       this.toastService.showError(result.message);

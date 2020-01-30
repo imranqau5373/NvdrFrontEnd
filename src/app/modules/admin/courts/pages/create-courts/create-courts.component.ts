@@ -68,7 +68,7 @@ addCourts(){
   this.updateCourts();
   else{
     this.courtsService.addCourts(this.addCourtsData).subscribe(result => {
-    if (result && result.body.successful) {
+    if (result.body && result.body.successful) {
       this.toastService.showSuccess(result.body.message);
       this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courts-list');
     }
