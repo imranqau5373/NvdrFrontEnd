@@ -1,1 +1,57 @@
-<p>list-users works!</p>
+<section class="candidate-manager">
+    <div class="container mt-4">
+      <h2 class="mb-3 font-weight-bolder">Users List</h2>
+      <hr>
+      <div class="row">
+        <div class="col-md-12 col-lg-6 ">
+            <div class="float-left"> <a routerLink="/admin/users-create">
+                <button class="btn btn-primary">+ Add new users</button>
+            </a>
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-6 ">
+          <div class="input-group mb-3 ">
+            <div class="input-group-prepend "> <span class="input-group-text" id="basic-addon1"><i
+                  class="material-icons ">search</i></span> </div>
+            <input type="text" class="form-control form-resizer" placeholder="Search" aria-label="search"
+              aria-describedby="basic-addon1">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table reviewer-table table-hover">
+          <thead class="bg-secondary text-white">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Users Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Timezone</th>
+              <th scope="col">Company Id</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let users of usersList.users">
+              <th scope="row"><input class="form-check-input ml-0" type="checkbox" value="" id="defaultCheck1"></th>
+
+              <td>{{users.name}}</td>
+              <td> {{users.email}} </td>
+              <td>{{users.phone}}</td>
+              <td>{{users.timezone}}</td>
+              <td>{{users.CompanyId}}</td>
+              <td class="text-center d-flex"><span class=" " data-toggle="tooltip" data-placement="top"
+                  data-original-title="Delete"><a href="#"><i
+                      class="material-icons circle-icon">delete_forever</i></a></span><span class=" "
+                  data-toggle="tooltip" data-placement="top" data-original-title="View">
+                  <a routerLink="/admin/users-create/{{users.id}}"><i
+                      class="material-icons circle-icon"></i>Edit</a></span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>

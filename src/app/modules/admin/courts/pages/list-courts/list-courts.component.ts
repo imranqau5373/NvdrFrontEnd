@@ -70,7 +70,6 @@ export class ListCourtsComponent extends PagedListingComponentBase<CourtsListMod
           }
 
           if (response.items && response.items.length > 0) {
-            debugger;
             this.courtsList.courts = response.items;
             this.paggerConfig.totalItems = response.totalCount;
           }

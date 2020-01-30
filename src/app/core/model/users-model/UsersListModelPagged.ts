@@ -1,18 +1,18 @@
 export class UserModel {
   id: number;
-  FirstName: string;
-  LastName: string;
-  Name : string;
-  Email : string;
-  Phone : string;
-  Timezone : string;
-  PictureUrl: string;
-    PictureThumbnailUrl: string;
-      OptInNewsletter: boolean;
-      CompanyId: number;
+  firstName: string;
+  lastName: string;
+  name : string;
+  email : string;
+  phone : string;
+  timezone : string;
+  pictureUrl: string;
+  pictureThumbnailUrl: string;
+  optInNewsletter: boolean;
+  companyId: number;
 }
 
 export class UserListModelPagged {
 
-    courts : UserModel[];
+    users : UserModel[];
 }

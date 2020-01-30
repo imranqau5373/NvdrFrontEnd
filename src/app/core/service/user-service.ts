@@ -19,25 +19,27 @@ export class UsersService {
       return this._httpApiService.get("","");
     }
 
-    getuserList(model: GetUserModel):Observable<any>{
-        return this._httpApiService.post("user/GetUserList",model);
+    getUsersList(model: GetUserModel):Observable<any>{
+        return this._httpApiService.post("Profile/GetProfileList",model);
       }
 
 //Get Company Name for court duration
 
 
-      adduser(model: AddUsersModel):Observable<any>{
-        return this._httpApiService.post("user/AddUser",model);
+      addUser(model: AddUsersModel):Observable<any>{
+        return this._httpApiService.post("Identity/SignUp",model);
+      }
+      getSportsCompany():Observable<any>{
+        return this._httpApiService.get("Sports/GetSportsCompanies",'');
       }
 
-
-      updateuser(model: AddUsersModel):Observable<any>{
-        return this._httpApiService.post("user/UpdateUser",model);
+      updateUser(model: AddUsersModel):Observable<any>{
+        return this._httpApiService.post("Profile/UpdateProfile",model);
       }
 
-      getuser(id: number):Observable<any>{
+      getUser(id: number):Observable<any>{
         let Myobject: any = { "id": id }
-        return this._httpApiService.get("user/GetUser",Myobject);
+        return this._httpApiService.get("Profile/GetProfile",Myobject);
       }
 
 }

@@ -58,7 +58,6 @@ selectSport(){
 }
 getCourts(companyId:number,sportId:number){   //get list of courts for cmp in selected sports
   this.courtsDurationService.getCourts(companyId,sportId).subscribe(result => {
-    debugger;
     if (result && result.successful) {
       this.courtsList = result.courtsList;
     }
@@ -90,7 +89,7 @@ if(this.isUpdated == true)
 this.updateCourtsDuration();
 else{
     this.courtsDurationService.addCourtsDuration(this.addCourtsDuratoinData).subscribe(result => {
-    if (result && result.successful) {
+    if (result && result.body.successful) {
       this.toastService.showSuccess(result.body.message);
       this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtduration-list');
     }
@@ -102,7 +101,7 @@ else{
 }
 updateCourtsDuration(){
 this.courtsDurationService.updateCourtsDuration(this.addCourtsDuratoinData).subscribe(result =>{
-  if(result && result.successful) {
+  if(result && result.body.successful) {
     this.toastService.showSuccess(result.body.message);
     this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtduration-list');
   }
