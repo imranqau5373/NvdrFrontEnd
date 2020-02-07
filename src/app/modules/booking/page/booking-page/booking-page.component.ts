@@ -32,10 +32,11 @@ this.getCompanyBookings();
     debugger;
     this.bookingQuery = new CompanyBookingQuery();
     this.bookingQuery.todayDate = new Date();
+    this.bookingQuery.bookingId= 1;
     this.bookingService.getCompanyBookings(this.bookingQuery).subscribe(result => {
       if (result && result.body && result.body.successful) {
         this.bookingList = result.body.Items;
-        
+
       }
       else {
         this.toastService.showError(result.message);

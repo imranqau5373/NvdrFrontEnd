@@ -57,12 +57,8 @@ getSports(companyId:number){   //get list of sports for cmp
     }
   });
 }
-selectSport(){
-
-    this.getCourts(this.companyId,this.sportsId);
-}
-getCourts(companyId:number,sportId:number){   //get list of courts for cmp in selected sports
-  this.courtsDurationService.getCourts(companyId,sportId).subscribe(result => {
+getCourts(sportId:number){   //get list of courts for cmp in selected sports
+  this.courtsDurationService.getCourts(sportId).subscribe(result => {
     if (result && result.successful) {
       this.courtsList = result.courtsList;
       this.addCourtsDuratoinData.CourtId = this.courtsList[0].id;
@@ -75,16 +71,15 @@ getCourts(companyId:number,sportId:number){   //get list of courts for cmp in se
 }
 selectCourt(courtId){
 
-  this.addCourtsDuratoinData.courtId = courtId;
-  this.addCourtsDuratoinData.userId = this.uId;
+  this.addCourtsDuratoinData.CourtId = courtId;
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {
 
     if (result && result.successful) {
       this.addCourtsDuratoinData = result;
-      this.sportsId = result.sportId;
-      this.getCourts(this.companyId,result.sportId);
+    //  this.sportsId = result.sportId;
+    //  this.getCourts(this.companyId,result.sportId);
     }
     else {
       this.toastService.showError(result.message);

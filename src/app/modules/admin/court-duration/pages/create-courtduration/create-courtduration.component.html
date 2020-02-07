@@ -32,7 +32,7 @@
                   <div class="col-lg-4 mb-3">
                     <label for="SportField" class="font-weight-bolder">Select Sport</label>
                     <select  [(ngModel)]="sportsId"
-                    name="SportId" class="form-control" #SportId="ngModel" (change)="selectSport()" required>
+                    name="SportId" class="form-control" #SportId="ngModel" (change)="getCourts(sportsId)" required>
                      <option  [ngValue]="''" disabled>Select Sport...</option>
                       <option [ngValue]="sport.id" *ngFor="let sport of sportsList">{{sport.name}}</option>
                    </select>
@@ -42,7 +42,7 @@
                   </div>
                   <div class="col-lg-4 mb-3">
                     <label for="CourtField" class="font-weight-bolder">Select Court</label>
-                    <select  [(ngModel)]="addCourtsDuratoinData.courtId"
+                    <select  [(ngModel)]="addCourtsDuratoinData.CourtId" *ngIf="addCourtsDuratoinData.CourtId"
                     name="courtId" class="form-control" #courtId="ngModel" required>
                      <option  [ngValue]="''" disabled>Select court...</option>
                       <option [ngValue]="court.id" *ngFor="let court of courtsList">{{court.name}}</option>
