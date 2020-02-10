@@ -32,7 +32,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ContentLayoutComponent,
     FooterComponent,
     NavComponent,
-    
+
 
   ],
   imports: [

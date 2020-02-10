@@ -1,0 +1,48 @@
+[
+  {
+    "id": 4,
+    "name": "zk",
+    "description": "adkdlfjls",
+    "courtName": "arena 1",
+    "userName": "Mike",
+    "courtId": 1,
+    "userId": 1,
+    "isBooked": true,
+    "isEmailed": true,
+    "style": "#EA157A",
+    "calendar": "Room 1",
+    "bookingStartTime": "2020-01-10 09:30",
+    "bookingEndTime": "2020-01-10 10:30"
+  },
+  {
+    "id": 5,
+    "name": "ak",
+    "description": "adas",
+    "courtName": "arena3",
+    "userName": "John",
+    "courtId": 3,
+    "userId": 3,
+    "isBooked": true,
+    "isEmailed": true,
+    "style": "#EA157A",
+    "calendar": "Room 2",
+    "bookingStartTime": "2020-01-10 11:00",
+    "bookingEndTime": "2020-01-10 12:00"
+  },
+  {
+    "id": 7,
+    "name":"mk",
+    "description": "adasd",
+    "courtName": "Arena 2",
+    "userName": "Shawn",
+    "courtId": 2,
+    "userId": 2,
+    "isBooked": true,
+    "isEmailed": true,
+    "style": "#FF6800",
+    "calendar": "Room 3",
+    "bookingStartTime": "2020-01-11 07:30",
+    "bookingEndTime": "2020-01-11 10:00"
+  }
+
+]

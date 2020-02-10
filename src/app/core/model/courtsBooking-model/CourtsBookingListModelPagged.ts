@@ -1,6 +1,6 @@
 export class CourtBookingModel {
   id: number;
-  name: string;
+  v: string;
   description: string;
   courtName: string;
   userName: string;
