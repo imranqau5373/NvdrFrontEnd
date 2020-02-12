@@ -30,25 +30,25 @@
                     </div>
                   </div>
                   <div class="col-lg-4 mb-3">
-                    <label for="SportField" class="font-weight-bolder">Select Sport</label>
-                    <select  [(ngModel)]="sportsId"
+                    <label *ngIf="!isUpdated" for="SportField" class="font-weight-bolder">Select Sport</label>
+                    <select *ngIf="!isUpdated" [(ngModel)]="sportsId"
                     name="SportId" class="form-control" #SportId="ngModel" (change)="getCourts(sportsId)" required>
                      <option  [ngValue]="''" disabled>Select Sport...</option>
                       <option [ngValue]="sport.id" *ngFor="let sport of sportsList">{{sport.name}}</option>
                    </select>
-                   <div *ngIf="addDurationForm.submitted && SportId.invalid" class="invalid-feedback" required>
+                   <!-- <div  *ngIf="addDurationForm.submitted && SportId.invalid" class="invalid-feedback" required> -->
                   <!--  <div *ngIf="SportId.errors?.required">Sport name is required</div> -->
-                  </div>
+                  <!-- </div> -->
                   </div>
                   <div class="col-lg-4 mb-3">
                     <label for="CourtField" class="font-weight-bolder">Select Court</label>
-                    <select  [(ngModel)]="addCourtsDuratoinData.CourtId" *ngIf="addCourtsDuratoinData.CourtId"
+                    <select  [(ngModel)]="addCourtsDuratoinData.courtId" *ngIf="addCourtsDuratoinData.courtId"
                     name="courtId" class="form-control" #courtId="ngModel" required>
                      <option  [ngValue]="''" disabled>Select court...</option>
                       <option [ngValue]="court.id" *ngFor="let court of courtsList">{{court.name}}</option>
                    </select>
-                   <div *ngIf="addDurationForm.submitted && courtId.invalid" class="invalid-feedback">
-                    <div *ngIf="courtId.errors?.required">Court name is required</div>
+                   <div *ngIf="addDurationForm.submitted && CourtId.invalid" class="invalid-feedback">
+                    <div *ngIf="CourtId.errors?.required">Court name is required</div>
                   </div>
                   </div>
                   </div>
@@ -56,9 +56,9 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label for="NameField" class="font-weight-bolder">Court Start Time</label>
-                      <input type="time" class="form-control" name="CourtStartTime"
-                      [(ngModel)]="addCourtsDuratoinData.CourtStartTime" #CourtStartTime="ngModel"
-                      [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtStartTime.invalid}" required>
+                      <input type="datetime-local" class="form-control" name="CourtStartTime"
+                      [(ngModel)]="addCourtsDuratoinData.courtStartTime" #CourtStartTime="ngModel"
+                      [ngClass]="{ 'is-invalid': addDurationForm.submitted && courtStartTime.invalid}" required>
                     <div *ngIf="addDurationForm.submitted && CourtStartTime.invalid" class="invalid-feedback">
                       <div *ngIf="CourtStartTime.errors?.required">Start Time is required</div>
                     </div>
@@ -67,8 +67,8 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label for="NameField" class="font-weight-bolder">Court End Time</label>
-                      <input type="time" class="form-control" name="CourtEndTime"
-                      [(ngModel)]="addCourtsDuratoinData.CourtEndTime" #CourtEndTime="ngModel"
+                      <input type="datetime-local" class="form-control" name="CourtEndTime"
+                      [(ngModel)]="addCourtsDuratoinData.courtEndTime" #CourtEndTime="ngModel"
                       [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtEndTime.invalid}" required>
 
                     <div *ngIf="addDurationForm.submitted && courtEndTime.invalid" class="invalid-feedback">
@@ -79,8 +79,8 @@
                   <div class="col-lg-4">
                     <div class="form-group">
                       <label for="NameField" class="font-weight-bolder">Court Date</label>
-                      <input type="date" class="form-control" name="CourtDate"
-                      [(ngModel)]="addCourtsDuratoinData.CourtDate" #CourtDate="ngModel"
+                      <input type="datetime-local" class="form-control" name="CourtDate"
+                      [(ngModel)]="addCourtsDuratoinData.courtDate" #CourtDate="ngModel"
                       [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtDate.invalid}" required>
                     <div *ngIf="addDurationForm.submitted && CourtDate.invalid" class="invalid-feedback">
                       <div *ngIf="CourtDate.errors?.required">Duration Date is required</div>
