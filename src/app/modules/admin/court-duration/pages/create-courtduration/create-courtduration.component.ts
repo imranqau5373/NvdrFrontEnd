@@ -29,10 +29,10 @@ export class CreateCourtdurationComponent implements OnInit {
 
   sportsId: number; //to be assigned from dropdown
   ngOnInit() {
-    debugger;
+
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
 
-      this.addCourtsDuratoinData.userId = this.uId;
+    //  this.addCourtsDuratoinData.userId = this.uId;
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
       this.getSports(this.companyId);
     if(this.courtsDurationId > 0){
@@ -61,7 +61,7 @@ getCourts(sportId:number){   //get list of courts for cmp in selected sports
   this.courtsDurationService.getCourts(sportId).subscribe(result => {
     if (result && result.successful) {
       this.courtsList = result.courtsList;
-      this.addCourtsDuratoinData.CourtId = this.courtsList[0].id;
+      this.addCourtsDuratoinData.courtId = this.courtsList[0].id;
 
     }
     else {
@@ -71,13 +71,16 @@ getCourts(sportId:number){   //get list of courts for cmp in selected sports
 }
 selectCourt(courtId){
 
-  this.addCourtsDuratoinData.CourtId = courtId;
+  this.addCourtsDuratoinData.courtId = courtId;
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {
 
     if (result && result.successful) {
+      debugger;
       this.addCourtsDuratoinData = result;
+      //var ab  = result.courtStartTime.toLocaleTimeString('it-IT');
+      //console.log(ab.toLocaleTimeString('it-IT'))
     //  this.sportsId = result.sportId;
     //  this.getCourts(this.companyId,result.sportId);
     }
