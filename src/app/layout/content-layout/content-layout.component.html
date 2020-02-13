@@ -1,9 +1,73 @@
 
       <app-nav></app-nav>
      
-            <alert></alert>
+            <!-- <alert></alert>
           <router-outlet></router-outlet>
+     -->
+     <!-- <content>
+      <section>
+        <router-outlet></router-outlet>
+      </section>
+    </content> -->
+    <main>
+      <nav  class="sidebar">
+        <ul>
+          <li routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
+                  <use xlink:href="assets/img/project-icons.svg#dashboard"></use>
+                </svg> </span> dashboard </a> </li>
+          <li routerLinkActive="active"> <a routerLink="/admin/sports-list"> <span class="icon"> <svg>
+                  <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
+                </svg> </span> Sports Manager </a>
+            <a routerLink="/admin/sports-list" class="d-none"></a>
+          </li>
+          <li routerLinkActive="active"> <a routerLink="/admin/cours-list"> <span class="icon"> <svg>
+            <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
+            </svg> </span> Courts Manager </a>
+                  <a routerLink="/admin/courts-list" class="d-none"></a>
+            </li>
+          <li routerLinkActive="active"> <a routerLink="/admin/job-details/details"> <span class="icon"> <svg>
+            <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
+          </svg> </span> Hiring Flow </a>
+            <a routerLink="/admin/job-details/details" class="d-none"></a>
+          </li>
+          <li class="nested " routerLinkActive="active"> <a> <span class="icon"> <svg>
+                  <use xlink:href="assets/img/project-icons.svg#library"></use>
+                </svg> </span> Library </a>
+            <ul>
+              <li> <a routerLink="/admin/categories"> Categories</a> </li>
+              <!-- <li> <a routerLink="/admin/home" >Company intros</a> </li>
+              <li> <a routerLink="/admin/home" >Email templates</a> </li> -->
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="bread-crumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li> <a href="javascript: window.history.back();">
+                <svg class="back-btn">
+                  <use xlink:href="assets/img/project-icons.svg#go-back"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="breadcrumb-item" *ngFor="let item of breadcrumbList; let i = index"
+              [class.active]="i===breadcrumbList.length-1">
+              <a [routerLink]="item.path" *ngIf="i!==breadcrumbList.length-1">
+                {{ item.name }}
+              </a>
+              <span *ngIf="i===breadcrumbList.length-1">{{ item.name }}</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
     
-
-
+      <!-- need to apply style on condition based. -->
+      <content>
+        <section>
+          <router-outlet></router-outlet>
+        </section>
+      </content>
+    
+    
+    </main>
   

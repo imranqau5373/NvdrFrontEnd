@@ -1,0 +1,21 @@
+{
+    "label": {
+        "email": "E-mail",
+        "password" : "Adgangskode",
+        "confirmpassword" : "Bekræft kodeord",
+        "firstname" : "Fornavn",
+        "lastname" : "Efternavn",
+        "phone" : "telefon",
+        "companyname" : "firmanavn",
+        "companyprivateurl" : "virksomhedens private url",
+        "startfreetrail" : "Start min gratis prøveperiode",
+        "":""
+    },
+    "button" : {
+        "signin" : "Log ind",
+        "recoveraccount":"Gendan konto"
+    },
+    "HOME":{
+        "TITLE" : "English Select"
+    }
+}

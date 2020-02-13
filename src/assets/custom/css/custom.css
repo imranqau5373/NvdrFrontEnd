@@ -1,0 +1,11 @@
+
+/* @import '../../../custom-theme'; */
+
+
+.is-invalid {
+    border-color: #dc3545;
+  }
+  .demo-chip-list {
+    width: 100%;
+  }
+  

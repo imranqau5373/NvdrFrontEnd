@@ -1,20 +1,298 @@
 {
-    "label": {
+    "NoRecordFound": "No record found",
+    "NoDataMessage": "There is no data",
+    "login": {
         "email": "Email",
-        "password" : "Password",
-        "confirmpassword" : "Confirm Password",
-        "firstname" : "First Name",
-        "lastname" : "Last Name",
-        "phone" : "Phone",
-        "companyname" : "Company Name",
-        "companyprivateurl" : "Company Private URL",
-        "startfreetrail" : "Start my free trial",
-        "":""
+        "password": "Password",
+        "EmailPlaceholder": "Enter your email id",
+        "PasswordPlaceholder": "Enter your password",
+        "PasswordError": "Password is required",
+        "ForgotPassword": "Forgot your password?",
+        "CreateAccount": "Create your account"
     },
-    "button" : {
-        "signin" : "Sign in",
-        "recoveraccount":"Recover Account"
-    },    "HOME":{
-        "TITLE" : "Danish Select"
+    "header": {
+        "ViewProfile": "View profile",
+        "ChangePassword": "Change password",
+        "Logout": "Logout"
+    },
+    "signup": {
+        "WelcomeMessage": "Welcome! Please signup below",
+        "GetStartedWithSpeekio": " Get started with SpeekIO ",
+        "IAgreeTheSpeekIO": "I agree to the SpeekIO",
+        "AlreadyAMember": "Already a member?",
+        "loginHere": "login Here",
+        "TermsOfAgreement": "Terms of agreement",
+        "email": "Email",
+        "emailRequired": "Email is required",
+        "password": "Password",
+        "passwordRequired": "Password is Required",
+        "passwordMinLength": "Minimum length for password is 6 characters long",
+        "confirmpassword": "Confirm password",
+        "confirmpasswordRequired": "Confirm password is required",
+        "PasswordsMustMatch": "Passwords must match",
+        "firstname": "First name",
+        "firstNameRequired": "First name is required",
+        "lastname": "Last name",
+        "lastNameRequired": "Last name is required",
+        "phone": "Phone",
+        "phoneRequired": "Phone is required",
+        "companyname": "Company name",
+        "companyNameRequired": "Company name is required",
+        "companyprivateurl": "Company private URL",
+        "startfreetrail": "Start my free trial",
+        "close": "Close"
+    },
+    "changePassword": {
+        "ChangePassword": "Change password",
+        "CurrentPassword": "Current password",
+        "NewPassword": "New password",
+        "ConfirmPassword": "Confirm password",
+        "Yourcurrentpassword": "Your current password",
+        "SaveChanges": "Save changes",
+        "Minlength": "Please increase password length.",
+        "Maxlength": "Please decrease password length.",
+        "MustMatch": "Password does not match",
+        "PasswordRequired": "Password is required."
+    },
+    "categoryList": {
+        "Name": "Name",
+        "AddedQuestions": "Questions",
+        "LastUpdated": "Last updated",
+        "CreatedBy": "Created by",
+        "Status": "Status",
+        "AddNewCategoryButton": "Add new",
+        "NoQuestionCategory": "You don't have any question categories yet.",
+        "CreateNewCategory": "Create a new one",
+        "Edit": "Edit",
+        "Delete": "Delete"
+    },
+    "jobList": {
+        "AllJobs": "All Jobs",
+        "Name": "Name",
+        "LastUpdated": "Last updated",
+        "CreatedBy": "Created by",
+        "Status": "Status",
+        "AddNew": "Add new",
+        "NoJob": "You don't have any job yet.",
+        "CreateNewJob": "Create a new one",
+        "Edit": "Edit",
+        "Invite": "Invite",
+        "Action": "Action",
+        "Delete": "Delete"
+    },
+    "categoryAdd": {
+        "lbAddNewCategory": "Add new category",
+        "lbAddCategoryDescription": "Add category description",
+        "lbAddCategoryInstruction": "Add category instructions",
+        "lbName": "Name",
+        "lbAddNewQuestion": "Add new questions",
+        "Weightage": "Weightage"
+    },
+    "categoryEdit": {
+        "lbEditCategory": "Edit category",
+        "lbEditCategoryDescription": "Update category description",
+        "lbEditCategoryInstruction": "Update category instructions",
+        "lbName": "Name",
+        "lbAddNewQuestion": "Add new questions",
+        "Weightage": "Weightage"
+    },
+    "Question": {
+        "weightage": "Weightage",
+        "weightageError": "Weightage of an individual question cannot be greater than 100",
+        "question": "Question",
+        "questionIsRequired": "Question is required",
+        "addImage": "add image",
+        "addVideo": "add video",
+        "image": "Image",
+        "video": "Video",
+        "answerValidation": "Atleast one correct answer is required",
+        "addMore": "Add more",
+        "addTags": "Add tag(s)"
+    },
+    "Dialog": {
+        "confirmation": "Confirmation",
+        "attachment": "Attachment Preview",
+        "deleteMessage": "Are you sure you want to delete this question? This action can not be undone.",
+        "deleteMessageQuestionnaire": "Are you sure you want to delete this question?",
+        "deleteCategoryMessage": "Are you sure you want to delete this category?",
+        "deleteAttachmentMessage": "Are you sure you want to delete this attachment? This action can not be undone."
+    },
+    "Answer": {
+        "answer": "Answer",
+        "optionRequired": "Option is required",
+        "correctAnswer": "Correct Answer"
+    },
+    "button": {
+        "signin": "Sign in",
+        "recoveraccount": "Recover account",
+        "cancel": "Cancel",
+        "save": "Save",
+        "delete": "Delete",
+        "close": "Close"
+    },
+    "HOME": {
+        "TITLE": "Danish select"
+    },
+    "filter": {
+        "Select_All": "Select all",
+        "DateFilter": "Date filter:",
+        "SearchFilter": "Search filter:",
+        "TimeFilter": "Time filter:",
+        "OptionFilter": "Option filter:",
+        "Clear": "Clear",
+        "Apply": "Apply"
+    },
+    "profile": {
+        "ChangeYourImage": "Change your image",
+        "email": "Email",
+        "emailRequired": "Email is required",
+        "password": "Password",
+        "passwordRequired": "Password is Required",
+        "passwordMinLength": "Minimum length for password is 6 characters long",
+        "confirmpassword": "Confirm password",
+        "confirmpasswordRequired": "Confirm password is required",
+        "PasswordsMustMatch": "Passwords must match",
+        "firstname": "First name",
+        "firstNameRequired": "First name is required",
+        "lastname": "Last name",
+        "lastNameRequired": "Last name is required",
+        "phone": "Phone",
+        "phonePattern": "Please provide phone number in correct format.",
+        "phoneRequired": "Phone is required",
+        "companyname": "Company name",
+        "companyNameRequired": "Company name is required",
+        "saveProfile": "Save profile",
+        "ProfileUpdatedSuccessfully": "Profile updated successfully",
+        "InvalidProfilePicture": "Something went wrong while updating the profile picture.",
+        "InternalServerError": "Something went wrong. Please try again."
+    },
+    "CandidateJobInformation": {
+        "JobLanguage": "Job Language",
+        "RequiredEducation": "Required education",
+        "RequiredExperience": "Required experience",
+        "EmploymentType": "Employment type",
+        "LastDateToApply": "Last date to apply",
+        "Next": "Next",
+        "Years": "year/s"
+    },
+    "CandidateCompanyInformation": {
+        "CompanyInformation": "Company information",
+        "Back": "Back",
+        "Next": "Next"
+    },
+    "CandidateTermsAndConditions": {
+        "TermsAndConditions": "Terms and conditions",
+        "PleaseReadAlTerms": "Please read all the terms ",
+        "IAccept": "I accept the Terms and Conditions",
+        "IAllowDataConsent": "I consent to allow my data to be used for recruiting purposes.",
+        "Back": "Back",
+        "Next": "Next"
+    },
+    "CandidateInformationForm": {
+        "PersonalInformation": "Personal information",
+        "PleaseTellUsAboutYourself": "Please tell us something about yourself",
+        "UploadImage": "Upload your picture",
+        "UploadAttachment": "Upload attachment",
+        "IsRequired": "is mandatory",
+        "ThisFieldIsMandatory": "This field is mandatory",
+        "IncorrectFormat": " Incorrect format",
+        "IncorrectEmail": " Incorrect email pattern",
+        "IncorrectPhone": " Incorrect phone pattern",
+        "StartTest": "Start test",
+        "PleaseCompleteForm": "Please complete the form",
+        "PleaseUploadDocuments": "Please upload your documents below",
+        "Upload": "Upload",
+        "Back": "Back",
+        "PleaseProvide": "Please Provide ",
+        "SavedSuccessfully": "Saved Successfully",
+        "InvalidProfilePicture": "Something went wrong while updating the profile picture.",
+        "InternalServerError": "Something went wrong. Please try again.",
+        "AttachmentWillReplaced": "Attachment will be replaced",
+        "SureReplaceAttachment": "Are you sure you want to replace the current attachment? "
+    },
+    "testEndNote": {
+        "Header": "Test completed!",
+        "ThankYou": "Thank you!",
+        "Note": "You have successfully submitted the questionnaire. We will contact you if you will be shortlisted.",
+        "AnyQuestion": "Any questions? Please feel free to",
+        "ContactUs": "Contact us"
+    },
+    "JobWizard": {
+        "JobInfo": {
+            "Header": "Adding new job",
+            "Reference": "Job reference",
+            "Language": "Job language",
+            "LanguageError": "Please select a language.",
+            "Description": "Job description",
+            "Detail": "Job details",
+            "DetailInfo": "Fill out these field if you want to promote your job to job portal",
+            "EmploymentType": "Employment type",
+            "EmploymentTypeError": "Please select an employment type.",
+            "RequiredEducation": "Required education",
+            "EducationError": "Please select required education.",
+            "JobExpiryTime": "Job expiry time",
+            "JobExpiryTimeError": "Please select expiry date.",
+            "JobGreaterExpiryTimeError": "Expiry date must be greater than or equal to today date.",
+            "MinimumExperience": "Minimum experience",
+            "MinimumExperienceError": "Please enter minimum experience.",
+            "ValidExperienceError": "Maximum experience must be greater than minimum experience.",
+            "MaximumExperience": "Maximum experience"
+        },
+        "FormBuilder": {
+            "CompanyIntroduction": "Company introduction",
+            "CompanyIntroductionInfo": "Please provide company introduction.",
+            "CandidateIntro": "Candidate introduction & personal information",
+            "LabelError": "Please enter label name.",
+            "QuestionaireCreator": "Questionaire creator",
+            "OverallWeightage": "Overall weightage",
+            "AtleastOneCategoryError": "Please select atleast one category or stand alone question.",
+            "TotalWeightageError": "Total weightage of all the categories and stand alone questions must be equal to 100.",
+            "AddQuestion": "Add new question"
+        },
+        "HiringFlow": {
+            "CompanyIntroduction": "Are you sure you want to delete this stage?"
+        },
+        "JobTeam": {
+            "DeleteMemberMessage": "Are you sure you want to delete this member?"
+        }
+    },
+    "Common": {
+        "Name": "Name",
+        "Country": "Country",
+        "CountryError": "Please select a country.",
+        "City": "City",
+        "CityError": "Please select a city.",
+        "Category": "Category",
+        "Question": "Question",
+        "CategoryError": "Please select a category.",
+        "Cancel": "Cancel",
+        "Save": "Save",
+        "Ok": "Ok",
+        "Back": "Back",
+        "Next": "Next",
+        "Add": "Add",
+        "Weightage": "Weightage",
+        "Answer": "Answer",
+        "Delete": "Delete",
+        "Categories": "Categories",
+        "CropImage": "Crop Image",
+        "Oops": "Oops!",
+        "OperationCantUndone": "This operation can not be undone."
+    },
+    "Invite": {
+        "OpenForPublic": "Open for public",
+        "HitEnter": "Hit \"Enter\" or \"Comma\" to add email",
+        "AddedEmails": "Added Emails:",
+        "Invite": "Invite",
+        "PublicTestLink": "Public Test Link"
+    },
+    "CandidatePopup": {
+        "Candidate": "Candidate",
+        "ReviewPending": "Review pending",
+        "TestSummary": "Test summary",
+        "Total": "Total",
+        "AutoScore": "Auto-score",
+        "ManualScore": "Manual score",
+        "Close": "Close"
     }
 }

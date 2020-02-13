@@ -1,4 +1,4 @@
-<section class="candidate-manager">
+<!-- <section class="candidate-manager">
     <div class="container mt-4">
       <h2 class="mb-3 font-weight-bolder">Sports List</h2>
       <hr>
@@ -46,10 +46,96 @@
                   data-toggle="tooltip" data-placement="top" data-original-title="View">
                   <a routerLink="/admin/sports-create/{{sports.id}}"><i
                       class="material-icons circle-icon"></i>Edit</a></span></td>
+
             </tr>
 
           </tbody>
         </table>
       </div>
     </div>
-  </section>
+  </section> -->
+
+
+  <section>
+    <div class="card table-card ">
+        <div class="card-header ">
+            <h5> Sports List
+                <a href="/admin/sports-create" class="float-right">
+                    <button type="button" class="btn btn-primary"> <i
+                            class="fas fa-plus-circle"> Add Sports</i></button>
+                </a>
+            </h5>
+        </div>
+        <div class="card-header" *ngIf="filterApplied">
+            <div class="filter-items float-left">
+                <span class="icon">
+                    <strong class="mr-2">Search Filter</strong>
+                </span>
+            </div>
+            <div class="filter-actions float-right">
+                <button class="btn btn-sm btn-warning" (click)="clearAll()" [disabled]="!filterApplied">
+                    <i class="fa fa-times-circle"></i> Clear All </button>
+            </div>
+        </div>
+        <div class="card-body ">
+                <table class="table table-hover">
+                    <thead class="thead ">
+                        <tr class='clickable-row' data-href='url://'>
+                          <th scope="col">Sports Name</th>
+                          <th scope="col">Total Courts</th>
+                          <th scope="col">Last Updated By</th>
+                          <th scope="col">Created By</th>
+                          <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+            <tr *ngFor="let sports of sportsList.Sports">
+                <td>
+                  <a [routerLink]="'/admin/sports-create/'+ sports.id">
+                    {{sports.name}}
+                </a>
+                </td>
+           
+              <td> {{sports.courtCount}} </td>
+              <td>{{sports.lastUpdated}}</td>
+              <td>{{sports.createdBy}}</td>
+              <td data-type="numeric">
+                <div class="dropdown"> <a href="" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1"
+                        x-placement="bottom-end"
+                        style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <a class="dropdown-item"
+                            >Edit</a>
+                        <a class="dropdown-item" href="#" role="button" data-toggle="modal"
+                            data-target="#exampleModal" data-keyboard="false" data-backdrop="static"
+                            >Delete</a>
+                    </div>
+                </div>
+              </td>
+                      
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div class="card-footer table-card-footer">
+          <nav class="nav-pagination">
+              <div class="table-entries ">
+                  <p>
+                      <!-- <select class="form-control" aria-label="page-size" [(ngModel)]="pageSize" name="pageSize"
+                          (ngModelChange)="changePageSize($event)">
+                          <option *ngFor="let item of pageSizeList" [ngValue]="item">{{item}}</option>
+                      </select> -->
+                  </p>
+              </div>
+              <div class="table-pagination ">
+                  <!-- <p>
+                      <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
+                      </pagination-controls>
+                  </p> -->
+              </div>
+          </nav>
+      </div>
+    </div>
+</section>
