@@ -31,8 +31,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AuthLayoutComponent,
     ContentLayoutComponent,
     FooterComponent,
-    NavComponent,
-
+    NavComponent
 
   ],
   imports: [

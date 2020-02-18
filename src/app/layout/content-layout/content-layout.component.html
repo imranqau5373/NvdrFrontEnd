@@ -1,16 +1,8 @@
 
       <app-nav></app-nav>
      
-            <!-- <alert></alert>
-          <router-outlet></router-outlet>
-     -->
-     <!-- <content>
-      <section>
-        <router-outlet></router-outlet>
-      </section>
-    </content> -->
     <main>
-      <nav  class="sidebar">
+      <nav *ngIf="isLoggedIn$ | async"  class="sidebar">
         <ul>
           <li routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
                   <use xlink:href="assets/img/project-icons.svg#dashboard"></use>
@@ -41,7 +33,7 @@
           </li>
         </ul>
       </nav>
-      <div class="bread-crumb">
+      <div class="bread-crumb" *ngIf="isLoggedInValue">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li> <a href="javascript: window.history.back();">

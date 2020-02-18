@@ -33,7 +33,7 @@
         class="icon icon-sidebar mr-3" width="25" class="mr-3" id="sidebarCollapse"> </a><a
       class="navbar-brand pt-0 pb-0 mr-4" href="javascript"><img src="assets/img/speekio-logo.svg" width="130"></a>
   </div>
-  <!-- <div *ngIf="isLoggedIn$ | async" class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div *ngIf="isLoggedIn$ | async" class="collapse navbar-collapse" id="navbarSupportedContent">
     <form class=" my-2 my-lg-0">
       <ul class="navbar-nav">
         <li>
@@ -43,7 +43,7 @@
               <li class="nav-item"> <a class="nav-link" style="cursor: pointer;" (click)="userLogOff()"><strong>LOG-OFF</strong></a> </li>
       </ul>
     </form>
-  </div> -->
+  </div>
 
   <div class="right-content">
   
@@ -52,7 +52,7 @@
         aria-expanded="false">
         <a class="" (click)="userLogOff()"><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar"></a>
       </button>
-      <div class="dropdown-menu dropdown-menu-right pt-0"
+      <div *ngIf="isLoggedIn$ | async" class="dropdown-menu dropdown-menu-right pt-0"
         aria-labelledby="dropdownMenuButton">
         <li class="dropdown-item " href="#">
           <div class="media ">
@@ -73,3 +73,4 @@
 
 
 </nav>
+

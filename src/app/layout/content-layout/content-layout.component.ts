@@ -22,6 +22,14 @@ export class ContentLayoutComponent implements OnInit {
     private menuService: MenuService,) { }
 
   ngOnInit() {
+    debugger;
+    this.isLoggedIn$ = this.authenticationService.isLoggedIn;
+    //check that user is loggedin or not with user name in cookies.
+    let user = this.authenticationService.getUserName();
+    if (user == '')
+      this.isLoggedInValue = false;
+    else
+      this.isLoggedInValue = true;
   }
 
   setPadding() {

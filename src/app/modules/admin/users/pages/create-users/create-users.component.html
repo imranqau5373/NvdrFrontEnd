@@ -128,17 +128,7 @@
                     </div>
                       </div>
                   </div>
-                  <div class="col-lg-4" *ngIf="!isUpdated">
-                    <div class="form-group">
-                      <label for="NameField" class="font-weight-bolder">PictureUrl</label>
-                      <input type="text" class="form-control" name="PictureUrl"
-                      placeholder="Enter your Photo" [(ngModel)]="addUsersData.pictureUrl" #PictureUrl="ngModel"
-                      [ngClass]="{ 'is-invalid': addUsersForm.submitted && PictureUrl.invalid}" minlength="2" required>
-                    <div *ngIf="addUsersForm.submitted && PictureUrl.invalid" class="invalid-feedback">
-                      <div *ngIf="PictureUrl.errors?.required">Photo is required</div>
-                    </div>
-                      </div>
-                  </div>
+   
                 </div>
               </div>
               <div class="container">

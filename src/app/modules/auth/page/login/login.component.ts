@@ -40,16 +40,11 @@ export class LoginComponent implements OnInit {
     this.alertService.clear();
     this._accountService.UserLogin(this.signInModel).subscribe(result => {
       if (result && result.body && result.body.successful) {
-        // localStorage.setItem('authenticationToken', result.body.authenticationToken);
-
          localStorage.setItem('userName', result.body.userName);
          localStorage.setItem('companyId', result.body.companyId);
 
           localStorage.setItem('userId', result.body.userId);
-        this.alertService.success(result.body.message);
         this.authenticationService.loginAndRedirectToHome(result.body);
-        // this.authenticationService.saveUser(result.body);
-        // this.router.navigate(['/admin/home']);
       }
       else {
         this.alertService.error(result.body.message);
