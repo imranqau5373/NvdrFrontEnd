@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 
 import { AccountService } from '@core/service/account-service';
 import { LoginModel } from './login.model';
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  RecoverAccount(){
+  RecoverAccount(resetPassword : NgForm){
     this.alertService.clear();
     this._accountService.RecoverAccount(this.ForgetPasswordModel).subscribe(result =>{
       document.getElementById("closeDialog").click();
