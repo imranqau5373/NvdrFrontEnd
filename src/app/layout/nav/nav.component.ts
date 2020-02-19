@@ -5,6 +5,7 @@ import { AccountService } from '@core/service/account-service';
 import { UserModel } from '@core/model/user.model';
 import { Observable } from 'rxjs';
 import { ConnectionService } from '@core/service/other/connection.service';
+import { MenuService } from '@core/service/other/menu.service';
 
 @Component({
   selector: 'app-nav',
@@ -24,7 +25,9 @@ export class NavComponent implements OnInit {
   constructor(  private _router: Router,
     private _accountService : AccountService,
     private authenticationService: AuthenticationService,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    private menuService: MenuService,
+    
     ) {
 
     this.userName = localStorage.getItem("userName");

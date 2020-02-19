@@ -23,7 +23,7 @@ const routes: Routes = [
           import('@modules/admin/home/home.module').then(m => m.HomeModule),
       },
       {
-        path: '',
+        path: 'sports',
         loadChildren: () =>
           import('@modules/admin/sports/sports.module').then(m => m.SportsModule)
       },
@@ -33,7 +33,7 @@ const routes: Routes = [
           import('@modules/admin/users/users.module').then(m => m.UsersModule)
       },
       {
-        path: '',
+        path: 'courts',
         loadChildren: () =>
           import('@modules/admin/courts/courts.module').then(m => m.CourtsModule)
       },

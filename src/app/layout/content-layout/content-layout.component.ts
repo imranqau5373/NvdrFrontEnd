@@ -19,7 +19,10 @@ export class ContentLayoutComponent implements OnInit {
 
   constructor(private _router: Router,
     private authenticationService: AuthenticationService,
-    private menuService: MenuService,) { }
+    private menuService: MenuService,) { 
+      this.menu = this.menuService.getMenu();
+      this.listenRouting();
+    }
 
   ngOnInit() {
     debugger;

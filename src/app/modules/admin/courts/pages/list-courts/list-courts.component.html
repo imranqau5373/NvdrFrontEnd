@@ -1,52 +1,63 @@
-<section class="candidate-manager">
-    <div class="container mt-4">
-      <h2 class="mb-3 font-weight-bolder">Court List</h2>
-      <hr>
-      <div class="row">
-        <div class="col-md-12 col-lg-6 ">
-            <div class="float-left"> <a routerLink="/admin/courts-create">
-                <button class="btn btn-primary">+ Add new Court</button>
-            </a>
+  
+  <section>
+    <div class="card table-card ">
+        <div class="card-header ">
+            <h5> Courts List
+                <a href="/admin/courts/courts-create" class="float-right">
+                    <button type="button" class="btn btn-primary"> <i
+                            class="fas fa-plus-circle"> Add new</i></button>
+                </a>
+            </h5>
         </div>
-        </div>
-        <div class="col-md-12 col-lg-6 ">
-          <div class="input-group mb-3 ">
-            <div class="input-group-prepend "> <span class="input-group-text" id="basic-addon1"><i
-                  class="material-icons ">search</i></span> </div>
-            <input type="text" class="form-control form-resizer" placeholder="Search" aria-label="search"
-              aria-describedby="basic-addon1">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="table-responsive">
-        <table class="table reviewer-table table-hover">
-          <thead class="bg-secondary text-white">
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Court Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Sports</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
+        
+        <div class="card-body ">
+                <table class="table table-hover">
+                    <thead class="thead ">
+                        <tr class='clickable-row' data-href='url://'>
+                          <th scope="col">Court Name</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Sports</th>
+                          <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
             <tr *ngFor="let court of courtsList.courts">
-              <th scope="row"><input class="form-check-input ml-0" type="checkbox" value="" id="defaultCheck1"></th>
-
-              <td>{{court.name}}</td>
-              <td>{{court.description}} </td>
+                <td>
+                  <a [routerLink]="'/admin/courts/courts-create/'+ court.id">
+                    {{court.name}}
+                </a>
+                </td>
+           
+              <td> {{court.description}} </td>
               <td>{{court.sportsName}}</td>
-              <td class="text-center d-flex"><span class=" " data-toggle="tooltip" data-placement="top"
-                  data-original-title="Delete"><a href="#"><i
-                      class="material-icons circle-icon">delete_forever</i></a></span><span class=" "
-                  data-toggle="tooltip" data-placement="top" data-original-title="View">
-                  <a routerLink="/admin/courts-create/{{court.id}}"><i
-                      class="material-icons circle-icon"></i>Edit</a></span></td>
-            </tr>
-          </tbody>
-        </table>
+              <td data-type="numeric">
+                <div class="dropdown"> <a href="" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1"
+                        x-placement="bottom-end"
+                        style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
+                        <a class="dropdown-item"
+                        [routerLink]="'/admin/courts/courts-create/'+ court.id">Edit</a>
+                   
+                    </div>
+                </div>
+              </td>
+                      
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div class="card-footer table-card-footer">
+          <nav class="nav-pagination">
+              <div class="table-entries ">
+                  <p>
+                  </p>
+              </div>
+              <div class="table-pagination ">>
+              </div>
+          </nav>
       </div>
     </div>
-  </section>
+</section>
+

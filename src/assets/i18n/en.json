@@ -26,7 +26,8 @@
         "emailRequired": "Email is required",
         "password": "Password",
         "passwordRequired": "Password is Required",
-        "passwordMinLength": "Minimum length for password is 6 characters long",
+        "passwordMinLength": "Minimum length for password is 6",
+        "passwordMaxLength": "Maximum length for password in 15",
         "confirmpassword": "Confirm password",
         "confirmpasswordRequired": "Confirm password is required",
         "PasswordsMustMatch": "Passwords must match",
@@ -77,6 +78,49 @@
         "CreateNewJob": "Create a new one",
         "Edit": "Edit",
         "Invite": "Invite",
+        "Action": "Action",
+        "Delete": "Delete"
+    },
+    "jobExaminList": {
+        "AllJobs": "All jobs to examine",
+        "Name": "Name",
+        "LastUpdated": "Last updated",
+        "SharedBy": "Shared by",
+        "Action": "Actions",
+        "NoJob": "You don't have any job yet."
+
+    },
+    "jobReviewList": {
+        "AllJobs": "All jobs to review",
+        "Name": "Name",
+        "LastUpdated": "Last updated",
+        "SharedBy": "Shared by",
+        "NoJob": "You don't have any job yet.",
+        "Action": "Actions"
+    },
+    "LibraryET":
+    {
+        "AllTemplates": "Email templates",
+        "Name": "Name",
+        "LastUpdated": "Last updated",
+        "CreatedBy": "Created by",
+        "AddNew": "Add new",
+        "NoJob": "You don't have any email template yet.",
+        "CreateNew": "Create a new one",
+        "Edit": "Edit",  
+        "Action": "Action",
+        "Delete": "Delete"
+    },
+    "LibraryCI":
+    {
+        "AllTemplates": "Company Introductions",
+        "Name": "Name",
+        "LastUpdated": "Last updated",
+        "CreatedBy": "Created by",
+        "AddNew": "Add new",
+        "NoJob": "You don't have any company intro yet.",
+        "CreateNew": "Create a new one",
+        "Edit": "Edit",  
         "Action": "Action",
         "Delete": "Delete"
     },
@@ -210,6 +254,13 @@
         "AttachmentWillReplaced": "Attachment will be replaced",
         "SureReplaceAttachment": "Are you sure you want to replace the current attachment? "
     },
+    "AttemptTest":{
+        "SkipButtonText" : "Skip Question",
+        "BackButtonText" : "Back",
+        "NextButtonText" : "Next",
+        "CategoryEndPrompmtHeader" : "End category confirmation",
+        "CategoryEndPrompmtMessage" : "You are about to move to next category / question. You will no more be able to come back to this category. Are you sure?"
+    },
     "testEndNote": {
         "Header": "Test completed!",
         "ThankYou": "Thank you!",
@@ -294,5 +345,8 @@
         "AutoScore": "Auto-score",
         "ManualScore": "Manual score",
         "Close": "Close"
+    },
+    "UserManager":{
+        "DeleteUserMessage":"Are you sure to delete this user?"
     }
 }

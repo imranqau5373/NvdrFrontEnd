@@ -7,12 +7,13 @@ import { SportsListComponent } from './pages/sports-list/sports-list.component';
 import { SportsCreateComponent } from './pages/sports-create/sports-create.component';
 import { SportsUpdateComponent } from './pages/sports-update/sports-update.component';
 import { FormsModule } from '@angular/forms';
+import { SportsBaseComponent } from './component/sports-base/sports-base.component';
 
 
 
 
 @NgModule({
-  declarations: [SportsListComponent, SportsCreateComponent, SportsUpdateComponent],
+  declarations: [SportsListComponent, SportsCreateComponent, SportsUpdateComponent, SportsBaseComponent],
   imports: [
     CommonModule,
     SportsRoutingModule,

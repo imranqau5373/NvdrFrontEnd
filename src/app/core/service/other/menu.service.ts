@@ -29,48 +29,36 @@ export class MenuService {
           }
         ]
       },
+
       {
-        name: 'Job manager', path: '/admin/jobs', key: 'add-job', children: [
-          {
-            name: 'New job',
-            key: 'job-info',
-            path: '/admin/add-job/job-info'
-          },
-          {
-            name: 'New job',
-            key: 'form-builder',
-            path: '/admin/add-job/form-builder'
-          },
-        ]
-      },
-      {
-        name: 'Sports List', path: '/admin/sports-list', key: 'sports', children: [
+        name: 'Sports Manager', path: '/admin/sports/sports-list', key: 'sports', children: [
           {
             name: 'Sports List',
             key: 'sports-list',
-            path: '/admin/sports-list'
+            path: '/admin/sports/sports-list'
+          },
+          {
+            name: 'Sports Create',
+            key: 'sports-create',
+            path: '/admin/sports/sports-create'
           }
         ]
       },
+
       {
-        name: 'Category manager', path: '/admin/categories', key: 'categories', children: [
+        name: 'Courts Manager', path: '/admin/courts/courts-list', key: 'courts', children: [
           {
-            name: 'Category list',
-            key: 'categories-list',
-            path: '/admin/categories/categories-list'
+            name: 'Courts List',
+            key: 'courts-list',
+            path: '/admin/courts/courts-list'
           },
           {
-            name: 'Add category',
-            key: 'categories-add',
-            path: '/admin/categories/categories-add'
-          },
-          {
-            name: 'Update category',
-            key: 'categories-update',
-            path: '/admin/categories/categories-update'
+            name: 'Courts Create',
+            key: 'courts-create',
+            path: '/admin/courts/courts-create'
           }
         ]
-      }
+      },
     ];
 
     return menu;

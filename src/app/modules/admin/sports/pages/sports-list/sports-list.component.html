@@ -1,82 +1,15 @@
-<!-- <section class="candidate-manager">
-    <div class="container mt-4">
-      <h2 class="mb-3 font-weight-bolder">Sports List</h2>
-      <hr>
-      <div class="row">
-        <div class="col-md-12 col-lg-6 ">
-            <div class="float-left"> <a routerLink="/admin/sports-create">
-                <button class="btn btn-primary">+ Add new sports</button>
-            </a>
-        </div>
-        </div>
-        <div class="col-md-12 col-lg-6 ">
-          <div class="input-group mb-3 ">
-            <div class="input-group-prepend "> <span class="input-group-text" id="basic-addon1"><i
-                  class="material-icons ">search</i></span> </div>
-            <input type="text" class="form-control form-resizer" placeholder="Search" aria-label="search"
-              aria-describedby="basic-addon1">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="table-responsive">
-        <table class="table reviewer-table table-hover">
-          <thead class="bg-secondary text-white">
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Sports Name</th>
-              <th scope="col">Total Courts</th>
-              <th scope="col">Last Updated By</th>
-              <th scope="col">Created By</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let sports of sportsList.Sports">
-              <th scope="row"><input class="form-check-input ml-0" type="checkbox" value="" id="defaultCheck1"></th>
-
-              <td>{{sports.name}}</td>
-              <td> {{sports.courtCount}} </td>
-              <td>{{sports.lastUpdated}}</td>
-              <td>{{sports.createdBy}}</td>
-              <td class="text-center d-flex"><span class=" " data-toggle="tooltip" data-placement="top"
-                  data-original-title="Delete"><a href="#"><i
-                      class="material-icons circle-icon">delete_forever</i></a></span><span class=" "
-                  data-toggle="tooltip" data-placement="top" data-original-title="View">
-                  <a routerLink="/admin/sports-create/{{sports.id}}"><i
-                      class="material-icons circle-icon"></i>Edit</a></span></td>
-
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section> -->
-
 
   <section>
     <div class="card table-card ">
         <div class="card-header ">
             <h5> Sports List
-                <a href="/admin/sports-create" class="float-right">
+                <a href="/admin/sports/sports-create" class="float-right">
                     <button type="button" class="btn btn-primary"> <i
-                            class="fas fa-plus-circle"> Add Sports</i></button>
+                            class="fas fa-plus-circle"> Add new</i></button>
                 </a>
             </h5>
         </div>
-        <div class="card-header" *ngIf="filterApplied">
-            <div class="filter-items float-left">
-                <span class="icon">
-                    <strong class="mr-2">Search Filter</strong>
-                </span>
-            </div>
-            <div class="filter-actions float-right">
-                <button class="btn btn-sm btn-warning" (click)="clearAll()" [disabled]="!filterApplied">
-                    <i class="fa fa-times-circle"></i> Clear All </button>
-            </div>
-        </div>
+        
         <div class="card-body ">
                 <table class="table table-hover">
                     <thead class="thead ">
@@ -85,14 +18,14 @@
                           <th scope="col">Total Courts</th>
                           <th scope="col">Last Updated By</th>
                           <th scope="col">Created By</th>
-                          <th scope="col"></th>
+                          <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                       
             <tr *ngFor="let sports of sportsList.Sports">
                 <td>
-                  <a [routerLink]="'/admin/sports-create/'+ sports.id">
+                  <a [routerLink]="'/admin/sports/sports-create/'+ sports.id">
                     {{sports.name}}
                 </a>
                 </td>
@@ -123,17 +56,9 @@
           <nav class="nav-pagination">
               <div class="table-entries ">
                   <p>
-                      <!-- <select class="form-control" aria-label="page-size" [(ngModel)]="pageSize" name="pageSize"
-                          (ngModelChange)="changePageSize($event)">
-                          <option *ngFor="let item of pageSizeList" [ngValue]="item">{{item}}</option>
-                      </select> -->
                   </p>
               </div>
-              <div class="table-pagination ">
-                  <!-- <p>
-                      <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
-                      </pagination-controls>
-                  </p> -->
+              <div class="table-pagination ">>
               </div>
           </nav>
       </div>

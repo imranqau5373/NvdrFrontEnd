@@ -7,30 +7,16 @@
           <li routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
                   <use xlink:href="assets/img/project-icons.svg#dashboard"></use>
                 </svg> </span> dashboard </a> </li>
-          <li routerLinkActive="active"> <a routerLink="/admin/sports-list"> <span class="icon"> <svg>
+          <li routerLinkActive="active"> <a routerLink="/admin/sports/sports-list"> <span class="icon"> <svg>
                   <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
                 </svg> </span> Sports Manager </a>
-            <a routerLink="/admin/sports-list" class="d-none"></a>
+            <a routerLink="/admin/sports/sports-list" class="d-none"></a>
           </li>
-          <li routerLinkActive="active"> <a routerLink="/admin/cours-list"> <span class="icon"> <svg>
+          <li routerLinkActive="active"> <a routerLink="/admin/courts/courts-list"> <span class="icon"> <svg>
             <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
             </svg> </span> Courts Manager </a>
-                  <a routerLink="/admin/courts-list" class="d-none"></a>
+                  <a routerLink="/admin/courts/courts-list" class="d-none"></a>
             </li>
-          <li routerLinkActive="active"> <a routerLink="/admin/job-details/details"> <span class="icon"> <svg>
-            <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
-          </svg> </span> Hiring Flow </a>
-            <a routerLink="/admin/job-details/details" class="d-none"></a>
-          </li>
-          <li class="nested " routerLinkActive="active"> <a> <span class="icon"> <svg>
-                  <use xlink:href="assets/img/project-icons.svg#library"></use>
-                </svg> </span> Library </a>
-            <ul>
-              <li> <a routerLink="/admin/categories"> Categories</a> </li>
-              <!-- <li> <a routerLink="/admin/home" >Company intros</a> </li>
-              <li> <a routerLink="/admin/home" >Email templates</a> </li> -->
-            </ul>
-          </li>
         </ul>
       </nav>
       <div class="bread-crumb" *ngIf="isLoggedInValue">

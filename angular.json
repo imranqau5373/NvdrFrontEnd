@@ -23,19 +23,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/assets/custom/css/toast.css",
-              "src/styles.css",
-              "src/assets/css/style.css",
-              "src/assets/css/quill.snow.css",
-              "node_modules/jqwidgets-ng/jqwidgets/styles/jqx.base.css"
-            ],
             "scripts": [
-              "src/assets/js/vendor/jquery-3.4.1.min.js",
-              "src/assets/js/vendor/bootstrap.bundle.min.js",
-              "src/assets/js/project-caller.js",
-              "src/assets/js/project-custom.js"
-
+              "src/assets/js/vendor/latinise.js"
             ]
           },
           "configurations": {
@@ -99,16 +88,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/custom/css/toast.css",
-              "src/styles.css",
-              "src/assets/css/style.css",
-              "src/assets/css/quill.snow.css"
-            ],
-            "scripts": [
-              "src/assets/js/vendor/jquery-3.4.1.min.js",
-              "src/assets/js/vendor/bootstrap.bundle.min.js",
-              "src/assets/js/project-caller.js",
-              "src/assets/js/project-custom.js"
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css"
             ]
           }
         },
