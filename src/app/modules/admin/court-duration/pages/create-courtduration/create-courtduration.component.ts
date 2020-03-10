@@ -25,13 +25,15 @@ export class CreateCourtdurationComponent implements OnInit {
   courtsDurationId : number = 0;
   isUpdated : boolean = false;
   uId: number = +localStorage.getItem('userId');
-  companyId: number = +localStorage.getItem('companyId');
+  companyId: number = 0;
+  
 
   sportsId: number; //to be assigned from dropdown
   ngOnInit() {
 
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
-
+    this.companyId = +localStorage.getItem('companyId');
+  
     //  this.addCourtsDuratoinData.userId = this.uId;
     this.courtsDurationId = this.activatedRoute.snapshot.params['id'];
       this.getSports(this.companyId);
@@ -45,10 +47,11 @@ export class CreateCourtdurationComponent implements OnInit {
 getSports(companyId:number){   //get list of sports for cmp
 
   this.courtsDurationService.getSports(companyId).subscribe(result => {
+    debugger;
     if (result && result.successful) {
       this.sportsList = result.sportsList;
       if(this.sportsList && this.sportsList.length > 0){
-        this.getCourts(this.sportsList[0].id);
+        //this.getCourts(this.sportsList[0].id);
       }
 
     }

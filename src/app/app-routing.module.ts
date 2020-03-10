@@ -28,7 +28,7 @@ const routes: Routes = [
           import('@modules/admin/sports/sports.module').then(m => m.SportsModule)
       },
       {
-        path: '',
+        path: 'users',
         loadChildren: () =>
           import('@modules/admin/users/users.module').then(m => m.UsersModule)
       },
@@ -38,12 +38,12 @@ const routes: Routes = [
           import('@modules/admin/courts/courts.module').then(m => m.CourtsModule)
       },
       {
-        path: '',
+        path: 'courtduration',
         loadChildren: () =>
           import('@modules/admin/court-duration/court-duration.module').then(m => m.CourtDurationModule)
       },
       {
-        path: '',
+        path: 'courtbooking',
         loadChildren: () =>
           import('@modules/admin/court-booking/court-booking.module').then(m => m.CourtBookingModule)
       },

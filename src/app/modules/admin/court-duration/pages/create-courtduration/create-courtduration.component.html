@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-lg-4 mb-3">
                   <label for="CourtField" class="font-weight-bolder">Select Court</label>
-                  <select  [(ngModel)]="addCourtsDuratoinData.id" *ngIf="addCourtsDuratoinData.id"
+                  <select  [(ngModel)]="addCourtsDuratoinData.id" *ngIf="courtsList && courtsList.length > 0"
                   name="id" class="form-control" #id="ngModel" required>
                    <option  [ngValue]="''" disabled>Select court...</option>
                     <option [ngValue]="court.id" *ngFor="let court of courtsList">{{court.name}}</option>

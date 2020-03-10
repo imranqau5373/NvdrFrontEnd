@@ -23,12 +23,13 @@ export class CreateCourtsComponent implements OnInit {
   addCourtsData : AddCourtsModel;
   courtId : number = 0;
   isUpdated : boolean = false;
-  companyId: number = 1;
+  companyId: number = 0;
   ngOnInit() {
     this.addCourtsData = new AddCourtsModel();
     this.courtId = this.activatedRoute.snapshot.params['id'];
+    debugger;
 
-    //this.companyId = +localStorage.getItem("companyId");
+    this.companyId = Number(localStorage.getItem("companyId"));
     this.getSports(this.companyId);
 
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminHomeComponent } from '../home/pages/admin-home/admin-home.component';
 import {ListCourtdurationComponent} from '../court-duration/pages/list-courtduration/list-courtduration.component';
 import {CreateCourtdurationComponent} from '../court-duration/pages/create-courtduration/create-courtduration.component';
+import { ViewCourtdurationComponent } from './pages/view-courtduration/view-courtduration.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'courtduration-create/:id',
     component: CreateCourtdurationComponent
+  },
+  {
+    path: 'courtduration-view/:durationId',
+    component: ViewCourtdurationComponent
   }
 ];
 

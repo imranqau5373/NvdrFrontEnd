@@ -13,10 +13,25 @@
             <a routerLink="/admin/sports/sports-list" class="d-none"></a>
           </li>
           <li routerLinkActive="active"> <a routerLink="/admin/courts/courts-list"> <span class="icon"> <svg>
-            <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
+            <use xlink:href="assets/img/project-icons.svg#library"></use>
             </svg> </span> Courts Manager </a>
                   <a routerLink="/admin/courts/courts-list" class="d-none"></a>
             </li>
+            <li routerLinkActive="active"> <a routerLink="/admin/courtduration/courtduration-list"> <span class="icon"> <svg>
+              <use xlink:href="assets/img/project-icons.svg#manual-icon"></use>
+              </svg> </span> Courts Duration </a>
+                    <a routerLink="/admin/courtduration/courtduration-list" class="d-none"></a>
+              </li>
+              <li routerLinkActive="active"> <a routerLink="/admin/courtbooking/courtbooking-list"> <span class="icon"> <svg>
+                <use xlink:href="assets/img/project-icons.svg#candidate-manager"></use>
+                </svg> </span> Courts Bookings </a>
+                      <a routerLink="/admin/courtbooking/courtbooking-list" class="d-none"></a>
+                </li>
+            <li routerLinkActive="active"> <a routerLink="/admin/users/users-list"> <span class="icon"> <svg>
+              <use xlink:href="assets/img/project-icons.svg#users"></use>
+              </svg> </span> Users & Roles</a>
+                    <a routerLink="/admin/users/users-list" class="d-none"></a>
+              </li>
         </ul>
       </nav>
       <div class="bread-crumb" *ngIf="isLoggedInValue">

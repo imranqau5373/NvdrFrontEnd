@@ -42,4 +42,9 @@ export class CourtsDurationService {
         let Myobject: any = { "id": id }
         return this._httpApiService.get("CourtsDuration/GetCourtsDuration",Myobject);
       }
+
+      getDurationSlots(durationId: number):Observable<any>{
+        let Myobject: any = { "id": durationId }
+        return this._httpApiService.get("CourtsDuration/GetDurationSlots",Myobject);
+      }
 }

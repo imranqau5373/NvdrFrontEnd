@@ -9,6 +9,7 @@ export class CourtDurationModel {
   courtStartTime : Date;
   courtEndTime : Date;
   slotDuration: number;
+  durationStatusId : number;
 }
 
 export class CourtsDurationListModelPagged {
