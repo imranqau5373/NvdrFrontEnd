@@ -1,0 +1,48 @@
+<div ngbDropdown (openChange)="toggled($event)" aria-haspopup="true" aria-expanded="false" display="dynamic"
+    [placement]="placement">
+    <a ngbDropdownToggle role="button" id="{{id}}" aria-haspopup="true" aria-expanded="false">
+        <span class="icon small" [ngClass]="{'active':selectedItems.length>0}">
+            <svg>
+                <use xlink:href="assets/img/cubivue-icons.svg#filter"></use>
+            </svg>
+        </span>
+    </a>
+    <ul ngbDropdownMenu class='filter dropdown-menu'>
+        <li ngbDropdownItem>
+            <label>Options</label>
+            <ul class="unstyled">
+                <li class="sticky">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class='form-check-input' [(ngModel)]='selectAllCheckbox' type='checkbox'
+                                (change)='selectAll()'>Select All
+                        </label>
+                    </div>
+                </li>
+                <li *ngFor='let item of items; let i = index' [attr.data-index]="i">
+                    <div class='form-check'>
+                        <label class='form-check-label'>
+                            <input attr.id="{{forLabelId}}_{{i}}" class='form-check-input' [(ngModel)]='item.checked'
+                                type='checkbox' (change)='onRowSelect(item)'>
+                            <!-- <status-icon *ngIf='isStatus' [statusType]='statusType' [statusId]='item.id'>
+                            </status-icon> -->
+                            {{item.status}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li ngbDropdownItem>
+            <div class='button-group'>
+                <button class='btn btn-link btn-sm btn-wide' (click)='onInternalClear()'
+                    [disabled]='selectedItems.length === 0'>
+                    Clear
+                </button>
+                <button class='btn btn-primary btn-sm btn-wide' (click)='onInternalApply()'
+                    [disabled]='selectedItems.length === 0'>
+                    Apply
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>

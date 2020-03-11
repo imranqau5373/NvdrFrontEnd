@@ -1,6 +1,6 @@
 import { Injector, OnInit, HostListener } from '@angular/core';
 import { NgbDateStruct, NgbTimeStruct } from '@ng-bootstrap/ng-bootstrap';
-import { PagingModel } from '@core/model/common/PagingModel';
+import { PagingModel } from '@core/model/common/paging.model';
 
 declare var $: any;
 
@@ -119,6 +119,7 @@ export abstract class PagedListingComponentBase<TEntityDto> implements OnInit {
     }
 
     public searchInList(searchType: string, newValue: any) {
+        debugger;
         const obj = this.filter[searchType];
         const storageKey = obj.key;
         let valueToStore = newValue;

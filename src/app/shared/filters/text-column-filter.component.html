@@ -1,0 +1,30 @@
+<div ngbDropdown (openChange)="toggled($event)" aria-haspopup="true" aria-expanded="false" display="dynamic" [placement]="placement">
+    <a ngbDropdownToggle role="button" id="{{id}}" aria-haspopup="true" aria-expanded="false">
+        <span class="icon small" [ngClass]="{'active':!!internalModel}">
+            <svg>
+                <use xlink:href="assets/img/cubivue-icons.svg#filter"></use>
+            </svg>
+        </span>
+    </a>
+    <ul ngbDropdownMenu class="filter dropdown-menu">
+        <li ngbDropdownItem>
+            <label>Search</label>
+            <div class="input-group form-group mb-0">
+                <input type="text" class="form-control" [(ngModel)]="internalModel"
+                    placeholder="Search name" (keyup.enter)="onInternalApply()">
+            </div>
+        </li>
+        <li ngbDropdownItem>
+            <div class="button-group">
+                <button id="btnClear" class="btn btn-link btn-sm btn-wide" [disabled]="!internalModel"
+                    (click)="onInternalClear()">
+                    Clear
+                </button>
+                <button id="btnApply" class="btn btn-primary btn-sm btn-wide" [disabled]="!internalModel"
+                    (click)="onInternalApply()">
+                    Apply
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>

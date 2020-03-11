@@ -25,7 +25,6 @@ export class ContentLayoutComponent implements OnInit {
     }
 
   ngOnInit() {
-    debugger;
     this.isLoggedIn$ = this.authenticationService.isLoggedIn;
     //check that user is loggedin or not with user name in cookies.
     let user = this.authenticationService.getUserName();

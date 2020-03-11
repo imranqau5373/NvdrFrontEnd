@@ -3,6 +3,7 @@ import { HttpApiService } from '@shared/http-api-service';
 import { Observable  } from 'rxjs';
 import { GetSportsModel } from '@core/model/sports-model/get-sportsList.model';
 import { AddSportsModel } from '@core/model/sports-model/add-sports.mode';
+import { CommonService } from '@shared/service/common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { AddSportsModel } from '@core/model/sports-model/add-sports.mode';
 export class SportsService {
 
   constructor(
-    private _httpApiService: HttpApiService
+    private _httpApiService: HttpApiService,
+    private commonService: CommonService
 
     ) { }
 
@@ -19,8 +21,24 @@ export class SportsService {
       return this._httpApiService.get("","");
     }
 
-    getSportsList(model: GetSportsModel):Observable<any>{
-        return this._httpApiService.post("Sports/GetSportsList",model);
+    getSportsList(  name: string, questionCount: number, lastUpdated: any,
+      createdBy: string, statusId: string[], sortColumn: any, sortDirection: any,
+      pageNumber: any, pageSize: any):Observable<any>{
+        const temp = {
+          name: name,
+          questionCount: questionCount,
+          createdBy: createdBy,
+          statusId: statusId,
+          lastUpdated: lastUpdated ? {
+            Date: this.commonService.prepareDateFormat(lastUpdated.Date),
+            ComparisonType: lastUpdated.CompareType
+          } : null,
+          sortColumn: sortColumn,
+          sortDirection: sortDirection,
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        };
+        return this._httpApiService.post("Sports/GetSportsList",temp);
       }
 
       getSportsCompany():Observable<any>{

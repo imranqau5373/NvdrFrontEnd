@@ -1,0 +1,38 @@
+<div ngbDropdown (openChange)="toggled($event)" aria-haspopup="true" aria-expanded="false" display="dynamic"
+    [placement]="placement">
+    <a ngbDropdownToggle role="button" id="{{id}}" aria-haspopup="true" aria-expanded="false">
+        <span class="icon small" [ngClass]="{'active':!!internalModel.Date}">
+            <svg>
+                <use xlink:href="assets/img/cubivue-icons.svg#filter"></use>
+            </svg>
+        </span>
+    </a>
+    <ul ngbDropdownMenu class="filter dropdown-menu">
+        <li ngbDropdownItem>
+            <label>Date</label>
+            <div class="form-group mb-1">
+                <select class="form-control" aria-label="compare-type" [(ngModel)]="internalModel.CompareType"
+                    name="compare-type">
+                    <option *ngFor="let item of compareList" [ngValue]="item.id">{{item.status}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="form-control" [(ngModel)]="internalModel.Date" ngbDatepicker #d3="ngbDatepicker" name="d3"
+                    #c1="ngModel" [readonly]="true" (click)="d3.toggle()" placeholder="Select Date"
+                    (keyup.enter)="onInternalApply()" />
+            </div>
+        </li>
+        <li ngbDropdownItem>
+            <div class='button-group'>
+                <button id="btnClear" class="btn btn-link btn-sm btn-wide" [disabled]="!internalModel.Date"
+                    (click)="onInternalClear()">
+                    Clear
+                </button>
+                <button id="btnApply" class="btn btn-primary btn-sm btn-wide" [disabled]="!internalModel.Date"
+                    (click)="onInternalApply()">
+                    Apply
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>

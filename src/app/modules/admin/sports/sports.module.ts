@@ -8,6 +8,7 @@ import { SportsCreateComponent } from './pages/sports-create/sports-create.compo
 import { SportsUpdateComponent } from './pages/sports-update/sports-update.component';
 import { FormsModule } from '@angular/forms';
 import { SportsBaseComponent } from './component/sports-base/sports-base.component';
+import { SharedModule } from '@shared/shared.module';
 
 
 
@@ -15,6 +16,7 @@ import { SportsBaseComponent } from './component/sports-base/sports-base.compone
 @NgModule({
   declarations: [SportsListComponent, SportsCreateComponent, SportsUpdateComponent, SportsBaseComponent],
   imports: [
+    SharedModule,
     CommonModule,
     SportsRoutingModule,
     FormsModule

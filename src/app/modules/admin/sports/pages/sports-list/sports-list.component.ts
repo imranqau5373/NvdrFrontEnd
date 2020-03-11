@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
-import { SportsListModelPagged } from '@core/model/sports-model/SportsListModelPagged';
-import { PagingModel } from '@core/model/common/PagingModel';
+import { SportsListModelPagged, FilterSportsRequestDto } from '@core/model/sports-model/SportsListModelPagged';
+import { PagingModel } from '@core/model/common/paging.model';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SportsService } from '@core/service/sports-service';
@@ -19,6 +19,7 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
 
   paggingModel: PagingModel = new PagingModel();
   sportsList: SportsListModelPagged = new SportsListModelPagged();
+  public filter: FilterSportsRequestDto = new FilterSportsRequestDto();
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
@@ -61,7 +62,9 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
   protected list(
     request: PagingModel,
     finishedCallback: Function) {
-      this.sportsService.getSportsList(request)
+      this.sportsService.getSportsList(this.filter.Name.value, this.filter.AddedQuestions.value,
+        this.filter.LastUpdated.value, this.filter.CreatedBy.value, this.filter.StatusId.value,
+        this.sorting, this.sortDirection ? 'ASC' : 'DESC', request.currentPage, request.itemsPerPage)
         .pipe(
           finalize(() => {
             finishedCallback();

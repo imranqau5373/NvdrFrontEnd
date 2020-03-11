@@ -15,15 +15,15 @@
               <table class="table table-hover">
                   <thead class="thead ">
                       <tr class='clickable-row'>
-                        <th scope="col">Name</th>
+                        <th style="width: 30%" scope="col">Name</th>
                        
-                        <th scope="col">Court name</th>
+                        <th style="width: 20%" scope="col">Court name</th>
                      
-                        <th scope="col">Duration Start Time</th>
-                        <th scope="col">Duration End Time</th>
-                        <th scope="col">Slot Duration</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th style="width:20%" scope="col">Court Start Time</th>
+                        <th style="width:20%" scope="col">Court End Time</th>
+                        <th style="width:10%" scope="col">Slot Duration</th>
+                        <th style="width:10%" scope="col">Status</th>
+                        <th style="width:10%" scope="col">Action</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -39,10 +39,10 @@
               <td>{{booking.courtEndTime}}</td>
               <td> {{booking.slotDuration}} </td>
               <td data-type="badge">
-                <div *ngIf="booking.durationStatusId == 1" class="badge badge-danger">
-                    {{booking.durationStatusId}}
+                <div *ngIf="booking.durationStatusId == 1" class="badge badge-success">
+                    Published
                 </div>
-                <div *ngIf="booking.durationStatusId == 2" class="badge badge-success">
+                <div *ngIf="booking.durationStatusId == 2" class="badge badge-danger">
                     Un-Published
                 </div>
             </td>

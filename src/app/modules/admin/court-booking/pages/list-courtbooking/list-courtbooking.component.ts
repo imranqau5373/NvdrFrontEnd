@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
 import { CourtsBookingListModelPagged } from '@core/model/courtsBooking-model/CourtsBookingListModelPagged';
-import { PagingModel } from '@core/model/common/PagingModel';
+import { PagingModel } from '@core/model/common/paging.model';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourtsBookingService } from '@core/service/courtsBooking-service';
