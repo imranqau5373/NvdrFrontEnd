@@ -6,3 +6,8 @@ export class UserModel {
     adminRole: string;
     completeName:string;
 }
+
+export class UserPermissionModel {
+    type: string;
+    value: string;
+}

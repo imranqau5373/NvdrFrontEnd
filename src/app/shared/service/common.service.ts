@@ -140,4 +140,6 @@ export class CommonService {
     getCandidatePlaceHolders(): string[] {
         return ["[company_name]","[candidate_name]"];
     }
+
+
 }

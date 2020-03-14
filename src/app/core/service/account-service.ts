@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable  } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { HttpApiService } from '@shared/http-api-service';
+import { UserVerificationModel } from '@core/model/users-model/user-verification.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class AccountService {
     
     UserLogin(signInModel):Observable<any>{
       return this._httpApiService.post("Identity/SignIn",signInModel);
+    }
+
+    verifyUser(model: UserVerificationModel): Observable<any> {
+      return this._httpApiService.post("Identity/Activate", model);
     }
 
     UserLogOff():Observable<any>{

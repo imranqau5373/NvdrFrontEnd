@@ -6,6 +6,7 @@ import { ResetpasswordComponent } from './page/resetpassword/resetpassword.compo
 import { UpdatedpasswordComponent } from './page/updatedpassword/updatedpassword.component';
 
 import { UnAuthGuard } from '@core/guard/unauth-guard';
+import { EmailVerificationComponent } from './page/email-verification/email-verification.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,11 @@ const routes: Routes = [
         path: 'updatepassword',
         component: UpdatedpasswordComponent,
         canActivate : [UnAuthGuard]
+      },
+      {
+        path: 'email-verification',
+        component: EmailVerificationComponent,
+        canActivate: [UnAuthGuard]
       }
     ]
   }

@@ -4,30 +4,31 @@
     <main>
       <nav *ngIf="isLoggedIn$ | async"  class="sidebar">
         <ul>
-          <li routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
+          
+          <li *userHasPermission="permissions.SuperAdminDashboard_View" routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
                   <use xlink:href="assets/img/project-icons.svg#dashboard"></use>
                 </svg> </span> dashboard </a> </li>
-          <li routerLinkActive="active"> <a routerLink="/admin/sports/sports-list"> <span class="icon"> <svg>
+          <li routerLinkActive="active" *userHasPermission="permissions.SportsManager_View"> <a routerLink="/admin/sports/sports-list"> <span class="icon"> <svg>
                   <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
                 </svg> </span> Sports Manager </a>
             <a routerLink="/admin/sports/sports-list" class="d-none"></a>
           </li>
-          <li routerLinkActive="active"> <a routerLink="/admin/courts/courts-list"> <span class="icon"> <svg>
+          <li routerLinkActive="active" *userHasPermission="permissions.CourtsManager_View"> <a routerLink="/admin/courts/courts-list"> <span class="icon"> <svg>
             <use xlink:href="assets/img/project-icons.svg#library"></use>
             </svg> </span> Courts Manager </a>
                   <a routerLink="/admin/courts/courts-list" class="d-none"></a>
             </li>
-            <li routerLinkActive="active"> <a routerLink="/admin/courtduration/courtduration-list"> <span class="icon"> <svg>
+            <li routerLinkActive="active" *userHasPermission="permissions.CourtsDuration_View"> <a routerLink="/admin/courtduration/courtduration-list"> <span class="icon"> <svg>
               <use xlink:href="assets/img/project-icons.svg#manual-icon"></use>
               </svg> </span> Courts Duration </a>
                     <a routerLink="/admin/courtduration/courtduration-list" class="d-none"></a>
               </li>
-              <li routerLinkActive="active"> <a routerLink="/admin/courtbooking/courtbooking-list"> <span class="icon"> <svg>
+              <li routerLinkActive="active" *userHasPermission="permissions.CourtsBooking_View"> <a routerLink="/admin/courtbooking/courtbooking-list"> <span class="icon"> <svg>
                 <use xlink:href="assets/img/project-icons.svg#candidate-manager"></use>
                 </svg> </span> Courts Bookings </a>
                       <a routerLink="/admin/courtbooking/courtbooking-list" class="d-none"></a>
                 </li>
-            <li routerLinkActive="active"> <a routerLink="/admin/users/users-list"> <span class="icon"> <svg>
+            <li routerLinkActive="active" *userHasPermission="permissions.SuperAdminUsers_View"> <a routerLink="/admin/users/users-list"> <span class="icon"> <svg>
               <use xlink:href="assets/img/project-icons.svg#users"></use>
               </svg> </span> Users & Roles</a>
                     <a routerLink="/admin/users/users-list" class="d-none"></a>

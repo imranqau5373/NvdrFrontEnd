@@ -9,9 +9,10 @@ import { ResetpasswordComponent } from './page/resetpassword/resetpassword.compo
 import { TranslateModule } from '@ngx-translate/core';
 import { MustMatchDirective } from '@shared/_helper/must-match.directive';
 import { UpdatedpasswordComponent } from './page/updatedpassword/updatedpassword.component';
+import { EmailVerificationComponent } from './page/email-verification/email-verification.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, ResetpasswordComponent,MustMatchDirective, UpdatedpasswordComponent],
+  declarations: [LoginComponent, RegisterComponent, ResetpasswordComponent,MustMatchDirective, UpdatedpasswordComponent, EmailVerificationComponent],
   imports: [
     SharedModule,
     CommonModule,

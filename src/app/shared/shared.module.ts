@@ -8,14 +8,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterBadgeComponent } from './filters/filter-badge.component';
 import { TimeColumnFilterComponent } from './filters/time-column-filter.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { OptionsColumnFilterComponent } from './filters/options-column-filter.component';
 import { TextColumnFilterComponent } from './filters/text-column-filter.component';
 import { DateColumnFilterComponent } from './filters/date-column-filter.component';
+import { HasPermissionDirective } from './directives/has-permission.directive';
 @NgModule({
   declarations: [ControlMessageComponent,DefaultDateFormatPipe,FilterBadgeComponent,
     DateColumnFilterComponent,
     OptionsColumnFilterComponent,
     TextColumnFilterComponent,
+    HasPermissionDirective,
     TimeColumnFilterComponent,],
   imports: [
     CommonModule,
@@ -25,10 +28,12 @@ import { DateColumnFilterComponent } from './filters/date-column-filter.componen
     RouterModule,
     NgxPaginationModule,
 
+    NgMultiSelectDropDownModule
     
   ],
   exports: [
     CommonModule,
+    HasPermissionDirective,
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
@@ -40,7 +45,7 @@ import { DateColumnFilterComponent } from './filters/date-column-filter.componen
     OptionsColumnFilterComponent,
     TextColumnFilterComponent,
     TimeColumnFilterComponent,
-    
+    NgMultiSelectDropDownModule
   ],
   entryComponents: [],
   
