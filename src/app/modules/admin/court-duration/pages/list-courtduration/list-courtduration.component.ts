@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
-import { CourtsDurationListModelPagged } from '@core/model/courtsDuration-model/CourtsDurationListModelPagged';
+import { CourtsDurationListModelPagged,FilterCourtDurationRequestDto } from '@core/model/courtsDuration-model/CourtsDurationListModelPagged';
 import { PagingModel } from '@core/model/common/paging.model';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class ListCourtdurationComponent extends PagedListingComponentBase<Courts
 
   paggingModel: PagingModel = new PagingModel();
   courtsDurationList: CourtsDurationListModelPagged = new CourtsDurationListModelPagged();
-
+public filter: FilterCourtDurationRequestDto = new FilterCourtDurationRequestDto();
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private courtsDurationService: CourtsDurationService,
@@ -53,7 +53,9 @@ export class ListCourtdurationComponent extends PagedListingComponentBase<Courts
   protected list(
     request: PagingModel,
     finishedCallback: Function) {
-      this.courtsDurationService.getCourtsDurationList(request)
+      this.courtsDurationService.getCourtsDurationList(this.filter.Name.value, this.filter.AddedQuestions.value,
+        this.filter.LastUpdated.value, this.filter.CreatedBy.value, this.filter.StatusId.value,
+        this.sorting, this.sortDirection ? 'ASC' : 'DESC', request.currentPage, request.itemsPerPage)
         .pipe(
           finalize(() => {
             finishedCallback();
