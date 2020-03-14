@@ -1,67 +1,164 @@
 
 <section>
   <div class="card table-card ">
-      <div class="card-header ">
-          <h5> Sports List
-              <a href="/admin/users/users-create" class="float-right">
-                  <button type="button" class="btn btn-primary"> <i
-                          class="fas fa-plus-circle"> Add new</i></button>
-              </a>
-          </h5>
-      </div>
+    <div class="card-header">
+        <h5> Users and Roles 
+            <a href="#" class="float-right" data-toggle="modal" data-target="#addUserModal"
+                data-keyboard="false" data-backdrop="static">
+                <button type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i>Add New </button>
+            </a></h5>
+    </div>
       
-      <div class="card-body ">
-              <table class="table table-hover">
-                  <thead class="thead ">
-                      <tr class='clickable-row' data-href='url://'>
-                        <th scope="col">Users Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Status</th>
-                        <th scope="col"></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    
-         
-            <tr *ngFor="let users of usersList.users">
-              <td>
-                  {{users.name}}
-              </td>
-              <td> {{users.email}} </td>
-              <td>{{users.phone}}</td>
-              <td>Role</td>
-              <td>Status</td>
-            <td data-type="numeric">
-              <div class="dropdown"> <a href="" data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-v"></i></a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1"
-                      x-placement="bottom-end"
-                      style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
-                      <a class="dropdown-item"
-                          >Edit</a>
-                      <a class="dropdown-item" href="#" role="button" data-toggle="modal"
-                          data-target="#exampleModal" data-keyboard="false" data-backdrop="static"
-                          >Delete</a>
-                  </div>
-              </div>
-            </td>
-                    
-                      </tr>
-                  </tbody>
-              </table>
-      </div>
-      <div class="card-footer table-card-footer">
+    <div class="card-body ">
+        <table class="table table-hover">
+            <thead class="thead ">
+                <tr class='clickable-row' data-href='url://'>
+                    <th scope="col">
+                        <span (click)="sort('Name')">
+                            <i class="fa fas fa-caret-up"
+                                [ngClass]="{'fas fa-caret-down':sorting=='Name' && sortDirection,'fas fa-caret-up':sorting=='Name' && !sortDirection }"></i>
+                            Name
+                        </span>
+
+                        <text-column-filter [model]="filter.Name.value" placeHolder="Name" id="Name"
+                            (onApply)="searchInList('Name',$event[0])" (onClear)="clearSearch('Name')">
+                        </text-column-filter>
+                    </th>
+                    <th scope="col">
+                        <span (click)="sort('Email')">
+                            <i class="fa fas fa-caret-up"
+                                [ngClass]="{'fas fa-caret-down':sorting=='Email' && sortDirection,'fas fa-caret-up':sorting=='Email' && !sortDirection }"></i>
+                            Email
+                        </span>
+                        <text-column-filter [model]="filter.Email.value" placeHolder="Email" id="Email"
+                            (onApply)="searchInList('Email',$event[0])" (onClear)="clearSearch('Email')">
+                        </text-column-filter>
+                    </th>
+                    <th scope="col">
+                        <span (click)="sort('Cell')">
+                            <i class="fa fas fa-caret-up"
+                                [ngClass]="{'fas fa-caret-down':sorting=='Cell' && sortDirection,'fas fa-caret-up':sorting=='Cell' && !sortDirection }"></i>
+                            Cell
+                        </span>
+                        <text-column-filter [model]="filter.Cell.value" placeHolder="Cell" id="Cell"
+                            (onApply)="searchInList('Cell',$event[0])" (onClear)="clearSearch('Cell')">
+                        </text-column-filter>
+                    </th>
+                    <th scope="col">
+                        Role
+                        <options-column-filter *ngIf="filter.Roles.options" [items]="filter.Roles.options"
+                            [model]="filter.Roles.value" idLabel="id" isStatus="true" statusType="Roles" id="Roles"
+                            (onClear)="clearSearch('Roles')" (onApply)="searchInList('Roles', $event[0])">
+                        </options-column-filter>
+                    </th>
+                    <th scope="col">
+                        <span (click)="sort('Status')">
+                            <i class="fa fas fa-caret-up"
+                                [ngClass]="{'fas fa-caret-down':sorting=='Status' && sortDirection,'fas fa-caret-up':sorting=='Status' && !sortDirection }"></i>
+                            Status
+                        </span>
+                        <options-column-filter *ngIf="filter.Statuses.options" [items]="filter.Statuses.options"
+                            [model]="filter.Statuses.value" idLabel="id" isStatus="true" statusType="Statuses"
+                            id="Statuses" (onClear)="clearSearch('Statuses')"
+                            (onApply)="searchInList('Statuses', $event[0])">
+                        </options-column-filter>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody *ngIf="userList && userList.length > 0">
+                <tr *ngFor="let user of userList | paginate : paggerConfig; let i=index">
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.roleNames}}</td>
+                    <td>{{user.isActive ? 'Active' : 'Inactive'}}</td>
+                    <td>
+                        <div class="dropdown"> <a href="" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-v"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1"
+                                x-placement="bottom-end"
+                                style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#editUserModal"
+                                    data-keyboard="false" data-backdrop="static"
+                                    >Edit</a>
+
+                                <a class="dropdown-item" href="" role="button" data-toggle="modal"
+                                    data-target="#UserDeletionModal" data-placement="top" title=""
+                                    data-original-title="Delete User" (click)="userModel.userId = user.userId">Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer table-card-footer">
         <nav class="nav-pagination">
             <div class="table-entries ">
                 <p>
+                    <select class="form-control" aria-label="page-size" [(ngModel)]="pageSize" name="pageSize"
+                        (ngModelChange)="changePageSize($event)">
+                        <option *ngFor="let item of pageSizeList" [ngValue]="item">{{item}}</option>
+                    </select>
                 </p>
             </div>
-            <div class="table-pagination ">>
+            <div class="table-pagination ">
+                <p>
+                    <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
+                    </pagination-controls>
+                </p>
             </div>
         </nav>
     </div>
+
   </div>
 </section>
 
+
+  <!-- Modal -->
+  <div class="modal fade " id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+      <form name="form" (ngSubmit)="f.form.valid && saveUser(f)" #f="ngForm" class="form-inline">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                  <button type="button" #btnCloseUserPopup class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span> </button>
+              </div>
+              <div class="modal-body">
+                  <div class="form-row">
+                      <div class="input-group ">
+                          <input type="text" class="form-control mb-2 mr-sm-2 w-50" id="inlineFormInputName2"
+                              placeholder="Enter user email" [(ngModel)]="userModel.email"
+                              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email"
+                              #email="ngModel" required>
+                          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback d-block">
+                              Please enter valid email address.
+                          </div>
+                      </div>
+
+                      <div class="input-group mb-2 mr-sm-2">
+                          <div class="add-qs-dropdown dropdown dropdown-custom">
+                              <ng-multiselect-dropdown [data]="this.roles" name="roles"
+                                  [placeholder]="'Select Roles'" required [(ngModel)]="userModel.selectedRoles"
+                                  [settings]="dropdownSettings">
+                              </ng-multiselect-dropdown>
+                              <div *ngIf="f.submitted && (!userModel.selectedRoles || userModel.selectedRoles.length < 1)"
+                                  class="invalid-feedback d-block">
+                                  Please select atleast one role.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../../shared/api-service';
 import { Router } from '@angular/router';
-import { UserModel } from '@core/model/user.model';
+import { UserModel, UserPermissionModel } from '@core/model/user.model';
 import { BehaviorSubject } from 'rxjs';
 
 
@@ -44,12 +44,28 @@ export class AuthenticationService {
 
   loginAndRedirectToHome(user: any) {
     this.saveUser(user);
+    debugger;
+    if (user.permissions) {
+      this.saveUserPermissions(user.permissions);
+    }
+    this.loggedInUser.next(user);
     this.loggedIn.next(true);
     this.router.navigate(['/admin/home']);
   }
 
+  saveUserPermissions(permissions: UserPermissionModel[]) {
+    let permissionList = permissions.map(item => {
+      let claim = new UserPermissionModel();
+      claim.type = item.type;
+      claim.value = item.value;
+      return claim;
+    });
+    localStorage.setItem('userClaims', JSON.stringify(permissionList));
+  }
+
   removeLocalStorageUser() {
     localStorage.removeItem('speekioUser');
+    localStorage.removeItem('userClaims');
   }
 
   //method use to store user in local storage
@@ -64,6 +80,10 @@ export class AuthenticationService {
   getUserName(): string {
     let user = this.getUser();
     return (user && user.userName) ? user.userName : "";
+  }
+
+  getUserPermissions(): UserPermissionModel[] {
+    return JSON.parse(localStorage.getItem('userClaims')) as UserPermissionModel[];
   }
 
   getPictureUrl(): string {

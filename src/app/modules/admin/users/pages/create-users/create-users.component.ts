@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '@core/service/user-service';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
-import { AddUsersModel } from '@core/model/users-model/add-users.model';
+import { AddUserModel } from '@core/model/users-model/add-users.model';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomRouter } from '@shared/service/custom-router.service';
@@ -20,13 +20,13 @@ export class CreateUsersComponent implements OnInit {
   ) { }
 
   companyList: any[];
-  addUsersData : AddUsersModel;
+  addUsersData : AddUserModel;
   userId : number = 0;
   isUpdated : boolean = false;
   //companyId: number = +localStorage.getItem('companyId');
   ngOnInit() {
   debugger;
-    this.addUsersData = new AddUsersModel();
+    this.addUsersData = new AddUserModel();
     this.userId = this.activatedRoute.snapshot.params['id'];
     if(this.userId > 0){
       this.isUpdated = true;

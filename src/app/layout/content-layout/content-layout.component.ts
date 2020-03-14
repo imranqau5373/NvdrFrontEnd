@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MenuService } from '@core/service/other/menu.service';
 import { AuthenticationService } from '@core/service/authenticationService';
-
+import { PermissionService, Permissions } from '@shared/service/permission.service';
 @Component({
   selector: 'app-content-layout',
   templateUrl: './content-layout.component.html',
@@ -16,7 +16,7 @@ export class ContentLayoutComponent implements OnInit {
   name: string;
   menu: Array<any> = [];
   breadcrumbList: Array<any> = [];
-
+  permissions = Permissions;
   constructor(private _router: Router,
     private authenticationService: AuthenticationService,
     private menuService: MenuService,) { 

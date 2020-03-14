@@ -4,6 +4,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CreateUsersComponent } from '../users/pages/create-users/create-users.component';
 import { ListUsersComponent } from '../users/pages/list-users/list-users.component';
+import { SharedModule } from '@shared/shared.module';
 
 
 
@@ -11,9 +12,10 @@ import { ListUsersComponent } from '../users/pages/list-users/list-users.compone
 @NgModule({
   declarations: [ListUsersComponent, CreateUsersComponent],
   imports: [
-    CommonModule,
     UsersRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    CommonModule
   ]
 })
 export class UsersModule { }
