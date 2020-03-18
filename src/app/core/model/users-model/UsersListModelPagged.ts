@@ -10,6 +10,8 @@ export class UserModel {
   pictureThumbnailUrl: string;
   optInNewsletter: boolean;
   companyId: number;
+  pageNumber: number;
+  pageSize: number;
 }
 
 export class UserListModelPagged {
