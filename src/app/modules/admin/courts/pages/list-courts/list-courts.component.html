@@ -1,4 +1,4 @@
-  
+
   <section>
     <div class="card table-card ">
         <div class="card-header ">
@@ -9,26 +9,36 @@
                 </a>
             </h5>
         </div>
-        
+
         <div class="card-body ">
                 <table class="table table-hover">
                     <thead class="thead ">
                         <tr class='clickable-row' data-href='url://'>
-                          <th scope="col">Court Name</th>
+                          <th scope="col">
+                            <span (click)="sort('Name')">
+                              <i class="fa fas fa-caret-up"
+                                  [ngClass]="{'fas fa-caret-down':sorting=='Name' && sortDirection,'fas fa-caret-up':sorting=='Name' && !sortDirection }"></i>
+                                  Court Name
+                          </span>
+                          <text-column-filter model="{{filter.Name.value}}" placeHolder="Name" id="Name"
+                              (onApply)="searchInList('Name',$event[0])" (onClear)="clearSearch('Name')">
+                          </text-column-filter>
+
+                          </th>
                           <th scope="col">Description</th>
                           <th scope="col">Sports</th>
                           <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                      
+
             <tr *ngFor="let court of courtsList.courts">
                 <td>
                   <a [routerLink]="'/admin/courts/courts-create/'+ court.id">
                     {{court.name}}
                 </a>
                 </td>
-           
+
               <td> {{court.description}} </td>
               <td>{{court.sportsName}}</td>
               <td data-type="numeric">
@@ -39,11 +49,11 @@
                         style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
                         <a class="dropdown-item"
                         [routerLink]="'/admin/courts/courts-create/'+ court.id">Edit</a>
-                   
+
                     </div>
                 </div>
               </td>
-                      
+
                         </tr>
                     </tbody>
                 </table>
@@ -51,13 +61,20 @@
         <div class="card-footer table-card-footer">
           <nav class="nav-pagination">
               <div class="table-entries ">
-                  <p>
-                  </p>
+                <p>
+                  <select class="form-control" aria-label="page-size" [(ngModel)]="pageSize" name="pageSize"
+                    (ngModelChange)="changePageSize($event)">
+                    <option *ngFor="let item of pageSizeList" [ngValue]="item">{{item}}</option>
+                  </select>
+                </p>
               </div>
-              <div class="table-pagination ">>
+              <div class="table-pagination ">
+                <p>
+                  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
+                  </pagination-controls>
+                </p>
               </div>
           </nav>
       </div>
     </div>
 </section>
-

@@ -3,23 +3,39 @@ import { HttpApiService } from '@shared/http-api-service';
 import { Observable  } from 'rxjs';
 import { GetCourtsDurationModel } from '@core/model/courtsDuration-model/get-courtsDurationList.model';
 import { AddCourtsDurationModel } from '@core/model/courtsDuration-model/add-courtsDuration.model';
-
+import { CommonService } from '@shared/service/common.service';
 @Injectable({
   providedIn: 'root'
 })
 export class CourtsDurationService {
 
   constructor(
-    private _httpApiService: HttpApiService
-
+    private _httpApiService: HttpApiService,
+  private commonService: CommonService
     ) { }
 
 
     Method():Observable<any>{
       return this._httpApiService.get("","");
     }
-    getCourtsDurationList(model: GetCourtsDurationModel):Observable<any>{
-        return this._httpApiService.post("CourtsDuration/GetCourtsDurationList",model);
+    getCourtsDurationList(name: string, questionCount: number, lastUpdated: any,
+      createdBy: string, statusId: string[], sortColumn: any, sortDirection: any,
+      pageNumber: any, pageSize: any):Observable<any>{
+        const temp = {
+          name: name,
+          questionCount: questionCount,
+          createdBy: createdBy,
+          statusId: statusId,
+          lastUpdated: lastUpdated ? {
+            Date: this.commonService.prepareDateFormat(lastUpdated.Date),
+            ComparisonType: lastUpdated.CompareType
+          } : null,
+          sortColumn: sortColumn,
+          sortDirection: sortDirection,
+          pageNumber: pageNumber,
+          pageSize: pageSize,
+        };
+        return this._httpApiService.post("CourtsDuration/GetCourtsDurationList",temp);
       }
       //Get Sports for currnt cmpany
       getSports(companyId: number):Observable<any>{
