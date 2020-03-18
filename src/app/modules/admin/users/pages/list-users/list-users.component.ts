@@ -114,7 +114,7 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
       model.sortColumn = this.sorting;
       model.sortDirection = this.sortDirection ? 'ASC' : 'DESC';
       model.pageNumber = request.currentPage;
-      model.pageSize = 10;
+      model.pageSize = 20;
       this.getUserList(model);
     }
     getUserList(filterModel: GetUserModel) {

@@ -15782,6 +15782,10 @@ table .badge-warning {
   background: #ffebd1fc;
 }
 
+.table-row {
+  cursor: pointer;
+}
+
 .card {
   /* box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
     border: 0;*/
@@ -16953,6 +16957,10 @@ os-theme-thick-dark
   color: #000;
 }
 
+.nav-tabs {
+  border-bottom: none;
+}
+
 .job-manager {
   padding: 0.3125rem;
 }
@@ -17094,6 +17102,7 @@ os-theme-thick-dark
 .card-hiring {
   display: flex;
   flex: none;
+  margin-bottom: 5px;
 }
 
 .card-hiring::after {
@@ -17114,6 +17123,8 @@ os-theme-thick-dark
   flex-wrap: nowrap;
   overflow-x: auto;
   padding-bottom: 5px;
+  background-color: #fdfdfd;
+  padding: 10px;
 }
 
 .scrolling-wrapper-flexbox .card {
@@ -17208,7 +17219,6 @@ body {
   background-color: #f1f1f1;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Crect stroke='%23fdfdfd' stroke-width='0.81' width='1' height='1' id='s'/%3E%3Cpattern id='a' width='3' height='3' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cuse fill='%23f8f8f8' href='%23s' y='2'/%3E%3Cuse fill='%23f8f8f8' href='%23s' x='1' y='2'/%3E%3Cuse fill='%23f3f3f3' href='%23s' x='2' y='2'/%3E%3Cuse fill='%23f3f3f3' href='%23s'/%3E%3Cuse fill='%23eeeeee' href='%23s' x='2'/%3E%3Cuse fill='%23eeeeee' href='%23s' x='1' y='1'/%3E%3C/pattern%3E%3Cpattern id='b' width='7' height='11' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23e9e9e9'%3E%3Cuse href='%23s'/%3E%3Cuse href='%23s' y='5' /%3E%3Cuse href='%23s' x='1' y='10'/%3E%3Cuse href='%23s' x='2' y='1'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='8'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='5' y='2'/%3E%3Cuse href='%23s' x='5' y='6'/%3E%3Cuse href='%23s' x='6' y='9'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='h' width='5' height='13' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23e9e9e9'%3E%3Cuse href='%23s' y='5'/%3E%3Cuse href='%23s' y='8'/%3E%3Cuse href='%23s' x='1' y='1'/%3E%3Cuse href='%23s' x='1' y='9'/%3E%3Cuse href='%23s' x='1' y='12'/%3E%3Cuse href='%23s' x='2'/%3E%3Cuse href='%23s' x='2' y='4'/%3E%3Cuse href='%23s' x='3' y='2'/%3E%3Cuse href='%23s' x='3' y='6'/%3E%3Cuse href='%23s' x='3' y='11'/%3E%3Cuse href='%23s' x='4' y='3'/%3E%3Cuse href='%23s' x='4' y='7'/%3E%3Cuse href='%23s' x='4' y='10'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='c' width='17' height='13' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23e4e4e4'%3E%3Cuse href='%23s' y='11'/%3E%3Cuse href='%23s' x='2' y='9'/%3E%3Cuse href='%23s' x='5' y='12'/%3E%3Cuse href='%23s' x='9' y='4'/%3E%3Cuse href='%23s' x='12' y='1'/%3E%3Cuse href='%23s' x='16' y='6'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='d' width='19' height='17' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23fdfdfd'%3E%3Cuse href='%23s' y='9'/%3E%3Cuse href='%23s' x='16' y='5'/%3E%3Cuse href='%23s' x='14' y='2'/%3E%3Cuse href='%23s' x='11' y='11'/%3E%3Cuse href='%23s' x='6' y='14'/%3E%3C/g%3E%3Cg fill='%23dfdfdf'%3E%3Cuse href='%23s' x='3' y='13'/%3E%3Cuse href='%23s' x='9' y='7'/%3E%3Cuse href='%23s' x='13' y='10'/%3E%3Cuse href='%23s' x='15' y='4'/%3E%3Cuse href='%23s' x='18' y='1'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='e' width='47' height='53' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23c7c7c7'%3E%3Cuse href='%23s' x='2' y='5'/%3E%3Cuse href='%23s' x='16' y='38'/%3E%3Cuse href='%23s' x='46' y='42'/%3E%3Cuse href='%23s' x='29' y='20'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='f' width='59' height='71' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23c7c7c7'%3E%3Cuse href='%23s' x='33' y='13'/%3E%3Cuse href='%23s' x='27' y='54'/%3E%3Cuse href='%23s' x='55' y='55'/%3E%3C/g%3E%3C/pattern%3E%3Cpattern id='g' width='139' height='97' patternUnits='userSpaceOnUse' patternTransform='scale(10) translate(-900 -675)'%3E%3Cg fill='%23c7c7c7'%3E%3Cuse href='%23s' x='11' y='8'/%3E%3Cuse href='%23s' x='51' y='13'/%3E%3Cuse href='%23s' x='17' y='73'/%3E%3Cuse href='%23s' x='99' y='57'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23b)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23h)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23c)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23d)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23e)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23f)' width='100%25' height='100%25'/%3E%3Crect fill='url(%23g)' width='100%25' height='100%25'/%3E%3C/svg%3E");
   background-attachment: fixed;
-  background-size: cover;
 }
 
 a:hover {
@@ -17307,18 +17317,40 @@ content {
   margin-bottom: -2px;
 }
 
+.tabs-border-btm {
+  border-bottom: 1px solid #ddd;
+}
+
+/*
+.round-notification
+{
+    
+    height: 25px;
+    position: absolute;
+    width: 25px;
+    line-height: 28px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #e2445c;
+    color: #FFF;
+    text-align: center;
+    margin-left: 7px;
+    right: 15px;
+    font-size: 10px;
+}
+
+*/
+.badge {
+  padding: .25em .4em;
+}
+
 .round-notification {
-  height: 25px;
-  position: absolute;
-  width: 25px;
-  line-height: 28px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  border-radius: 25px;
   background-color: #e2445c;
   color: #FFF;
   text-align: center;
   margin-left: 7px;
-  right: 15px;
+  padding: 10px;
   font-size: 10px;
 }
 
@@ -17425,6 +17457,18 @@ content {
   cursor: pointer;
   left: 10px;
   top: 10px;
+}
+
+.pl-c1 {
+  padding-left: 31px;
+}
+
+.glyphicon-minus:before {
+  content: "\2212";
+}
+
+.glyphicon-plus:before {
+  content: "\002b";
 }
 
 @media (min-width: 320px) and (max-width: 424px) {
@@ -17651,34 +17695,39 @@ content {
 
 /* Candidate timer*/
 .countdown-label {
-  color: #65584c;
+  color: #616161;
   text-align: center;
   text-transform: uppercase;
   display: inline-block;
   margin-top: 4px;
-  font-size: 12px;
+  /* font-size: 12px;*/
 }
 
 #countdown {
-  box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
-  width: 120px;
+  box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.18);
   text-align: center;
   background: #f1f1f1;
   border-radius: 5px;
   margin: auto;
 }
 
+#countdown .fa-clock {
+  margin-left: 9px;
+}
+
 #countdown #tiles {
   color: #fff;
   position: relative;
   z-index: 1;
+  margin-bottom: -1px;
   display: inline-block;
   text-align: center;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0 5px 5px 0;
   font-size: 16px;
-  padding-top: 3px;
+  padding-top: 2px;
   font-weight: thin;
-  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .color-full {
@@ -17961,7 +18010,7 @@ header nav .sidebar-brand a {
   padding: 15px 9px 15px 9px;
   border-radius: 7px;
   border: 1px solid #d9dee2 !important;
-  height: calc(100vh - 320px);
+  height: calc(100vh - 260px);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -18066,9 +18115,17 @@ header nav .sidebar-brand a {
   padding: 0.2rem 0.25rem;
 }
 
+.marks-table table tbody tr td:nth-child(n+2), .marks-table .table tbody tr td:nth-child(2) {
+  text-align: right;
+}
+
 .marks-table .table thead tr th, table thead tr th {
   border: none !important;
   padding: 0.2rem 0.25rem;
+}
+
+.marks-table .table thead tr th {
+  text-align: right;
 }
 
 .test-summary-wrapper {
@@ -18077,16 +18134,26 @@ header nav .sidebar-brand a {
   overflow-y: auto;
 }
 
+.test-summary-wrapper th:nth-child(1) {
+  background-color: transparent !important;
+}
+
 .cand-total-score {
   padding: 0.5rem 0.65rem;
 }
 
 .container-arc {
-  width: 400px;
+  width: 370px;
   height: 200px;
   position: relative;
   margin: auto;
   color: #444;
+}
+
+circle {
+  stroke: #E0E0E0;
+  fill: transparent;
+  stroke-width: 12;
 }
 
 #percent, #svg {
@@ -18151,6 +18218,10 @@ header nav .sidebar-brand a {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 120px;
+}
+
+.candidate-summary-solo-btns {
+  margin-left: 60px;
 }
 
 /* Angular overides from dev team */
@@ -18659,6 +18730,12 @@ table .dropdown-item:active {
   position: relative;
   height: calc(100% - 0px);
   overflow: auto;
+}
+
+.wrapper-active-jobs {
+  height: calc(100vh - 292px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

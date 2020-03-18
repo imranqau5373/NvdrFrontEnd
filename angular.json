@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "scripts": [
-              "src/assets/js/vendor/latinise.js"
+              "src/assets/js/vendor/latinise.js",
+              "src/assets/js/apexcharts.min.js"
             ]
           },
           "configurations": {
