@@ -74,7 +74,7 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
           if (!result || !result.body) {
             return;
           };
-
+          debugger;
           var response = result.body;
           if (!response.successful) {
             this.toastService.showError(response.message);

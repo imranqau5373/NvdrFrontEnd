@@ -96,6 +96,7 @@ addCourtsDuration(){
 if(this.isUpdated == true)
 this.updateCourtsDuration();
 else{
+  this.addCourtsDuratoinData.durationStatusId = 1;
     this.courtsDurationService.addCourtsDuration(this.addCourtsDuratoinData).subscribe(result => {
     if (result && result.body.successful) {
       this.toastService.showSuccess(result.body.message);

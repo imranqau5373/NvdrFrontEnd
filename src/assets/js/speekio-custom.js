@@ -45,10 +45,10 @@ function charts() {
       enabled: false
     },
     series: [{
-      name: 'Total Views',
+      name: 'Candidates applied',
       data: generateDayWiseTimeSeries(0, 18)
     }, {
-      name: 'Total candidates applied',
+      name: 'Candidates left',
       data: generateDayWiseTimeSeries(1, 18)
     }],
     markers: {
@@ -123,6 +123,11 @@ function charts() {
     }
     return series;
   }
+
+
+
+
+
 }
 
 
@@ -263,10 +268,6 @@ function chart2() {
     series: [{
         name: "Sample",
         data: data
-      },
-      {
-        name: "Sample2",
-        data: data2
       }
     ],
     markers: {
@@ -300,180 +301,163 @@ function chart2() {
 
 function chart3() {
 
-  Apex.grid = {
-    padding: {
-      right: 0,
-      left: 0
-    }
-  }
+  
+       var options = {
+          series: [
+          {
+            name: 'Bob',
+            data: [
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-05').getTime(),
+                  new Date('2019-03-08').getTime()
+                ]
+              },
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-02').getTime(),
+                  new Date('2019-03-05').getTime()
+                ]
+              },
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-05').getTime(),
+                  new Date('2019-03-07').getTime()
+                ]
+              },
+              {
+                x: 'Test',
+                y: [
+                  new Date('2019-03-03').getTime(),
+                  new Date('2019-03-09').getTime()
+                ]
+              },
+              {
+                x: 'Test',
+                y: [
+                  new Date('2019-03-08').getTime(),
+                  new Date('2019-03-11').getTime()
+                ]
+              },
+              {
+                x: 'Validation',
+                y: [
+                  new Date('2019-03-11').getTime(),
+                  new Date('2019-03-16').getTime()
+                ]
+              },
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-01').getTime(),
+                  new Date('2019-03-03').getTime()
+                ]
+              }
+            ]
+          },
+          {
+            name: 'Joe',
+            data: [
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-02').getTime(),
+                  new Date('2019-03-05').getTime()
+                ]
+              },
+              {
+                x: 'Test',
+                y: [
+                  new Date('2019-03-06').getTime(),
+                  new Date('2019-03-16').getTime()
+                ]
+              },
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-03').getTime(),
+                  new Date('2019-03-07').getTime()
+                ]
+              },
+              {
+                x: 'Deployment',
+                y: [
+                  new Date('2019-03-20').getTime(),
+                  new Date('2019-03-22').getTime()
+                ]
+              },
+              {
+                x: 'Design',
+                y: [
+                  new Date('2019-03-10').getTime(),
+                  new Date('2019-03-16').getTime()
+                ]
+              }
+            ]
+          },
+          {
+            name: 'Dan',
+            data: [
+              {
+                x: 'Code',
+                y: [
+                  new Date('2019-03-10').getTime(),
+                  new Date('2019-03-17').getTime()
+                ]
+              },
+              {
+                x: 'Validation',
+                y: [
+                  new Date('2019-03-05').getTime(),
+                  new Date('2019-03-09').getTime()
+                ]
+              },
+            ]
+          }
+        ],
+          chart: {
+          height: 450,
+          type: 'rangeBar'
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+            barHeight: '80%'
+          }
+        },
+        xaxis: {
+          type: 'datetime'
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'light',
+            type: 'vertical',
+            shadeIntensity: 0.25,
+            gradientToColors: undefined,
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [50, 0, 100, 100]
+          }
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left'
+        }
+        };
 
-  Apex.dataLabels = {
-    enabled: false
-  }
-
-  var randomizeArray = function (arg) {
-    var array = arg.slice();
-    var currentIndex = array.length,
-      temporaryValue, randomIndex;
-
-    while (0 !== currentIndex) {
-
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
-  // data for the sparklines that appear below header area
-  var sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
-
-  // the default colorPalette for this dashboard
-  //var colorPalette = ['#01BFD6', '#5564BE', '#F7A600', '#EDCD24', '#F74F58'];
-  var colorPalette = ['#00D8B6', '#008FFB', '#FEB019', '#FF4560', '#775DD0']
-
-  var spark1 = {
-    chart: {
-      id: 'sparkline1',
-      group: 'sparklines',
-      type: 'area',
-      height: 160,
-      sparkline: {
-        enabled: true
-      },
-    },
-    stroke: {
-      curve: 'straight'
-    },
-    fill: {
-      opacity: 1,
-    },
-    series: [{
-      name: 'Engagement ratio',
-      data: randomizeArray(sparklineData)
-    }],
-    labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
-    yaxis: {
-      min: 0
-    },
-    xaxis: {
-      type: 'datetime',
-    },
-    title: {
-      text: '2.93%',
-      offsetX: 30,
-      style: {
-        fontSize: '24px',
-        cssClass: 'apexcharts-yaxis-title'
-      }
-    },
-    subtitle: {
-      text: 'Engagement ratio',
-      offsetX: 30,
-      style: {
-        fontSize: '14px',
-        cssClass: 'apexcharts-yaxis-title'
-      }
-    }
-  }
-
-  var spark2 = {
-    chart: {
-      id: 'sparkline2',
-      group: 'sparklines',
-      type: 'area',
-      height: 160,
-      sparkline: {
-        enabled: true
-      },
-    },
-    stroke: {
-      curve: 'straight'
-    },
-    fill: {
-      opacity: 1,
-    },
-    series: [{
-      name: 'Average likes per post',
-      data: randomizeArray(sparklineData)
-    }],
-    labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
-    yaxis: {
-      min: 0
-    },
-    xaxis: {
-      type: 'datetime',
-    },
-    title: {
-      text: '154.37',
-      offsetX: 30,
-      style: {
-        fontSize: '24px',
-        cssClass: 'apexcharts-yaxis-title'
-      }
-    },
-    subtitle: {
-      text: 'Average likes per post',
-      offsetX: 30,
-      style: {
-        fontSize: '14px',
-        cssClass: 'apexcharts-yaxis-title'
-      }
-    }
-  }
-
-  var spark3 = {
-    chart: {
-      id: 'sparkline3',
-      group: 'sparklines',
-      type: 'area',
-      height: 160,
-      sparkline: {
-        enabled: true
-      },
-    },
-    stroke: {
-      curve: 'straight'
-    },
-    fill: {
-      opacity: 1,
-    },
-    series: [{
-      name: 'Average comments per post',
-      data: randomizeArray(sparklineData)
-    }],
-    labels: [...Array(24).keys()].map(n => `2018-09-0${n+1}`),
-    xaxis: {
-      type: 'datetime',
-    },
-    yaxis: {
-      min: 0
-    },
-    title: {
-      text: '5.38',
-      offsetX: 30,
-      style: {
-        fontSize: '24px',
-        cssClass: 'apexcharts-yaxis-title'
-      }
-    },
-    subtitle: {
-      text: 'Average comments per post',
-      offsetX: 30,
-      style: {
-        fontSize: '14px',
-        cssClass: 'apexcharts-yaxis-title'
-      }
-    }
-  }
-
-  new ApexCharts(document.querySelector("#spark1"), spark1).render();
-  new ApexCharts(document.querySelector("#spark2"), spark2).render();
-  new ApexCharts(document.querySelector("#spark3"), spark3).render();
+        var chart = new ApexCharts(document.querySelector("#chart3"), options);
+        chart.render();
+      
+      
+    
+      
+      
+    
 
 
 }
@@ -490,6 +474,9 @@ function sidebarToggle() {
 }
 
 
+
+
+
 function nestedToggle() {
   $(document).on('click', '.nested', function (e) {
     $(this).toggleClass("open");
@@ -500,25 +487,54 @@ function nestedToggle() {
 
 function customScroller() {
 
-  document.addEventListener("DOMContentLoaded", function () {
-    OverlayScrollbars(document.querySelectorAll('.card-body'),
+   {
+    OverlayScrollbars(document.querySelectorAll('.group-card-content-panels'),
 
       {
-        className: "os-theme-thin-light",
+        className: "os-theme-thick-dark",
         scrollbars: {
-          autoHide: "leave",
+          autoHide: "false",
           dragScrolling: true,
           clickScrolling: false,
           touchSupport: true,
         }
 
       },
+                      
+                      
+  
+                      
+                      
 
     );
-  });
+  
 
+        OverlayScrollbars(document.querySelectorAll('.candidate-swimlane-container'), {
+        className: "os-theme-thick-dark",
+    });
+                      
+       
+       
+}
+    
+   
+    
+    
+    
+    
+    
+    
 }
 
+
+function tooltip() {
+
+ $('[data-toggle="tooltip"]').tooltip({
+   container: 'body'
+});
+
+
+}
 
 
 
@@ -660,8 +676,11 @@ function layoutReviewer() {
 
 
 
-function charttest(inputNumber) {
-   
+function charttest() {
+
+    
+    
+    
     var canvasSize = 200,
     centre = canvasSize/2,
     radius = canvasSize*0.8/2,
@@ -671,14 +690,13 @@ function charttest(inputNumber) {
     startY = centre-radius,
     runBtn = document.getElementById('run'),
     percDiv = document.getElementById('percent'),
-    input =inputNumber;
+    input = document.getElementById('input');
 
 input.onkeyup = function(evt) {
     if(isNaN(input.value)) {
       input.value = '';
     }
 };
-
 
 runBtn.onclick = function() {
   run(input.value/100);
@@ -708,7 +726,7 @@ function run(percent) {
     }, 2000, mina.easeinout);  
 }
 
-run(input/100);
+run(input.value/100);
 
 
 
@@ -738,7 +756,7 @@ function richTextEditor() {
     // RICH EDITOR support	
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-    ['blockquote', 'code-block'],
+   
 
     [{
         'header': 1
@@ -750,11 +768,7 @@ var toolbarOptions = [
     }, {
         'list': 'bullet'
     }],
-    [{
-        'script': 'sub'
-    }, {
-        'script': 'super'
-    }], // superscript/subscript
+    
     [{
         'indent': '-1'
     }, {
@@ -776,9 +790,7 @@ var toolbarOptions = [
     }, {
         'background': []
     }], // dropdown with defaults from theme
-    [{
-        'font': []
-    }],
+    
     [{
         'align': []
     }],
@@ -790,10 +802,12 @@ var toolbarOptions = [
 var Delta = Quill.import('delta');
 var quill = new Quill('#editor', {
     modules: {
-        toolbar: toolbarOptions
+        toolbar: toolbarOptions,
+       
     },
 
-    theme: 'snow'
+    theme: 'snow',
+     
 });
     
     var quill = new Quill('#editor2', {
@@ -845,9 +859,190 @@ window.onbeforeunload = function () {
 
 
 
+function printProfile(divName)
+ {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
 
 
 
 
+
+
+function candidateTimer()
+
+{
+    
+    
+    var minutes = $( '#set-time' ).val();
+
+var target_date = new Date().getTime() + ((minutes * 60 ) * 1000); // set the countdown date
+var time_limit = ((minutes * 60 ) * 1000);
+/*//set actual timer
+setTimeout(
+  function() 
+  {
+    alert( 'done' );
+  }, time_limit );*/
+
+var days, hours, minutes, seconds; // variables for time units
+
+var countdown = document.getElementById("tiles"); // get tag element
+
+getCountdown();
+
+setInterval(function () { getCountdown(); }, 1000);
+
+function getCountdown(){
+
+	// find the amount of "seconds" between now and target
+	var current_date = new Date().getTime();
+	var seconds_left = (target_date - current_date) / 1000;
+  
+if ( seconds_left >= 0 ) {
+  console.log(time_limit);
+   if ( (seconds_left * 1000 ) < ( time_limit / 2 ) )  {
+     $( '#tiles' ).removeClass('color-full');
+     $( '#tiles' ).addClass('color-half');
+
+		} 
+    if ( (seconds_left * 1000 ) < ( time_limit / 4 ) )  {
+    	$( '#tiles' ).removeClass('color-half');
+    	$( '#tiles' ).addClass('color-empty');
+    }
+  
+	days = pad( parseInt(seconds_left / 86400) );
+	seconds_left = seconds_left % 86400;
+		 
+	hours = pad( parseInt(seconds_left / 3600) );
+	seconds_left = seconds_left % 3600;
+		  
+	minutes = pad( parseInt(seconds_left / 60) );
+	seconds = pad( parseInt( seconds_left % 60 ) );
+
+	// format countdown string + set tag value
+	countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds + "</span>"; 
+  
+
+  
+}
+   
+  
+  
+}
+
+function pad(n) {
+	return (n < 10 ? '0' : '') + n;
+}
+    
+    
+    
+    
+}
+
+
+
+
+
+
+function tableRowClickable()
+
+{
+    
+    
+    
+  
+    $(".table-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+
+
+    
+    
+    
+    
+    
+    
+}
+
+
+
+function hiringFlow()
+{
+     var ds = {
+     'name': 'Hiring flow',
+     'title': 'Company XYZ',
+     'children': [
+       { 'name': 'Step-1', 'title': 'Applied' },
+       { 'name': 'Step-2', 'title': 'Phone interview' },
+        { 'name': 'Step-3', 'title': 'On-site interview' },
+        { 'name': 'Step-4', 'title': 'Offer' },
+         { 'name': 'Step-5', 'title': 'Hired' }
+      ]
+    };
+
+    var oc = $('#chart-container').orgchart({
+      'data' : ds,
+      'nodeContent': 'title',
+      'draggable': true,
+        'pan': true,
+      'zoom': true
+    });
+    
+     
+    $('#togglePan').on('click', function() {
+      // of course, oc.setOptions({ 'pan': this.checked }); is also OK.
+      oc.setOptions('pan', this.checked);
+    });
+    
+    $('#toggleZoom').on('click', function() {
+      // of course, oc.setOptions({ 'zoom': this.checked }); is also OK.
+      oc.setOptions('zoom', this.checked);
+    });
+
+    
+    oc.$chart.on('nodedrop.orgchart', function(event, extraParams) {
+      console.log('draggedNode:' + extraParams.draggedNode.children('.title').text()
+        + ', dragZone:' + extraParams.dragZone.children('.title').text()
+        + ', dropZone:' + extraParams.dropZone.children('.title').text()
+      );
+    });
+    
+}
+
+
+
+
+function treeSelect()
+{
+    
+      var tree = $('#tree').tree({
+                    primaryKey: 'id',
+                    uiLibrary: 'bootstrap',
+                    //dataSource: '/Locations/Get',
+                    // dataSource: [ { id: 12, text: 'foo', children: [ { id: 23, text: 'bar' } ] } ]
+                    dataSource: [
+        				{ id: 1, text: 'Math', children: [ { id: 2, text: 'Analytical' } ] },
+        				{ id: 3, text: 'Physics', children: [
+        													{ id: 4, text: 'Newton Laws' },
+        													{ id: 5, text: 'Inventions of Physics' },
+        												 ]
+        				}
+        			],
+                    checkboxes: true
+                });
+                $('#btnSave').on('click', function () {
+                    var checkedIds = tree.getCheckedNodes();
+                    alert(checkedIds);
+                });
+    
+}
 
 

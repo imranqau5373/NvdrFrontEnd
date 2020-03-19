@@ -22,7 +22,6 @@ export class HasPermissionDirective implements OnInit {
 
     @Input()
     set userHasPermission(permissionName: string) {
-        debugger;
         const isVisible = this.permissionService.hasPermission(permissionName);
         if (isVisible) {
             this.viewContainerRef.createEmbeddedView(this.templateRef);
