@@ -13,15 +13,15 @@ export const routes: Routes = [
     component : SportsBaseComponent,
     children: [
       {
-        path: 'sports-list',
+        path: 'categories-list',
         component: SportsListComponent
       },
       {
-        path: 'sports-create',
+        path: 'categories-create',
         component: SportsCreateComponent
       },
       {
-        path: 'sports-create/:id',
+        path: 'categories-create/:id',
         component: SportsCreateComponent
       }
     ]

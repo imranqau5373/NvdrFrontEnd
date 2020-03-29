@@ -12,19 +12,19 @@ export const routes: Routes = [
   children: [
   {
     path: '',
-    redirectTo: 'courts-list',
+    redirectTo: 'facilities-list',
     pathMatch: 'full'
   },
   {
-    path: 'courts-list',
+    path: 'facilities-list',
     component: ListCourtsComponent
   },
   {
-    path: 'courts-create',
+    path: 'facilities-create',
     component: CreateCourtsComponent
   },
   {
-    path: 'courts-create/:id',
+    path: 'facilities-create/:id',
     component: CreateCourtsComponent
   }
 ]

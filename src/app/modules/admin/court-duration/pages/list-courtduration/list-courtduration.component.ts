@@ -41,13 +41,13 @@ public filter: FilterCourtDurationRequestDto = new FilterCourtDurationRequestDto
   pageChange(newPage: number) {
 
     this.paggerConfig.currentPage = newPage;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtduration-list', { page: newPage });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilitiesduration-list', { page: newPage });
     this.refresh();
   }
   changePageSize(pageSize: number) {
 
     this.paggerConfig.itemsPerPage = pageSize;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtduration-list', { itemsPerPage: pageSize });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilitiesduration-list', { itemsPerPage: pageSize });
     this.refresh();
   }
   protected list(

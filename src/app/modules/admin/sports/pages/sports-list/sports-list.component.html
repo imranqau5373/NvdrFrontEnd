@@ -1,12 +1,12 @@
 <section>
   <div class="card table-card ">
-    <div class="card-header ">
-      <h5> Sports List
-        <a href="/admin/sports/sports-create" class="float-right">
-          <button type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"> Add new</i></button>
-        </a>
+    <div class="card-header">
+      <h5> Category List 
+          <a  href="/admin/categories/categories-create" class="float-right">
+              <button type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i>Add New </button>
+          </a>
       </h5>
-    </div>
+  </div>
 
     <div class="card-body ">
       <table class="table table-hover">
@@ -16,43 +16,44 @@
               <span (click)="sort('Name')">
                 <i class="fa fas fa-caret-up"
                     [ngClass]="{'fas fa-caret-down':sorting=='Name' && sortDirection,'fas fa-caret-up':sorting=='Name' && !sortDirection }"></i>
-                    Sports Name
+                    Category Name
             </span>
             <text-column-filter model="{{filter.Name.value}}" placeHolder="Name" id="Name"
                 (onApply)="searchInList('Name',$event[0])" (onClear)="clearSearch('Name')">
             </text-column-filter>
 
             </th>
-            <th scope="col">Total Courts</th>
-            <th scope="col">Last Updated By</th>
+            <th scope="col">Total Facilites</th>
+            <th scope="col">Last Updated</th>
             <th scope="col">Created By</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
 
-          <tr *ngFor="let sports of sportsList.Sports">
+          <tr *ngFor="let sports of sportsList.Sports | paginate : paggerConfig; let i=index">
             <td>
-              <a [routerLink]="'/admin/sports/sports-create/'+ sports.id">
+              <a [routerLink]="'/admin/categories/categories-create/'+ sports.id">
                 {{sports.name}}
               </a>
             </td>
 
             <td> {{sports.courtCount}} </td>
-            <td>{{sports.lastUpdated}}</td>
+            <td>{{sports.lastUpdated | DefaultDateFormat}}</td>
             <td>{{sports.createdBy}}</td>
-            <td data-type="numeric">
-              <div class="dropdown"> <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                  class="text-dark"><i class="fas fa-ellipsis-v"></i></a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" x-placement="bottom-end"
-                  style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item">Edit</a>
-                  <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#exampleModal"
-                    data-keyboard="false" data-backdrop="static">Delete</a>
-                </div>
-              </div>
-            </td>
 
+            <td>
+              <ul class="nav justify-content-start">
+                <li class="nav-item mr-2"> <a [routerLink]="'/admin/categories/categories-create/'+ sports.id" title="Edit category" data-placement="top"> 
+                  <i class="fas fa-edit"></i> </a>
+                </li>
+                <li class="nav-item mr-2"> <a href="#" data-toggle="tooltip" title="Delete"
+                  data-toggle="modal" data-target="#deleteCategoryModal" data-keyboard="false"
+                  data-backdrop="static" 
+                  data-placement="top"> <i class="fas fa-trash-alt"></i> </a> </li> 	
+          
+              </ul>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -67,7 +68,7 @@
             </select>
           </p>
         </div>
-        <div class="table-pagination ">
+        <div class="table-pagination " *ngIf="paggerConfig.totalItems">
           <p>
             <pagination-controls (pageChange)="pageChange($event)" class="my-pagination">
             </pagination-controls>

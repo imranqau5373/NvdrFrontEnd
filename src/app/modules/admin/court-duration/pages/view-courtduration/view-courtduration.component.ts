@@ -23,10 +23,9 @@ export class ViewCourtdurationComponent implements OnInit {
   durationSlotsList : ViewDurationSlots[] ;
 
   ngOnInit() {
-    debugger;
+
     this.durationId = this.activatedRoute.snapshot.params['durationId'];
-    
-        
+
     this.getDurationList();
   }
 

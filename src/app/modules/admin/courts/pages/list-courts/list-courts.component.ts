@@ -40,13 +40,13 @@ public filter: FilterCourtsRequestDto = new FilterCourtsRequestDto();
   pageChange(newPage: number) {
 
     this.paggerConfig.currentPage = newPage;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courts-list', { page: newPage });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilities-list', { page: newPage });
     this.refresh();
   }
   changePageSize(pageSize: number) {
 
     this.paggerConfig.itemsPerPage = pageSize;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courts-list', { itemsPerPage: pageSize });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilities-list', { itemsPerPage: pageSize });
     this.refresh();
   }
   protected list(

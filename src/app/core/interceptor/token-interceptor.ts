@@ -21,6 +21,9 @@ export class TokenInterceptor implements HttpInterceptor {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           "Authorization": 'Bearer ' + this.authenticationService.getJwtToken(),
+          "CompanyId": this.authenticationService.getCId() + "",
+          "IsAdmin": this.authenticationService.isAdmin().toString(),
+          "UserId": this.authenticationService.getUser() ? this.authenticationService.getUser().userId.toString() : ""
         })
       });
     }

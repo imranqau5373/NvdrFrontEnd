@@ -1,66 +1,52 @@
-<div class="container mt-4 mb-5">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <form name="form" (ngSubmit)="addSportsForm.form.valid && addSports()" #addSportsForm="ngForm">
-            <div class="card-body">
-              <h5 class="card-title mb-4">Adding New Sprots</h5>
-              <!-- <form> -->
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label for="NameField" class="font-weight-bolder">Name</label>
-                      <input type="text" class="form-control" name="Name"
-                      placeholder="Enter your sports name" [(ngModel)]="addSportsData.name" #Name="ngModel"
-                      [ngClass]="{ 'is-invalid': addSportsForm.submitted && Name.invalid}" minlength="2" required>
-                    <div *ngIf="addSportsForm.submitted && Name.invalid" class="invalid-feedback">
-                      <div *ngIf="Name.errors?.required">Sports Name is required</div>
-                      <div *ngIf="Name.errors?.minlength">Sports Name must be at least 2 characters</div>
-                    </div>
-                      </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <label for="DescriptionField" class="font-weight-bolder">Sports Description</label>
-                      <textarea class="form-control"  name="Description"
-                      [(ngModel)]="addSportsData.description" #Description="ngModel" rows="3"
-
-                        ></textarea>
-                    </div>
-                  </div>
+<section>
+  <form name="form" (ngSubmit)="addSportsForm.form.valid && addSports()" #addSportsForm="ngForm">
+    <div class="container mt-4 mb-5">
+      <div class="container mt-4 mb-5">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 name-title-card">
+              <div class="card-header">
+                <div class="form-check-inline">
+                  <h5 class="card-title mb-0 pt-2" *ngIf="!isUpdated">Adding New Category</h5>
+    
+                  <h5 class="card-title mb-0 pt-2" *ngIf="sportsId && sportsId > 0">Update Existing Category</h5>
                 </div>
               </div>
-              <h5 class="card-title">Sports company details</h5>
-              <p>Fill out these fields related to the sports and its company..</p>
-
-                <div class="container">
-                  <div class="row">
-                    <div class="col-lg-4 mb-3">
-                      <label for="CompanyField" class="font-weight-bolder">Select Company For Sports</label>
-                      <select  [(ngModel)]="addSportsData.companyId"
-                      name="CompanyId" class="form-control" #CompanyId="ngModel" required>
-                       <option  [ngValue]="''" disabled>Select Sports Company...</option>
-                        <option [ngValue]="company.id" *ngFor="let company of companyList">{{company.name}}</option>
-                     </select>
-                     <div *ngIf="addSportsForm.submitted && CompanyId.invalid" class="invalid-feedback">
-                      <div *ngIf="CompanyId.errors?.required">Company name is required</div>
-                    </div>
-
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="NameField" class="font-weight-bolder">Name</label>
+                  <input type="text" class="form-control" name="Name"
+                  placeholder="Enter your sports name" [(ngModel)]="addSportsData.name" #Name="ngModel"
+                  [ngClass]="{ 'is-invalid': addSportsForm.submitted && Name.invalid}" minlength="2" required>
+                  <div *ngIf="addSportsForm.submitted && Name.invalid" class="invalid-feedback">
+                    <div *ngIf="Name.errors?.required">Category Name is required</div>
+                    <div *ngIf="Name.errors?.minlength">Category Name must be at least 2 characters</div>
                   </div>
                 </div>
-                <button *ngIf="!isUpdated" type="submit" class="btn btn-primary float-right mr-2">Add Sports</button>
-
-                <button *ngIf="sportsId && sportsId > 0" type="submit" class="btn btn-primary float-right mr-2">Update Sports</button>
-
-
-                </div>
-            <!-- <div class="card-footer"> <a (click)="addSports()" class="btn btn-primary float-right mr-2">Add Sports</a>
-               -->
-           </div>
-          </form>
+                <label for="DescriptionField" class="font-weight-bolder">Category Description</label>
+                  <textarea class="form-control"  name="Description"
+                  [(ngModel)]="addSportsData.description" #Description="ngModel" rows="5"
+    
+                    ></textarea>
+              </div>
+            </div>
+    
+    
+          </div>
+    
         </div>
       </div>
+      <nav class="navbar fixed-bottom navbar-light bg-dark ml-5"> <a href="/admin/categories/categories-list"
+          class="btn btn-danger">Cancel</a>
+        <div class="form-inline my-2 my-lg-0">
+          <button *ngIf="!isUpdated" type="submit" class="btn btn-primary">Add Category</button>
+    
+          <button *ngIf="sportsId && (sportsId > 0)" type="submit" class="btn btn-primary">Update Category</button>
+    
+        </div>
+      </nav>
     </div>
-  </div>
+  </form>
+</section>
+
+
