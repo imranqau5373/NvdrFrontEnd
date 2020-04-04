@@ -8,4 +8,5 @@ export class AddCourtsDurationModel {
     courtEndTime : Date;
     courtDate : Date;
     slotDuration: number;
+    durationStatusId : number;
 }

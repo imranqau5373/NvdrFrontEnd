@@ -1,6 +1,7 @@
 $(document).ready(function () {
     
    
+ 
     /* charts();
      chart2();
      chart3(); 
@@ -9,6 +10,7 @@ $(document).ready(function () {
      nestedToggle(); 
      layoutReviewer();
      validations();
-    //  richTextEditor();
- });
- 
+    //  richTextEditor();   
+    
+    
+});

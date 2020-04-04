@@ -3,6 +3,7 @@ import { HttpService } from '../../shared/api-service';
 import { Router } from '@angular/router';
 import { UserModel, UserPermissionModel } from '@core/model/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { Encrypter } from '@core/model/common/Encrypter';
 
 
 @Injectable({
@@ -35,6 +36,11 @@ export class AuthenticationService {
     return (user && user.authenticationToken) ? user.authenticationToken : "";
   }
 
+  getCId() {
+    let user = this.getUser();
+    return (user && user.companyId) ? user.companyId : 0;
+  }
+
 
   logoutAndRedirectToLogin() {
     this.removeLocalStorageUser();
@@ -63,6 +69,11 @@ export class AuthenticationService {
     localStorage.setItem('userClaims', JSON.stringify(permissionList));
   }
 
+  isAdmin(): boolean {
+    let user = this.getUser();
+    return user.isAdmin;
+  }
+
   removeLocalStorageUser() {
     localStorage.removeItem('speekioUser');
     localStorage.removeItem('userClaims');
@@ -70,11 +81,16 @@ export class AuthenticationService {
 
   //method use to store user in local storage
   saveUser(user: any) {
+    user.companyId = Encrypter.encrypt(user.companyId, 'GolfGolfbold2019!a12@1211!1', 'GolfGolfbold2019!a12@1211!1');
     localStorage.setItem('speekioUser', JSON.stringify(user));
   }
 
   getUser(): UserModel {
-    return JSON.parse(localStorage.getItem('speekioUser')) as UserModel;
+    let user = JSON.parse(localStorage.getItem('speekioUser')) as UserModel;
+    if (user && user.companyId) {
+      user.companyId = Encrypter.decrypt(user.companyId, 'GolfGolfbold2019!a12@1211!1', 'GolfGolfbold2019!a12@1211!1');
+    }
+    return user;
   }
 
   getUserName(): string {

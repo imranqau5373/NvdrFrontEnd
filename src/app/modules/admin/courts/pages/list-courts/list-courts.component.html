@@ -2,10 +2,10 @@
   <section>
     <div class="card table-card ">
         <div class="card-header ">
-            <h5> Courts List
-                <a href="/admin/courts/courts-create" class="float-right">
+            <h5> Facilities List
+                <a href="/admin/facilities/facilities-create" class="float-right">
                     <button type="button" class="btn btn-primary"> <i
-                            class="fas fa-plus-circle"> Add new</i></button>
+                            class="fas fa-plus-circle"></i> Add new</button>
                 </a>
             </h5>
         </div>
@@ -18,7 +18,7 @@
                             <span (click)="sort('Name')">
                               <i class="fa fas fa-caret-up"
                                   [ngClass]="{'fas fa-caret-down':sorting=='Name' && sortDirection,'fas fa-caret-up':sorting=='Name' && !sortDirection }"></i>
-                                  Court Name
+                                  Facility Name
                           </span>
                           <text-column-filter model="{{filter.Name.value}}" placeHolder="Name" id="Name"
                               (onApply)="searchInList('Name',$event[0])" (onClear)="clearSearch('Name')">
@@ -26,32 +26,35 @@
 
                           </th>
                           <th scope="col">Description</th>
-                          <th scope="col">Sports</th>
-                          <th scope="col"></th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Last Updated</th>
+                          <th scope="col">Created By</th>
+                          
+                          <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
-            <tr *ngFor="let court of courtsList.courts">
+            <tr *ngFor="let court of courtsList.courts | paginate : paggerConfig; let i=index">
                 <td>
-                  <a [routerLink]="'/admin/courts/courts-create/'+ court.id">
+                  <a [routerLink]="'/admin/facilities/facilities-create/'+ court.id">
                     {{court.name}}
                 </a>
                 </td>
 
               <td> {{court.description}} </td>
               <td>{{court.sportsName}}</td>
-              <td data-type="numeric">
-                <div class="dropdown"> <a href="" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-v"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1"
-                        x-placement="bottom-end"
-                        style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <a class="dropdown-item"
-                        [routerLink]="'/admin/courts/courts-create/'+ court.id">Edit</a>
-
-                    </div>
-                </div>
+              <td>{{court.lastUpdated | DefaultDateFormat}}</td>
+              <td>{{court.createdBy}}</td>
+              
+              <td>
+                <ul class="nav justify-content-start">
+                  <li class="nav-item mr-2"> <a [routerLink]="'/admin/facilities/facilities-create/'+ court.id" title="Edit Facility" data-placement="top"> <i class="fas fa-edit"></i> </a> </li>
+                  <li class="nav-item mr-2"> <a href="#" data-toggle="tooltip" title="Delete"
+                    data-toggle="modal" data-target="#deleteCategoryModal" data-keyboard="false"
+                    data-backdrop="static" 
+                    data-placement="top"> <i class="fas fa-trash-alt"></i> </a> </li>
+                </ul>
               </td>
 
                         </tr>

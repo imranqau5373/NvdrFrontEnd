@@ -29,6 +29,8 @@ export class CreateCourtdurationComponent implements OnInit {
   
 
   sportsId: number; //to be assigned from dropdown
+  courtId: number; //to be assigned from dropdown
+  
   ngOnInit() {
 
     this.addCourtsDuratoinData = new AddCourtsDurationModel();
@@ -73,7 +75,7 @@ getCourts(sportId:number){   //get list of courts for cmp in selected sports
   });
 }
 selectCourt(courtId){
-
+  debugger;
   this.addCourtsDuratoinData.courtId = courtId;
 }
 getCourtsDuration(courtsDurationId:number){
@@ -96,10 +98,11 @@ addCourtsDuration(){
 if(this.isUpdated == true)
 this.updateCourtsDuration();
 else{
+  this.addCourtsDuratoinData.durationStatusId = 1;
     this.courtsDurationService.addCourtsDuration(this.addCourtsDuratoinData).subscribe(result => {
     if (result && result.body.successful) {
       this.toastService.showSuccess(result.body.message);
-      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtduration-list');
+      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'duration-list');
     }
     else {
       this.toastService.showError(result.message);
@@ -111,7 +114,7 @@ updateCourtsDuration(){
 this.courtsDurationService.updateCourtsDuration(this.addCourtsDuratoinData).subscribe(result =>{
   if(result && result.body.successful) {
     this.toastService.showSuccess(result.body.message);
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtduration-list');
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilitiesduration-list');
   }
   else {
     this.toastService.showError(result.message);

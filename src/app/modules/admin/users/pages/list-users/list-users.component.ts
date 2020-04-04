@@ -46,7 +46,7 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
       this.roles = [];
       this.userList = [];
       this.getUserRoles();
-      //super.ngOnInit();
+      super.ngOnInit();
     }
 
     getUserRoles() {
@@ -88,22 +88,23 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
   
 
     pageChange(newPage: number) {
-
-      this.paggerConfig.currentPage = newPage;
-      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'users-list', { page: newPage });
-      this.refresh();
+      if (newPage) {
+        this.paggerConfig.currentPage = newPage;
+        this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'user-list', { page: newPage });
+        // this.refresh();
+      }
     }
-
+  
     changePageSize(pageSize: number) {
-
       this.paggerConfig.itemsPerPage = pageSize;
-      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'users-list', { itemsPerPage: pageSize });
-      this.refresh();
+      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'user-list', { itemsPerPage: pageSize });
+      // this.refresh();
     }
     protected list(
       request: PagingModel,
       finishedCallback: Function
     ) {
+      debugger;
       let model = new GetUserModel();
       model.name = this.filter.Name.value;
       model.email = this.filter.Email.value;
@@ -112,6 +113,8 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
       model.statusIds = this.filter.Statuses ? this.filter.Statuses.options.filter(t => t.checked == true).map(item => item.id) : null;
       model.sortColumn = this.sorting;
       model.sortDirection = this.sortDirection ? 'ASC' : 'DESC';
+      model.pageNumber = request.currentPage;
+      model.pageSize = 20;
       this.getUserList(model);
     }
     getUserList(filterModel: GetUserModel) {
@@ -135,5 +138,9 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
       this.destroy$.next(true);
       // Unsubscribe from the subject
       this.destroy$.unsubscribe();
+    
+    }
+    loadUserDetail(user : any){
+      
     }
   }

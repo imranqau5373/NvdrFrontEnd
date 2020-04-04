@@ -1,39 +1,108 @@
-<div class="row">
-        <div class="col-md-5 col-lg-5 col-xl-4">
-          <div class="card recent-act mb-4">
-            <div class="card-body">
-              <h5 class="card-title mb-4">Recent activities</h5>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="input-group mb-3 recent-act-search">
-                    <div class="input-group-prepend"> <span class="input-group-text"><i class="material-icons ">search</i></span> </div>
-                    <input type="text" class="form-control" placeholder="Search" aria-label="search" aria-describedby="search">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons mr-1">filter_list</i></button>
-                      <div class="dropdown-menu"> <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-                        <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                      </div>
-                    </div>
-                  </div>
+<section>
+  <div class="container-fluid mb-5">
+    <div class="row">
+      <div class="col-xl-9 ">
+        <div class="row">
+          <div class="col-lg-6  mb-4">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between">
+                <h5>All Bookings</h5>
+                <div class="form-group ">
+                  <select class="custom-select">
+                    <option value="0">Select job to view stats</option>
+                    <option value="1">Project Management</option>
+                    <option value="2">Driving</option>
+                    <option value="3">Cooking</option>
+                  </select>
                 </div>
               </div>
-              <p class="font-weight-bold text-primary">28 December 2019</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 1</strong> from the <strong>Ward</strong> to <strong>Trash</strong> with barcode <strong>225145874</strong>.</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 2</strong> from the <strong>Storage</strong> to <strong>Ward</strong> with barcode <strong>585585555</strong>.</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 3</strong> from the <strong>Trash</strong> to <strong>Dispatch</strong> with barcode <strong>225145874</strong>.</p>
-              <br>
-              <p class="font-weight-bold text-primary">20 November 2019</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 1</strong> from the <strong>Ward</strong> to <strong>Trash</strong> with barcode <strong>225145874</strong>.</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 2</strong> from the <strong>Storage</strong> to <strong>Ward</strong> with barcode <strong>585585555</strong>.</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 3</strong> from the <strong>Trash</strong> to <strong>Dispatch</strong> with barcode <strong>225145874</strong>.</p>
-              <br>
-              <p class="font-weight-bold text-primary">18 October 2019</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 1</strong> from the <strong>Ward</strong> to <strong>Trash</strong> with barcode <strong>225145874</strong>.</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 2</strong> from the <strong>Storage</strong> to <strong>Ward</strong> with barcode <strong>585585555</strong>.</p>
-              <p><img src="assets/img/img_avatar.png" alt="Avatar" class="avatar mr-2"><strong>Tibor&nbsp;l&nbsp; Sierra</strong> moved  <strong>Bin 3</strong> from the <strong>Trash</strong> to <strong>Dispatch</strong> with barcode <strong>225145874</strong>.</p>
+              <div class="card-body">
+                <div id="chart">
+                  <div id="timeline-chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between">
+                <h5>Jobs to examine</h5>
+                <div class="form-group w-50">
+                  <select class="custom-select">
+                    <option value="0">Select job to view stats</option>
+                    <option value="1">Project Management</option>
+                    <option value="2">Driving</option>
+                    <option value="3">Cooking</option>
+                  </select>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="chart3">
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      
       </div>
+      <div class="col-xl-3 ">
+        <div class=" mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h5>Active Court Durations </h5>
+            </div>
+            <div class="wrapper-active-jobs">
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Project Management Job <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Driving Job <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Marketing Manager <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Project Management Job <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Driving Job <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Marketing Manager <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Project Management Job <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Driving Job <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center"> Marketing Manager <div class="custom-control custom-switch pt-2 mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="card-footer text-muted"> <a href="job-manager.html"> view all</a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -71,7 +71,7 @@ addCourts(){
     this.courtsService.addCourts(this.addCourtsData).subscribe(result => {
     if (result.body && result.body.successful) {
       this.toastService.showSuccess(result.body.message);
-      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courts-list');
+      this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilities-list');
     }
     else {
       this.toastService.showError(result.message);
@@ -83,7 +83,7 @@ updateCourts(){
 this.courtsService.updateCourts(this.addCourtsData).subscribe(result =>{
   if(result && result.body.successful) {
     this.toastService.showSuccess(result.body.message);
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courts-list');
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilities-list');
   }
   else {
     this.toastService.showError(result.message);

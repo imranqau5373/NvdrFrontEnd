@@ -31,31 +31,31 @@ export class MenuService {
       },
 
       {
-        name: 'Sports Manager', path: '/admin/sports/sports-list', key: 'sports', children: [
+        name: 'Category Manager', path: '/admin/categories/categories-list', key: 'sports', children: [
           {
-            name: 'Sports List',
+            name: 'Category List',
             key: 'sports-list',
-            path: '/admin/sports/sports-list'
+            path: '/admin/categories/categories-list'
           },
           {
-            name: 'Sports Create',
+            name: 'Category Create',
             key: 'sports-create',
-            path: '/admin/sports/sports-create'
+            path: '/admin/categories/categories-create'
           }
         ]
       },
 
       {
-        name: 'Courts Manager', path: '/admin/courts/courts-list', key: 'courts', children: [
+        name: 'Facilities Manager', path: '/admin/facilities/facilities-list', key: 'courts', children: [
           {
             name: 'Courts List',
             key: 'courts-list',
-            path: '/admin/courts/courts-list'
+            path: '/admin/facilities/facilities-list'
           },
           {
-            name: 'Courts Create',
+            name: 'Facility Create',
             key: 'courts-create',
-            path: '/admin/courts/courts-create'
+            path: '/admin/facilities/facilities-create'
           }
         ]
       },
