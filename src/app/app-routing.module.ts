@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { AuthGuard } from '@core/guard/auth-guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { CandidateLayoutComponent } from './layout/candidate-layout/candidate-layout.component';
 
 const routes: Routes = [
   {
@@ -43,11 +44,6 @@ const routes: Routes = [
           import('@modules/admin/court-duration/court-duration.module').then(m => m.CourtDurationModule)
       },
       {
-        path: 'booking',
-        loadChildren: () =>
-          import('@modules/admin/court-booking/court-booking.module').then(m => m.CourtBookingModule)
-      },
-      {
         path: '',
         loadChildren: () =>
           import('@modules/admin/company/company.module').then(m => m.CompanyModule)
@@ -62,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: ContentLayoutComponent,
+    component: CandidateLayoutComponent,
     loadChildren: () =>
       import('@modules/booking/booking.module').then(m => m.BookingModule)
   },
