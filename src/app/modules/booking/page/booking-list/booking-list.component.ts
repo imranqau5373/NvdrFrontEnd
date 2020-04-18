@@ -9,6 +9,7 @@ import { CourtsBookingListModelPagged } from '@core/model/courtsBooking-model/Co
 import { Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
+import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
 
 @Component({
   selector: 'app-booking-list',
@@ -20,7 +21,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
 
   paggingModel: PagingModel = new PagingModel();
   courtsBookingList: CourtsBookingListModelPagged = new CourtsBookingListModelPagged();
-
+  userBookingModel: UserBookingModel;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private courtsBookingService: CourtsBookingService,
@@ -34,6 +35,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
    }
 
   ngOnInit() {
+    this.userBookingModel = new UserBookingModel();
     let currentPage = this.customRouter.getQueryParamByKey(this.activatedRoute, 'page');
     if (currentPage) {
       this.paggerConfig.currentPage = currentPage;
@@ -77,13 +79,16 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
             return;
           }
           if (response.items && response.items.length > 0) {
-            debugger;
             this.courtsBookingList.CourtBooking = response.items;
 
             this.paggerConfig.totalItems = response.totalCount;
           }
 
         });
+  }
+
+  saveUserBooking(form: any){
+    this.courtsBookingService
   }
 
   
