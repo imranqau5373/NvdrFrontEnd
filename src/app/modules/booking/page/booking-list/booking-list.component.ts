@@ -1,36 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
-import { CourtsDurationListModelPagged,FilterCourtDurationRequestDto } from '@core/model/courtsDuration-model/CourtsDurationListModelPagged';
-import { PagingModel } from '@core/model/common/paging.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertService } from '@shared/_alert';
+import { CourtsBookingService } from '@core/service/courtsBooking-service';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CourtsDurationService } from '@core/service/courtsDuration-service';
 import { CustomRouter } from '@shared/service/custom-router.service';
+import { PagingModel } from '@core/model/common/paging.model';
+import { CourtsBookingListModelPagged } from '@core/model/courtsBooking-model/CourtsBookingListModelPagged';
 import { Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
+import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
 
 @Component({
-  selector: 'app-list-courtduration',
-  templateUrl: './list-courtduration.component.html',
-  styleUrls: ['./list-courtduration.component.css']
+  selector: 'app-booking-list',
+  templateUrl: './booking-list.component.html',
+  styleUrls: ['./booking-list.component.css']
 })
-export class ListCourtdurationComponent extends PagedListingComponentBase<CourtsDurationListModelPagged> implements OnInit {
+export class BookingListComponent extends PagedListingComponentBase<CourtsBookingListModelPagged> implements OnInit {
 
 
   paggingModel: PagingModel = new PagingModel();
-  courtsDurationList: CourtsDurationListModelPagged = new CourtsDurationListModelPagged();
-public filter: FilterCourtDurationRequestDto = new FilterCourtDurationRequestDto();
+  courtsBookingList: CourtsBookingListModelPagged = new CourtsBookingListModelPagged();
+  userBookingModel: UserBookingModel;
   destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
-    private courtsDurationService: CourtsDurationService,
+    private courtsBookingService: CourtsBookingService,
     private toastService: SpeekioToastService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
     private customRouter: CustomRouter
   ) {
+
     super();
-  }
+   }
+
   ngOnInit() {
+    this.userBookingModel = new UserBookingModel();
     let currentPage = this.customRouter.getQueryParamByKey(this.activatedRoute, 'page');
     if (currentPage) {
       this.paggerConfig.currentPage = currentPage;
@@ -38,24 +43,27 @@ public filter: FilterCourtDurationRequestDto = new FilterCourtDurationRequestDto
     super.ngOnInit();
 
   }
+
   pageChange(newPage: number) {
 
     this.paggerConfig.currentPage = newPage;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilitiesduration-list', { page: newPage });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtbooking-list', { page: newPage });
     this.refresh();
   }
+
+
   changePageSize(pageSize: number) {
 
     this.paggerConfig.itemsPerPage = pageSize;
-    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'facilitiesduration-list', { itemsPerPage: pageSize });
+    this.customRouter.navigateToSibling(this.router, this.activatedRoute, 'courtbooking-list', { itemsPerPage: pageSize });
     this.refresh();
   }
+
+
   protected list(
     request: PagingModel,
     finishedCallback: Function) {
-      this.courtsDurationService.getCourtsDurationList(this.filter.Name.value, this.filter.AddedQuestions.value,
-        this.filter.LastUpdated.value, this.filter.CreatedBy.value, this.filter.StatusId.value,
-        this.sorting, this.sortDirection ? 'ASC' : 'DESC', request.currentPage, request.itemsPerPage)
+      this.courtsBookingService.getCourtsBookingList(request)
         .pipe(
           finalize(() => {
             finishedCallback();
@@ -65,25 +73,29 @@ public filter: FilterCourtDurationRequestDto = new FilterCourtDurationRequestDto
           if (!result || !result.body) {
             return;
           };
-
           var response = result.body;
           if (!response.successful) {
             this.toastService.showError(response.message);
             return;
           }
-
           if (response.items && response.items.length > 0) {
-            debugger;
+            this.courtsBookingList.CourtBooking = response.items;
 
-            this.courtsDurationList.courts = response.items;
             this.paggerConfig.totalItems = response.totalCount;
           }
 
         });
   }
+
+  saveUserBooking(form: any){
+    this.courtsBookingService
+  }
+
+  
   ngOnDestroy() {
     this.destroy$.next(true);
     // Unsubscribe from the subject
     this.destroy$.unsubscribe();
   }
+
 }

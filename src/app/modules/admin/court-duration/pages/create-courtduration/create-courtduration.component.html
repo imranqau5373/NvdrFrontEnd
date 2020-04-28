@@ -6,7 +6,7 @@
           <div class="card mb-4 name-title-card">
             <div class="card-header">
               <div class="form-check-inline">
-                <h5 class="card-title mb-0 pt-2">Add Court Duration</h5>
+                <h5 class="card-title mb-0 pt-2">Add Facility Duration</h5>
               </div>
               <div class="float-right">
                 <div class="form-row">
@@ -33,20 +33,21 @@
 
               <div class="row">
                 <div class="col-lg-4 mb-3">
-                  <label for="SportField" class="font-weight-bolder">Select Sport</label>
+                  <label for="SportField" class="font-weight-bolder">Select Category</label>
                   <select [(ngModel)]="sportsId" name="SportId" class="form-control" #SportId="ngModel"
                     (change)="getCourts(sportsId)" required>
-                    <option [ngValue]="''" disabled>Select Sport...</option>
+                    <option [ngValue]="''" disabled>Select Category...</option>
                     <option [ngValue]="sport.id" *ngFor="let sport of sportsList">{{sport.name}}</option>
                   </select>
                   <div *ngIf="addDurationForm.submitted && SportId.invalid" class="invalid-feedback" required>
                   </div>
                 </div>
                 <div class="col-lg-4 mb-3">
-                  <label for="CourtField" class="font-weight-bolder">Select Court</label>
-                  <select [(ngModel)]="addCourtsDuratoinData.id" *ngIf="courtsList && courtsList.length > 0" name="id"
-                    class="form-control" #id="ngModel" required>
-                    <option [ngValue]="''" disabled>Select court...</option>
+                  <label for="CourtField" class="font-weight-bolder">Select Facility</label>
+                  <select [(ngModel)]="courtId" *ngIf="courtsList && courtsList.length > 0"  name="CourtId" 
+                    class="form-control" #CourtId="ngModel"
+                    (change)="selectCourt(courtId)" required>
+                    <option [ngValue]="''" disabled>Select facility...</option>
                     <option [ngValue]="court.id" *ngFor="let court of courtsList">{{court.name}}</option>
                   </select>
                 </div>
@@ -56,7 +57,7 @@
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label for="NameField" class="font-weight-bolder">Court Start Time</label>
+                    <label for="NameField" class="font-weight-bolder">Facility Start Time</label>
                     <input type="datetime-local" class="form-control" name="CourtStartTime"
                       [(ngModel)]="addCourtsDuratoinData.courtStartTime" #CourtStartTime="ngModel"
                       [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtStartTime.invalid}" required>
@@ -67,7 +68,7 @@
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label for="NameField" class="font-weight-bolder">Court End Time</label>
+                    <label for="NameField" class="font-weight-bolder">Facility End Time</label>
                     <input type="datetime-local" class="form-control" name="courtEndTime"
                       [(ngModel)]="addCourtsDuratoinData.courtEndTime" #courtEndTime="ngModel"
                       [ngClass]="{ 'is-invalid': addDurationForm.submitted && courtEndTime.invalid}" required>
@@ -79,7 +80,7 @@
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label for="NameField" class="font-weight-bolder">Court Date</label>
+                    <label for="NameField" class="font-weight-bolder">Facility Duration Date</label>
                     <input type="datetime-local" class="form-control" name="CourtDate"
                       [(ngModel)]="addCourtsDuratoinData.courtDate" #CourtDate="ngModel"
                       [ngClass]="{ 'is-invalid': addDurationForm.submitted && CourtDate.invalid}" required>
@@ -90,7 +91,7 @@
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label for="SlotField" class="font-weight-bolder">Slot Duration</label>
+                    <label for="SlotField" class="font-weight-bolder">Facility Slot Duration</label>
                     <input type="text" class="form-control" name="slotDuration" placeholder="Enter slot Duration"
                       [(ngModel)]="addCourtsDuratoinData.slotDuration" #slotDuration="ngModel"
                       [ngClass]="{ 'is-invalid': addDurationForm.submitted && slotDuration.invalid}">
@@ -107,7 +108,7 @@
 
       </div>
     </div>
-    <nav class="navbar fixed-bottom navbar-light bg-dark ml-5"> <a href="/admin/courtduration/courtduration-list"
+    <nav class="navbar fixed-bottom navbar-light bg-dark ml-5"> <a href="/admin/duration/duration-list"
         class="btn btn-danger">Cancel</a>
       <div class="form-inline my-2 my-lg-0">
         <button *ngIf="!isUpdated" type="submit" class="btn btn-primary float-right mr-2">Add Duration</button>

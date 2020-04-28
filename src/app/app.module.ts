@@ -19,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CandidateLayoutComponent } from './layout/candidate-layout/candidate-layout.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#1999e3',
@@ -31,7 +32,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     AuthLayoutComponent,
     ContentLayoutComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    CandidateLayoutComponent
 
   ],
   imports: [

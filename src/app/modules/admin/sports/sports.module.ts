@@ -16,8 +16,8 @@ import { SharedModule } from '@shared/shared.module';
 @NgModule({
   declarations: [SportsListComponent, SportsCreateComponent, SportsUpdateComponent, SportsBaseComponent],
   imports: [
-    SharedModule,
     CommonModule,
+    SharedModule,
     SportsRoutingModule,
     FormsModule
   ]

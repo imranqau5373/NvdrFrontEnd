@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { AuthGuard } from '@core/guard/auth-guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { CandidateLayoutComponent } from './layout/candidate-layout/candidate-layout.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: ContentLayoutComponent,
-
+    canActivate: [AuthGuard],
     //all the modules under the route admin e.g admin/add-job
     children: [
       {
@@ -23,7 +24,7 @@ const routes: Routes = [
           import('@modules/admin/home/home.module').then(m => m.HomeModule),
       },
       {
-        path: 'sports',
+        path: 'categories',
         loadChildren: () =>
           import('@modules/admin/sports/sports.module').then(m => m.SportsModule)
       },
@@ -33,19 +34,14 @@ const routes: Routes = [
           import('@modules/admin/users/users.module').then(m => m.UsersModule)
       },
       {
-        path: 'courts',
+        path: 'facilities',
         loadChildren: () =>
           import('@modules/admin/courts/courts.module').then(m => m.CourtsModule)
       },
       {
-        path: 'courtduration',
+        path: 'duration',
         loadChildren: () =>
           import('@modules/admin/court-duration/court-duration.module').then(m => m.CourtDurationModule)
-      },
-      {
-        path: 'courtbooking',
-        loadChildren: () =>
-          import('@modules/admin/court-booking/court-booking.module').then(m => m.CourtBookingModule)
       },
       {
         path: '',
@@ -62,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: ContentLayoutComponent,
+    component: CandidateLayoutComponent,
     loadChildren: () =>
       import('@modules/booking/booking.module').then(m => m.BookingModule)
   },

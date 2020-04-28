@@ -5,11 +5,12 @@ import { BookingRoutingModule } from './booking-routing.module';
 import { BookingPageComponent } from './page/booking-page/booking-page.component';
 import { jqxSchedulerModule } from 'jqwidgets-ng/jqxscheduler';
 import { jqxBarGaugeModule }  from 'jqwidgets-ng/jqxbargauge';
+import { BookingListComponent } from './page/booking-list/booking-list.component';
 
 //import { jqxSchedulerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxscheduler.ts';
 
 @NgModule({
-  declarations: [BookingPageComponent],
+  declarations: [BookingPageComponent, BookingListComponent],
   imports: [
     CommonModule,
     BookingRoutingModule,

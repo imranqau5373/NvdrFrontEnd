@@ -3,6 +3,7 @@ import { HttpApiService } from '@shared/http-api-service';
 import { Observable  } from 'rxjs';
 import { GetCourtsBookingModel } from '@core/model/courtsBooking-model/get-courtsBookingList.model';
 import { AddCourtsBookingModel } from '@core/model/courtsBooking-model/add-courtsBooking.model';
+import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,11 @@ export class CourtsBookingService {
     }
 
     getCourtsBookingList(model: GetCourtsBookingModel):Observable<any>{
+
+        return this._httpApiService.post("CourtsBooking/GetCourtsBookingsList",model);
+
+      }
+      saveBookingUser(model: UserBookingModel):Observable<any>{
 
         return this._httpApiService.post("CourtsBooking/GetCourtsBookingsList",model);
 

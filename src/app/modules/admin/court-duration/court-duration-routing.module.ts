@@ -13,23 +13,23 @@ export const routes: Routes = [
   children: [
   {
     path: '',
-    redirectTo: 'courtduration-list',
+    redirectTo: 'duration-list',
     pathMatch: 'full'
   },
   {
-    path: 'courtduration-create',
+    path: 'duration-create',
     component: CreateCourtdurationComponent
   },
   {
-    path: 'courtduration-list',
+    path: 'duration-list',
     component: ListCourtdurationComponent
   },
   {
-    path: 'courtduration-create/:id',
+    path: 'duration-create/:id',
     component: CreateCourtdurationComponent
   },
   {
-    path: 'courtduration-view/:durationId',
+    path: 'duration-view/:durationId',
     component: ViewCourtdurationComponent
   }
 ]
