@@ -23,12 +23,16 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
   courtsBookingList: CourtsBookingListModelPagged = new CourtsBookingListModelPagged();
   userBookingModel: UserBookingModel;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  bookingDate : Date;
+  bookingCompanies : null;
+  companyId : number;
   constructor(
     private courtsBookingService: CourtsBookingService,
     private toastService: SpeekioToastService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
     private customRouter: CustomRouter
+
   ) {
 
     super();
@@ -41,7 +45,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
       this.paggerConfig.currentPage = currentPage;
     }
     super.ngOnInit();
-
+    this.getBookingCompanies();
   }
 
   pageChange(newPage: number) {
@@ -63,7 +67,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
   protected list(
     request: PagingModel,
     finishedCallback: Function) {
-      this.courtsBookingService.getCourtsBookingList(request)
+      this.courtsBookingService.getCourtsBookingList(this.bookingDate)
         .pipe(
           finalize(() => {
             finishedCallback();
@@ -88,7 +92,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
   }
 
   saveUserBooking(form: any){
-    this.courtsBookingService
+
   }
 
   
@@ -96,6 +100,27 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
     this.destroy$.next(true);
     // Unsubscribe from the subject
     this.destroy$.unsubscribe();
+  }
+
+  applyFilter(){
+    this.refresh();
+  }
+
+  getBookingCompanies(){
+    this.courtsBookingService.getBookingCompanies().subscribe(result => {
+      if (result && result.successful) {
+        this.bookingCompanies = result.bookingCompanyList
+      }
+      else {
+        this.toastService.showError(result.message);
+      }
+    });
+  }
+
+  setCompanyId(event : any){
+    debugger;
+    this.companyId = event.target.value;
+    alert(this.companyId);
   }
 
 }

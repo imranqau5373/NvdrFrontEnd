@@ -11,6 +11,15 @@
             <button class="btn btn-secondary  org-radius ml-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="material-icons mr-1">filter_list</i>Filter </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> <a class="dropdown-item" href="#">New to old</a> <a class="dropdown-item" href="#">Old to new</a> <a class="dropdown-item" href="#">Most used</a> </div>
           </div>
+          <label for="SportField" class="font-weight-bolder">Select Company</label>
+          <select  (change)="setCompanyId($event)" name="CopmanyId" class="form-control">
+           <option  [value]="''" disabled>Select Company...</option>
+            <option [value]="company.id" *ngFor="let company of bookingCompanies">{{company.companyName}}</option>
+         </select>
+          <span>Booking Date</span>
+          <input type="date" class="float-left" [(ngModel)]="bookingDate" placeholder="Search" aria-label="search" aria-describedby="basic-addon1">
+
+          <input type="button" (click)="applyFilter()" class="btn btn-primary float-right mr-2" value="Apply Filter" aria-describedby="basic-addon1">
         </div>
       </div>
     </div>
@@ -24,14 +33,14 @@
             data-keyboard="false" data-backdrop="static" style="text-decoration: none; color: inherit; text-transform: inherit;">
             <h5 class="card-title">{{booking.name}} <span class="badge badge-success float-right">Booked Now</span></h5>
             <p></p>
-            <h6 class="card-subtitle mb-2 text-muted">Start Time: {{booking.bookingStartTime}} </h6>
+            <h6 class="card-subtitle mb-2 text-muted">Start Time: {{booking.bookingStartTime | DefaultDateTimeFormat}} </h6>
               <p></p>
-            <h6 class="card-subtitle mb-2 text-muted">End Time: {{booking.bookingEndTime }} </h6>
+            <h6 class="card-subtitle mb-2 text-muted">End Time: {{booking.bookingEndTime | DefaultDateTimeFormat }} </h6>
 
             
             <p class="card-text wrap-scroll"> {{booking.description}}</p>
             
-            <p class="card-text wrap-scroll"> <strong>Court Date : </strong>{{booking.bookingStartTime}}</p>
+            <p class="card-text wrap-scroll"> <strong>Court Date : </strong>{{booking.bookingStartTime | DefaultDateFormat}}</p>
             
           </a>
           <div class="card-footer text-muted ">

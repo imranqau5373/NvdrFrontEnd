@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ControlMessageComponent } from './user_control/components/control-message/control-message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DefaultDateFormatPipe } from './pipes/date-format.pipe';
+import { DefaultDateFormatPipe, DefaultDateTimeFormatPipe } from './pipes/date-format.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterBadgeComponent } from './filters/filter-badge.component';
@@ -14,7 +14,7 @@ import { TextColumnFilterComponent } from './filters/text-column-filter.componen
 import { DateColumnFilterComponent } from './filters/date-column-filter.component';
 import { HasPermissionDirective } from './directives/has-permission.directive';
 @NgModule({
-  declarations: [ControlMessageComponent,DefaultDateFormatPipe,FilterBadgeComponent,
+  declarations: [ControlMessageComponent,DefaultDateFormatPipe,DefaultDateTimeFormatPipe,FilterBadgeComponent,
     DateColumnFilterComponent,
     OptionsColumnFilterComponent,
     TextColumnFilterComponent,
@@ -40,6 +40,7 @@ import { HasPermissionDirective } from './directives/has-permission.directive';
     RouterModule,
     ControlMessageComponent,
     DefaultDateFormatPipe,
+    DefaultDateTimeFormatPipe,
         FilterBadgeComponent,
     DateColumnFilterComponent,
     OptionsColumnFilterComponent,

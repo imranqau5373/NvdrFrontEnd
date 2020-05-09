@@ -11,7 +11,7 @@
                 <div class="card-body" >
                   <div class="d-flex flex-wrap" *ngIf="durationSlotsList && durationSlotsList.length > 0">
                     <div class="card card-w-swim mb-3 mr-3"   *ngFor="let slot of durationSlotsList; let i=index"> 
-                        <a href="javascript:void(0);" [routerLink]="'/admin/jobs/examin-candidate-score/'+ slot.id">
+                        <a href="javascript:void(0);">
                         <div class="card-body">
                           <div class="media"> 
                             <img [src]="'assets/img/img_avatar.png'" class="img-40 mr-3 rounded-circle img-avatar" alt="...">
@@ -19,6 +19,13 @@
                               <div class="d-flex mb-n1">
                                 <h6 class="mt-0 mb-2 text-dark w-100" *ngIf="slot.isBooked">Slot is Booked</h6>
                                 <h6 class="mt-0 mb-2 text-dark w-100" *ngIf="!slot.isBooked">Slot is avilable</h6>
+                                <div class="dropdown ml-auto"> <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-h"></i></a>
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" x-placement="bottom-end" style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;"> 
+                                    <a class="dropdown-item" href="javascript:void(0);" (click)="detailSlotDialog(slot.id)" data-toggle="modal" data-keyboard="false" data-backdrop="static">View details</a> 
+                                    <a class="dropdown-item" href="javascript:void(0);" (click)="cancelSlotDialog(slot.id)">Cancel Slot</a>
+                                    <a class="dropdown-item" href="javascript:void(0);" (click)="bookingSlotDialog(slot.id)" data-toggle="modal" >Booked Slot</a> 
+                                  </div>
+                                </div>
                               </div>
                               <small class="w-100" ><span class="text-muted">{{slot.bookingStartTime}}</span></small><br>
                               <small class="w-100" ><span class="text-muted">{{slot.bookingEndTime}}</span></small><br>
@@ -41,3 +48,56 @@
         </div>
       </div>
 </section>
+
+
+<!-- Modal add new category -->
+<div class="modal fade" id="bookSlotModal" tabindex="-1" role="dialog" aria-labelledby="bookSlotModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookSlotModalLabel">Book Court Slot</h5>
+        <div class="form-row ml-auto">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="NameField" class="font-weight-bolder">Title</label>
+            <input type="text" class="form-control" id="nametext" aria-describedby="DateHelp" placeholder="Example: Math">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
+<!-- Modal add new category -->
+<div class="modal fade" id="slotDetailsModal" tabindex="-1" role="dialog" aria-labelledby="slotDetailsModal" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="slotDetailsLabel">Court Slot Details</h5>
+        <div class="form-row ml-auto">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label for="NameField" class="font-weight-bolder">Title</label>
+            <input type="text" class="form-control" id="nametext" aria-describedby="DateHelp" placeholder="Example: Math">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->

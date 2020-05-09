@@ -6,6 +6,7 @@ import { BookingPageComponent } from './page/booking-page/booking-page.component
 import { jqxSchedulerModule } from 'jqwidgets-ng/jqxscheduler';
 import { jqxBarGaugeModule }  from 'jqwidgets-ng/jqxbargauge';
 import { BookingListComponent } from './page/booking-list/booking-list.component';
+import { SharedModule } from '@shared/shared.module';
 
 //import { jqxSchedulerComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxscheduler.ts';
 
@@ -16,7 +17,8 @@ import { BookingListComponent } from './page/booking-list/booking-list.component
     BookingRoutingModule,
     jqxSchedulerModule,
     jqxBarGaugeModule ,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class BookingModule { }

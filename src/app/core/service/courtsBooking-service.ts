@@ -4,6 +4,9 @@ import { Observable  } from 'rxjs';
 import { GetCourtsBookingModel } from '@core/model/courtsBooking-model/get-courtsBookingList.model';
 import { AddCourtsBookingModel } from '@core/model/courtsBooking-model/add-courtsBooking.model';
 import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
+import { CommonService } from '@shared/service/common.service';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +14,8 @@ import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
 export class CourtsBookingService {
 
   constructor(
-    private _httpApiService: HttpApiService
-
+    private _httpApiService: HttpApiService,
+    private commonService: CommonService
     ) { }
 
 
@@ -20,9 +23,15 @@ export class CourtsBookingService {
       return this._httpApiService.get("","");
     }
 
-    getCourtsBookingList(model: GetCourtsBookingModel):Observable<any>{
+    getCourtsBookingList( BookingDate: any):Observable<any>{
+      const temp = {
+        BookingDate: BookingDate ? {
+          Date: this.commonService.prepareDateFormat(BookingDate),
+          ComparisonType: BookingDate.CompareType
+        } : null,
 
-        return this._httpApiService.post("CourtsBooking/GetCourtsBookingsList",model);
+      };
+        return this._httpApiService.post("CourtsBooking/GetCourtsBookingsList",temp);
 
       }
       saveBookingUser(model: UserBookingModel):Observable<any>{
@@ -54,6 +63,10 @@ export class CourtsBookingService {
       getCourtsBooking(id: number):Observable<any>{
         let Myobject: any = { "id": id }
         return this._httpApiService.get("CourtsBooking/GetCourtsBookings",Myobject);
+      }
+
+      getBookingCompanies():Observable<any>{
+        return this._httpApiService.get("CourtsBooking/GetBookingCompanies",'');
       }
 
 }

@@ -20,6 +20,23 @@ export class BookingService {
       return this._httpApiService.post("Booking/GetCompanyBooking",bookingQuery);
     }
 
+    cancelBookingSlot(slotId: Number):Observable<any>{
+      let Myobject: any = { "slotId": slotId }
+      return this._httpApiService.get("BookingSlots/CancelBookingSlot",Myobject);
+    }
+
+    
+    detailBookingSlot(slotId: Number):Observable<any>{
+      let Myobject: any = { "slotId": slotId }
+      return this._httpApiService.get("BookingSlots/DetailBookingSlot",Myobject);
+    }
+
+    
+    bookedSlot(slotId: Number):Observable<any>{
+      let Myobject: any = { "slotId": slotId }
+      return this._httpApiService.get("BookingSlots/BookedSlot",Myobject);
+    }
+
 
 
 
