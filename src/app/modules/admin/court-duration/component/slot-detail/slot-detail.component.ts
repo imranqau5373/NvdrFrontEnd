@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
 import { BookingService } from '@core/service/booking-service';
+import { BookingSlotModel } from '@core/model/courtsBooking-model/booking-slot.model';
 
 @Component({
   selector: 'app-slot-detail',
@@ -11,12 +12,13 @@ import { BookingService } from '@core/service/booking-service';
 export class SlotDetailComponent implements OnInit {
 
   @Input() slotId : Number = 0;
+
   constructor(   public activeModal: NgbActiveModal,
     private toastService: SpeekioToastService,
     private bookingService : BookingService) { }
 
   ngOnInit() {
-    this.detailSlot();
+  
   }
 
   closeDialog(){
