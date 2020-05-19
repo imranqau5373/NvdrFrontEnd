@@ -28,6 +28,11 @@
                 </svg> </span> Courts Bookings </a>
                       <a routerLink="/admin/courtbooking/courtbooking-list" class="d-none"></a>
                 </li>
+                <li routerLinkActive="active" *userHasPermission="permissions.MyBookings_View"> <a routerLink="/admin/my-bookings/bookings-list"> <span class="icon"> <svg>
+                  <use xlink:href="assets/img/project-icons.svg#candidate-manager"></use>
+                  </svg> </span> My Bookings </a>
+                        <a routerLink="/admin/my-bookings/bookings-list" class="d-none"></a>
+                </li>
             <li routerLinkActive="active" *userHasPermission="permissions.SuperAdminUsers_View"> <a routerLink="/admin/users/users-list"> <span class="icon"> <svg>
               <use xlink:href="assets/img/project-icons.svg#users"></use>
               </svg> </span> Users & Roles</a>

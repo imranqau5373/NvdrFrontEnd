@@ -44,10 +44,16 @@ const routes: Routes = [
           import('@modules/admin/court-duration/court-duration.module').then(m => m.CourtDurationModule)
       },
       {
+        path: 'my-bookings',
+        loadChildren: () =>
+          import('@modules/admin/my-bookings/my-bookings.module').then(m => m.MyBookingsModule)
+      },
+      {
         path: '',
         loadChildren: () =>
           import('@modules/admin/company/company.module').then(m => m.CompanyModule)
       },
+
     ]
   },
   {
@@ -62,6 +68,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@modules/booking/booking.module').then(m => m.BookingModule)
   },
+
 
  
 

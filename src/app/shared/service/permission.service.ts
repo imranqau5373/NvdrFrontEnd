@@ -12,6 +12,7 @@ export class Permissions {
     static readonly CourtsBooking_View = 'Permissions.CourtsBookingManager.View';
     static readonly AdminUsers_View = 'Permissions.AdminUsers.View';
     static readonly SuperAdminUsers_View = 'Permissions.SuperAdminUsers.View';
+    static readonly MyBookings_View = 'Permissions.MyBookingsManager.View';
 }
 
 @Injectable({
@@ -24,6 +25,7 @@ export class PermissionService {
 
     //method to check that user has permission or not
     hasPermission(permissionName: string) {
+        debugger;
         if (!permissionName)
             return false;
         const permissions = this.authenticationService.getUserPermissions();
