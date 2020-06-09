@@ -49,7 +49,6 @@ export class TextColumnFilterComponent implements OnInit {
   }
 
   onInternalApply(): void {
-    debugger;
     this.dropdown.close();
     this.onApply.emit([this.internalModel]);
   }

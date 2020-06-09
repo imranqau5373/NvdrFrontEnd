@@ -84,7 +84,6 @@ getWidth() : any {
     this.bookingService.getCompanyBookings(this.bookingQuery).subscribe(result => {
 
       if (result && result.body && result.body.successful) {
-        debugger;
         this.bookingList = result.body.Items;
       }
       else {

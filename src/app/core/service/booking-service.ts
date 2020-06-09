@@ -25,6 +25,11 @@ export class BookingService {
       return this._httpApiService.get("BookingSlots/CancelBookingSlot",Myobject);
     }
 
+    openBookingSlot(slotId: Number):Observable<any>{
+      let Myobject: any = { "slotId": slotId }
+      return this._httpApiService.get("BookingSlots/OpenBookingSlot",Myobject);
+    }
+
     
     detailBookingSlot(slotId: Number):Observable<any>{
       let Myobject: any = { "slotId": slotId }
@@ -33,6 +38,12 @@ export class BookingService {
 
     
     bookedSlot(slotId: Number):Observable<any>{
+      let Myobject: any = { "slotId": slotId }
+      return this._httpApiService.get("BookingSlots/BookedSlot",Myobject);
+    }
+
+
+    bookedOwnSlot(slotId: Number):Observable<any>{
       let Myobject: any = { "slotId": slotId }
       return this._httpApiService.get("BookingSlots/BookedSlot",Myobject);
     }

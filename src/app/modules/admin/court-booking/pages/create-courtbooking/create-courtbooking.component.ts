@@ -65,7 +65,6 @@ selectCourt(courtId){
 }
 getCourtsBooking(courtsBookingId:number){
   this.courtsBookingService.getCourtsBooking(courtsBookingId).subscribe(result => {
-    debugger;
     if (result && result.successful) {
       this.addCourtsBookingData = result;
     }

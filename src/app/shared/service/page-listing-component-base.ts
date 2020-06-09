@@ -119,7 +119,6 @@ export abstract class PagedListingComponentBase<TEntityDto> implements OnInit {
     }
 
     public searchInList(searchType: string, newValue: any) {
-        debugger;
         const obj = this.filter[searchType];
         const storageKey = obj.key;
         let valueToStore = newValue;

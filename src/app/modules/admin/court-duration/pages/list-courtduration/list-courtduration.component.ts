@@ -73,8 +73,6 @@ public filter: FilterCourtDurationRequestDto = new FilterCourtDurationRequestDto
           }
 
           if (response.items && response.items.length > 0) {
-            debugger;
-
             this.courtsDurationList.courts = response.items;
             this.paggerConfig.totalItems = response.totalCount;
           }

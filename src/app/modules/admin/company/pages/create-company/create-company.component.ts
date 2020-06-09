@@ -27,7 +27,6 @@ export class CreateCompanyComponent implements OnInit {
     this.addCompanyData = new AddCompanyModel();
     this.companyId = this.activatedRoute.snapshot.params['id'];
     if(this.companyId > 0){
-        debugger;
       this.isUpdated = true;
       this.getCompany(this.companyId);
   }
@@ -44,8 +43,6 @@ getCompany(companyId:number){
   });
 }
 addCompany(){
-
-  debugger;
   if(this.isUpdated == true)
   this.updateCompany();
   else{
@@ -62,7 +59,6 @@ addCompany(){
 }
 }
 updateCompany(){
-  debugger;
 this.companyService.updateCompany(this.addCompanyData).subscribe(result =>{
   if(result && result.body.successful) {
     this.toastService.showSuccess(result.body.message);

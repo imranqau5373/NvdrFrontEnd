@@ -62,7 +62,6 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
   protected list(
     request: PagingModel,
     finishedCallback: Function) {
-      debugger;
       this.sportsService.getSportsList(this.filter.Name.value, this.filter.AddedQuestions.value,
         this.filter.LastUpdated.value, this.filter.CreatedBy.value, this.filter.StatusId.value,
         this.sorting, this.sortDirection ? 'ASC' : 'DESC', request.currentPage, request.itemsPerPage)
@@ -75,7 +74,6 @@ export class SportsListComponent extends PagedListingComponentBase<SportsListMod
           if (!result || !result.body) {
             return;
           };
-          debugger;
           var response = result.body;
           this.paggerConfig.totalItems = result.body.totalCount;
           if (!response.successful) {

@@ -50,7 +50,6 @@ export class AuthenticationService {
 
   loginAndRedirectToHome(user: any) {
     this.saveUser(user);
-    debugger;
     if (user.permissions) {
       this.saveUserPermissions(user.permissions);
     }

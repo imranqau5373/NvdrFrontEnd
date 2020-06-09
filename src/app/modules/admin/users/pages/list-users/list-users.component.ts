@@ -51,7 +51,6 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
 
     getUserRoles() {
       this.usersService.getUserRoles().subscribe(result => {
-        debugger;
         let response = result.body;
         if (!response || !response.successful) {
           this.speekioToastService.showError(response.message);
@@ -104,7 +103,6 @@ export class ListUsersComponent extends PagedListingComponentBase<UserListModelP
       request: PagingModel,
       finishedCallback: Function
     ) {
-      debugger;
       let model = new GetUserModel();
       model.name = this.filter.Name.value;
       model.email = this.filter.Email.value;

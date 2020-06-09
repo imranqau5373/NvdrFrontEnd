@@ -25,7 +25,6 @@ export class CreateUsersComponent implements OnInit {
   isUpdated : boolean = false;
   //companyId: number = +localStorage.getItem('companyId');
   ngOnInit() {
-  debugger;
     this.addUsersData = new AddUserModel();
     this.userId = this.activatedRoute.snapshot.params['id'];
     if(this.userId > 0){

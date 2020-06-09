@@ -118,7 +118,6 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
   }
 
   setCompanyId(event : any){
-    debugger;
     this.companyId = event.target.value;
     alert(this.companyId);
   }

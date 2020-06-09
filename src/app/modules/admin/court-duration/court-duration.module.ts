@@ -11,18 +11,20 @@ import { SharedModule } from '@shared/shared.module';
 import { SlotCancelComponent } from './component/slot-cancel/slot-cancel.component';
 import { SlotBookingComponent } from './component/slot-booking/slot-booking.component';
 import { SlotDetailComponent } from './component/slot-detail/slot-detail.component';
+import { MySlotOwnBookingComponent } from './component/my-slot-own-booking/my-slot-own-booking.component';
+import { OpenSlotComponent } from './component/open-slot/open-slot.component';
 
 
 
 @NgModule({
   declarations: [ListCourtdurationComponent, CreateCourtdurationComponent,SlotCancelComponent,SlotDetailComponent,SlotBookingComponent,
-     ViewCourtdurationComponent,CourtDurationBaseComponent, SlotCancelComponent, SlotBookingComponent, SlotDetailComponent],
+     ViewCourtdurationComponent,CourtDurationBaseComponent, SlotCancelComponent, SlotBookingComponent, SlotDetailComponent, MySlotOwnBookingComponent, OpenSlotComponent],
   imports: [
     CommonModule,
       SharedModule,
     CourtDurationRoutingModule,
     FormsModule
   ],
-  entryComponents:[SlotCancelComponent,SlotDetailComponent,SlotBookingComponent]
+  entryComponents:[SlotCancelComponent,SlotDetailComponent,SlotBookingComponent,MySlotOwnBookingComponent]
 })
 export class CourtDurationModule { }

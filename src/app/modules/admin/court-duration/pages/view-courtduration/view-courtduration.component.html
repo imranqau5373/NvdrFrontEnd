@@ -17,13 +17,16 @@
                             <img [src]="'assets/img/img_avatar.png'" class="img-40 mr-3 rounded-circle img-avatar" alt="...">
                             <div class="media-body">
                               <div class="d-flex mb-n1">
-                                <h6 class="mt-0 mb-2 text-dark w-100" *ngIf="slot.isBooked">Slot is Booked</h6>
-                                <h6 class="mt-0 mb-2 text-dark w-100" *ngIf="!slot.isBooked">Slot is avilable</h6>
+                                <h6 class="mt-0 mb-2 text-success w-100" *ngIf="slot.isBooked">Slot is Booked</h6>
+                                <h6 class="mt-0 mb-2 text-info w-100" *ngIf="!slot.isBooked && !slot.isCancelled">Slot is Available</h6>
+                                <h6 class="mt-0 mb-2 text-danger w-100" *ngIf="slot.isCancelled">Slot is Cancelled</h6>
                                 <div class="dropdown ml-auto"> <a href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="text-dark"><i class="fas fa-ellipsis-h"></i></a>
                                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" x-placement="bottom-end" style="position: absolute; transform: translate3d(-177px, 27px, 0px); top: 0px; left: 0px; will-change: transform;"> 
-                                    <a class="dropdown-item" href="javascript:void(0);" (click)="detailSlotDialog(slot.id)" data-toggle="modal" data-keyboard="false" data-backdrop="static">View details</a> 
-                                    <a class="dropdown-item" href="javascript:void(0);" (click)="cancelSlotDialog(slot.id)">Cancel Slot</a>
-                                    <a class="dropdown-item" href="javascript:void(0);" (click)="bookingSlotDialog(slot.id)" data-toggle="modal" >Booked Slot</a> 
+                                    <a *ngIf="slot.isBooked && !slot.isCancelled" class="dropdown-item" href="javascript:void(0);" (click)="detailSlotDialog(slot.id)" data-toggle="modal" data-keyboard="false" data-backdrop="static">View details</a> 
+                                    <a *ngIf="!slot.isCancelled" class="dropdown-item" href="javascript:void(0);" (click)="cancelSlotDialog(slot.id)">Cancel Slot</a>
+                                    <a *ngIf="slot.isCancelled" class="dropdown-item" href="javascript:void(0);" (click)="cancelSlotDialog(slot.id)">Open Slot</a>
+                                    <a *ngIf="!slot.isBooked && !slot.isCancelled" class="dropdown-item" href="javascript:void(0);" (click)="ownBookingSlotDialog(slot.id)" data-toggle="modal" >Booked Slot</a> 
+                                    <a *ngIf="!slot.isBooked && !slot.isCancelled" class="dropdown-item" href="javascript:void(0);" (click)="bookingSlotDialog(slot.id)" data-toggle="modal" >Send Invite</a> 
                                   </div>
                                 </div>
                               </div>

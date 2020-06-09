@@ -12,6 +12,7 @@ export class SlotCancelComponent implements OnInit {
 
 
   @Input() slotId : Number = 0;
+  @Input() slotData : any;
   constructor(   public activeModal: NgbActiveModal,
     private toastService: SpeekioToastService,
     private bookingService : BookingService) { }

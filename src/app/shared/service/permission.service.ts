@@ -25,7 +25,6 @@ export class PermissionService {
 
     //method to check that user has permission or not
     hasPermission(permissionName: string) {
-        debugger;
         if (!permissionName)
             return false;
         const permissions = this.authenticationService.getUserPermissions();

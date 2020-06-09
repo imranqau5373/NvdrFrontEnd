@@ -1,35 +1,32 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BookingSlotModel, BookedOwnSlot } from '@core/model/courtsBooking-model/booking-slot.model';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SpeekioToastService } from '@shared/service/speekio-toast.service';
 import { BookingService } from '@core/service/booking-service';
-import { BookingSlotModel } from '@core/model/courtsBooking-model/booking-slot.model';
 
 @Component({
-  selector: 'app-slot-detail',
-  templateUrl: './slot-detail.component.html',
-  styleUrls: ['./slot-detail.component.css']
+  selector: 'app-my-slot-own-booking',
+  templateUrl: './my-slot-own-booking.component.html',
+  styleUrls: ['./my-slot-own-booking.component.css']
 })
-export class SlotDetailComponent implements OnInit {
+export class MySlotOwnBookingComponent implements OnInit {
 
   @Input() slotId : Number = 0;
-  slotDetail : any;
+  slotBookingModel : BookedOwnSlot;
   constructor(   public activeModal: NgbActiveModal,
     private toastService: SpeekioToastService,
     private bookingService : BookingService) { }
 
   ngOnInit() {
-    this.detailSlot();
+
+
   }
 
-  closeDialog(){
-    this.activeModal.dismiss();
-  }
-
-      
-  detailSlot(){
-    this.bookingService.detailBookingSlot(this.slotId).subscribe(result => {
+  bookedSlot(){
+    this.bookingService.bookedOwnSlot(this.slotId).subscribe(result => {
       if (result && result.successful) {
-        this.slotDetail = result
+        this.toastService.showSuccess(result.message);
+        this.activeModal.dismiss();
       }
       else {
         this.toastService.showError(result.message);
@@ -38,5 +35,8 @@ export class SlotDetailComponent implements OnInit {
     });
   }
 
+  closeDialog(){
+    this.activeModal.dismiss();
+  }
 
 }

@@ -7,5 +7,6 @@ export class ViewDurationSlots {
       bookingEndTime : Date;
       slotDuration: number;
       isBooked : boolean;
+      isCancelled : boolean;
   }
   

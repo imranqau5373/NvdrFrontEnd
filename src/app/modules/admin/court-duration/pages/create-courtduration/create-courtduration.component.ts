@@ -49,7 +49,6 @@ export class CreateCourtdurationComponent implements OnInit {
 getSports(companyId:number){   //get list of sports for cmp
 
   this.courtsDurationService.getSports(companyId).subscribe(result => {
-    debugger;
     if (result && result.successful) {
       this.sportsList = result.sportsList;
       if(this.sportsList && this.sportsList.length > 0){
@@ -75,14 +74,12 @@ getCourts(sportId:number){   //get list of courts for cmp in selected sports
   });
 }
 selectCourt(courtId){
-  debugger;
   this.addCourtsDuratoinData.courtId = courtId;
 }
 getCourtsDuration(courtsDurationId:number){
   this.courtsDurationService.getCourtsDuration(courtsDurationId).subscribe(result => {
 
     if (result && result.successful) {
-      debugger;
       this.addCourtsDuratoinData = result;
       //var ab  = result.courtStartTime.toLocaleTimeString('it-IT');
       //console.log(ab.toLocaleTimeString('it-IT'))

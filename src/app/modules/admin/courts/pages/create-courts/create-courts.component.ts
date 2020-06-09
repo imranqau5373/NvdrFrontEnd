@@ -27,8 +27,6 @@ export class CreateCourtsComponent implements OnInit {
   ngOnInit() {
     this.addCourtsData = new AddCourtsModel();
     this.courtId = this.activatedRoute.snapshot.params['id'];
-    debugger;
-
     this.companyId = Number(localStorage.getItem("companyId"));
     this.getSports(this.companyId);
 

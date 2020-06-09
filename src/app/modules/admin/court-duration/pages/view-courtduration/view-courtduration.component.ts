@@ -9,6 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SlotCancelComponent } from '../../component/slot-cancel/slot-cancel.component';
 import { SlotDetailComponent } from '../../component/slot-detail/slot-detail.component';
 import { SlotBookingComponent } from '../../component/slot-booking/slot-booking.component';
+import { MySlotOwnBookingComponent } from '../../component/my-slot-own-booking/my-slot-own-booking.component';
 
 @Component({
   selector: 'app-view-courtduration',
@@ -51,6 +52,7 @@ export class ViewCourtdurationComponent implements OnInit {
   getDurationList(){
     this.courtsDurationService.getDurationSlots(this.durationId).subscribe(result => {
       if (result && result.successful) {
+        debugger;
         this.durationSlotsList = result.slotsList;
         if(this.durationSlotsList && this.durationSlotsList.length > 0){
 
@@ -83,6 +85,27 @@ export class ViewCourtdurationComponent implements OnInit {
     modalRef.componentInstance.slotId = slotId;
     modalRef.result.then((result: any) => {
 
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  openSlotDialog(slotId : number){
+    const modalRef = this.modalService.open(SlotCancelComponent, { size: 'small', backdrop: 'static' });
+    modalRef.componentInstance.slotId = slotId;
+    modalRef.result.then((result: any) => {
+
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  
+  ownBookingSlotDialog(slotId : number){
+    const modalRef = this.modalService.open(MySlotOwnBookingComponent, { size: 'small', backdrop: 'static' });
+    //    modalRef.componentInstance.LoaderService = this.ngxUiLoaderService;
+    modalRef.componentInstance.slotId = slotId;
+    modalRef.result.then((result: any) => {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });

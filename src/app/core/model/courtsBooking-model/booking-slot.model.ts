@@ -10,3 +10,9 @@ export class BookingSlotModel {
     
     //add sport id too
 }
+
+
+export class BookedOwnSlot {
+    slotId: number;
+    userId: number;
+}
