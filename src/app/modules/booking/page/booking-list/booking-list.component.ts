@@ -10,6 +10,9 @@ import { Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { PagedListingComponentBase } from '@shared/service/page-listing-component-base';
 import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { BookingDialogComponent } from '@modules/booking/components/booking-dialog/booking-dialog.component';
+import { AuthenticationService } from '@core/service/authenticationService';
 
 @Component({
   selector: 'app-booking-list',
@@ -26,13 +29,15 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
   bookingDate : Date;
   bookingCompanies : null;
   companyId : number;
+  closeResult: string;
   constructor(
     private courtsBookingService: CourtsBookingService,
     private toastService: SpeekioToastService,
     public activatedRoute: ActivatedRoute,
     public router: Router,
-    private customRouter: CustomRouter
-
+    private customRouter: CustomRouter,
+    private modalService: NgbModal,
+    private authenticationService: AuthenticationService,
   ) {
 
     super();
@@ -93,6 +98,47 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
 
   saveUserBooking(form: any){
 
+  }
+
+  openBookingDialog(){
+    debugger;
+    if(this.authenticationService.isLoggedIn){
+      this.openLoggedInUser();
+    }
+    else{
+      this.openBookingRegistration();
+    }
+
+  }
+
+  private openLoggedInUser(){
+    const modalRef = this.modalService.open(BookingDialogComponent, { size: 'xl', backdrop: 'static' });
+    //    modalRef.componentInstance.LoaderService = this.ngxUiLoaderService;
+    modalRef.result.then((result: any) => {
+
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private openBookingRegistration(){
+    const modalRef = this.modalService.open(BookingDialogComponent, { size: 'xl', backdrop: 'static' });
+    //    modalRef.componentInstance.LoaderService = this.ngxUiLoaderService;
+    modalRef.result.then((result: any) => {
+
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   

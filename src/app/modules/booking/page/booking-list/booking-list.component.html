@@ -29,7 +29,7 @@
       <div class="col-md-12 mt-4">
         <h2 class="mb-3 font-weight-bolder">Boolking List</h2>
         <div class="card card-margin" *ngFor="let booking of courtsBookingList.CourtBooking" > 
-            <a href="#" class="card-body" data-toggle="modal" data-target="#addUserModal"
+            <a href="javascript:void(0);" (click)="openBookingDialog()" class="card-body" 
             data-keyboard="false" data-backdrop="static" style="text-decoration: none; color: inherit; text-transform: inherit;">
             <h5 class="card-title">{{booking.name}} <span class="badge badge-success float-right">Booked Now</span></h5>
             <p></p>
