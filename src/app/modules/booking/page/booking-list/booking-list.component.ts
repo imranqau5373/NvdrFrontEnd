@@ -13,6 +13,7 @@ import { UserBookingModel } from '@core/model/booking-model/user-booking.model';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { BookingDialogComponent } from '@modules/booking/components/booking-dialog/booking-dialog.component';
 import { AuthenticationService } from '@core/service/authenticationService';
+import { RegistrationBookingDialogComponent } from '@modules/booking/components/registration-booking-dialog/registration-booking-dialog.component';
 
 @Component({
   selector: 'app-booking-list',
@@ -102,7 +103,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
 
   openBookingDialog(){
     debugger;
-    if(this.authenticationService.isLoggedIn){
+    if(this.authenticationService.isUserLoggedIn()){
       this.openLoggedInUser();
     }
     else{
@@ -122,7 +123,7 @@ export class BookingListComponent extends PagedListingComponentBase<CourtsBookin
   }
 
   private openBookingRegistration(){
-    const modalRef = this.modalService.open(BookingDialogComponent, { size: 'xl', backdrop: 'static' });
+    const modalRef = this.modalService.open(RegistrationBookingDialogComponent, { size: 'xl', backdrop: 'static' });
     //    modalRef.componentInstance.LoaderService = this.ngxUiLoaderService;
     modalRef.result.then((result: any) => {
 

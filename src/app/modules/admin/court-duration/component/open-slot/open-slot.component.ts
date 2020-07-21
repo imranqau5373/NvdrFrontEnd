@@ -33,4 +33,8 @@ export class OpenSlotComponent implements OnInit {
     });
   }
 
+  closeDialog(){
+    this.activeModal.dismiss();
+  }
+
 }
