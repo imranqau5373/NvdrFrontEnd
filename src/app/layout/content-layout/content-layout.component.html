@@ -2,63 +2,28 @@
       <app-nav></app-nav>
      
     <main>
-      <nav *ngIf="isLoggedIn$ | async"  class="sidebar">
+      <nav  class="sidebar">
         <ul>
           
-          <li *userHasPermission="permissions.SuperAdminDashboard_View" routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
+          <li routerLinkActive="active"> <a routerLink="/admin/home"> <span class="icon"> <svg>
                   <use xlink:href="assets/img/project-icons.svg#dashboard"></use>
-                </svg> </span> dashboard </a> </li>
-          <li routerLinkActive="active" *userHasPermission="permissions.SportsManager_View"> <a routerLink="/admin/categories/categories-list"> <span class="icon"> <svg>
-                  <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
-                </svg> </span> Category Manager </a>
-            <a routerLink="/admin/categories/categories-list" class="d-none"></a>
+                </svg> </span> dashboard </a> 
           </li>
-          <li routerLinkActive="active" *userHasPermission="permissions.CourtsManager_View"> <a routerLink="/admin/facilities/facilities-list"> <span class="icon"> <svg>
+          <li routerLinkActive="active"> <a routerLink="/admin/nvdr"> <span class="icon"> <svg>
+            <use xlink:href="assets/img/project-icons.svg#job-manager"></use>
+          </svg> </span> Nvdr Records </a> 
+          </li>
+          <li routerLinkActive="active"> <a routerLink="/admin/emails"> <span class="icon"> <svg>
             <use xlink:href="assets/img/project-icons.svg#library"></use>
-            </svg> </span> Facilities Manager </a>
-                  <a routerLink="/admin/facilities/facilities-list" class="d-none"></a>
-            </li>
-            <li routerLinkActive="active" *userHasPermission="permissions.CourtsDuration_View"> <a routerLink="/admin/duration/duration-list"> <span class="icon"> <svg>
-              <use xlink:href="assets/img/project-icons.svg#manual-icon"></use>
-              </svg> </span> Facilities Duration </a>
-                    <a routerLink="/admin/duration/duration-list" class="d-none"></a>
-              </li>
-              <li routerLinkActive="active" *userHasPermission="permissions.CourtsBooking_View"> <a routerLink="/admin/courtbooking/courtbooking-list"> <span class="icon"> <svg>
-                <use xlink:href="assets/img/project-icons.svg#candidate-manager"></use>
-                </svg> </span> Courts Bookings </a>
-                      <a routerLink="/admin/courtbooking/courtbooking-list" class="d-none"></a>
-                </li>
-                <li routerLinkActive="active" *userHasPermission="permissions.MyBookings_View"> <a routerLink="/admin/my-bookings/bookings-list"> <span class="icon"> <svg>
-                  <use xlink:href="assets/img/project-icons.svg#candidate-manager"></use>
-                  </svg> </span> My Bookings </a>
-                        <a routerLink="/admin/my-bookings/bookings-list" class="d-none"></a>
-                </li>
-            <li routerLinkActive="active" *userHasPermission="permissions.SuperAdminUsers_View"> <a routerLink="/admin/users/users-list"> <span class="icon"> <svg>
-              <use xlink:href="assets/img/project-icons.svg#users"></use>
-              </svg> </span> Users & Roles</a>
-                    <a routerLink="/admin/users/users-list" class="d-none"></a>
-              </li>
+          </svg> </span> Nvdr Emails </a> 
+    </li>
+    <li routerLinkActive="active"> <a routerLink="/admin/faultemails"> <span class="icon"> <svg>
+      <use xlink:href="assets/img/project-icons.svg#manual-icon"></use>
+    </svg> </span> Nvdr Fault Emails </a> 
+</li>
+          
         </ul>
       </nav>
-      <div class="bread-crumb" *ngIf="isLoggedInValue">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li> <a href="javascript: window.history.back();">
-                <svg class="back-btn">
-                  <use xlink:href="assets/img/project-icons.svg#go-back"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="breadcrumb-item" *ngFor="let item of breadcrumbList; let i = index"
-              [class.active]="i===breadcrumbList.length-1">
-              <a [routerLink]="item.path" *ngIf="i!==breadcrumbList.length-1">
-                {{ item.name }}
-              </a>
-              <span *ngIf="i===breadcrumbList.length-1">{{ item.name }}</span>
-            </li>
-          </ol>
-        </nav>
-      </div>
     
       <!-- need to apply style on condition based. -->
       <content>

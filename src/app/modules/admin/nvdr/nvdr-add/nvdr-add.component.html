@@ -1,0 +1,68 @@
+<section>
+    <form name="form" (ngSubmit)="addNvdrForm.form.valid && addNvdrDevice()" #addNvdrForm="ngForm">
+      <div class="container mt-4 mb-5">
+        <div class="container mt-4 mb-5">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card mb-4 name-title-card">
+                <div class="card-header">
+                  <div class="form-check-inline">
+                    <h5 class="card-title mb-0 pt-2" *ngIf="!isUpdated">Adding New Nvdr Device</h5>
+      
+                    <h5 class="card-title mb-0 pt-2" *ngIf="nvdrId && nvdrId > 0">Update Existing Nvdr Device</h5>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="NameField" class="font-weight-bolder">Nvdr Name</label>
+                    <input type="text" class="form-control" name="nvdrName"
+                    placeholder="Enter your nvdr name" [(ngModel)]="addNvdrData.nvdrName" #nvdrName="ngModel"
+                    [ngClass]="{ 'is-invalid': addNvdrForm.submitted && nvdrName.invalid}" minlength="2" required>
+                    <div *ngIf="addNvdrForm.submitted && nvdrName.invalid" class="invalid-feedback">
+                      <div *ngIf="nvdrName.errors?.required">Nvdr Name is required</div>
+                      <div *ngIf="nvdrName.errors?.minlength">Nvdr Name must be at least 2 characters</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="SerialNumberField" class="font-weight-bolder">Nvdr Serial Number</label>
+                    <input type="text" class="form-control" name="nvdrSerialNumber"
+                    placeholder="Enter your nvdr name" [(ngModel)]="addNvdrData.nvdrSerialNumber" #nvdrSerialNumber="ngModel"
+                    [ngClass]="{ 'is-invalid': addNvdrForm.submitted && nvdrSerialNumber.invalid}" minlength="2" required>
+                    <div *ngIf="addNvdrForm.submitted && nvdrSerialNumber.invalid" class="invalid-feedback">
+                      <div *ngIf="nvdrSerialNumber.errors?.required">Nvdr serial number is required</div>
+                      <div *ngIf="nvdrSerialNumber.errors?.minlength">Nvdr serial number must be at least 2 characters</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="clientField" class="font-weight-bolder">Client Name</label>
+                    <input type="text" class="form-control" name="clientName"
+                    placeholder="Enter your nvdr name" [(ngModel)]="addNvdrData.clientName" #clientName="ngModel">
+                  </div>
+                  <label for="DescriptionField" class="font-weight-bolder">Nvdr Description</label>
+                    <textarea class="form-control"  name="nvdrDescription"
+                    [(ngModel)]="addNvdrData.nvdrDescription" #nvdrDescription="ngModel" rows="5">
+                    </textarea>
+
+                </div>
+              </div>
+      
+      
+            </div>
+      
+          </div>
+        </div>
+        <nav class="navbar fixed-bottom navbar-light bg-dark ml-5"> <a href="/admin/nvdr/nvdr-list"
+            class="btn btn-danger">Cancel</a>
+          <div class="form-inline my-2 my-lg-0">
+            <button *ngIf="!isUpdated" type="submit" class="btn btn-primary">Add Nvdr</button>
+      
+            <button *ngIf="nvdrId && (nvdrId > 0)" type="submit" class="btn btn-primary">Update Nvdr</button>
+      
+          </div>
+        </nav>
+      </div>
+    </form>
+  </section>
+  
+  
+  

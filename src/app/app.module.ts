@@ -34,7 +34,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FooterComponent,
     NavComponent,
     CandidateLayoutComponent
-
   ],
   imports: [
     SharedModule,

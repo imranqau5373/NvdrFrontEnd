@@ -15,7 +15,6 @@ const routes: Routes = [
   {
     path: 'admin',
     component: ContentLayoutComponent,
-    canActivate: [AuthGuard],
     //all the modules under the route admin e.g admin/add-job
     children: [
       {
@@ -24,49 +23,21 @@ const routes: Routes = [
           import('@modules/admin/home/home.module').then(m => m.HomeModule),
       },
       {
-        path: 'categories',
+        path: 'nvdr',
         loadChildren: () =>
-          import('@modules/admin/sports/sports.module').then(m => m.SportsModule)
+          import('@modules/admin/nvdr/nvdr.module').then(m => m.NvdrModule)
       },
       {
-        path: 'users',
+        path: 'emails',
         loadChildren: () =>
-          import('@modules/admin/users/users.module').then(m => m.UsersModule)
+          import('@modules/admin/email/email.module').then(m => m.EmailModule)
       },
       {
-        path: 'facilities',
+        path: 'faultemails',
         loadChildren: () =>
-          import('@modules/admin/courts/courts.module').then(m => m.CourtsModule)
-      },
-      {
-        path: 'duration',
-        loadChildren: () =>
-          import('@modules/admin/court-duration/court-duration.module').then(m => m.CourtDurationModule)
-      },
-      {
-        path: 'my-bookings',
-        loadChildren: () =>
-          import('@modules/admin/my-bookings/my-bookings.module').then(m => m.MyBookingsModule)
-      },
-      {
-        path: '',
-        loadChildren: () =>
-          import('@modules/admin/company/company.module').then(m => m.CompanyModule)
-      },
-
+          import('@modules/admin/fault/fault.module').then(m => m.FaultModule)
+      }
     ]
-  },
-  {
-    path: 'auth',
-    component: AuthLayoutComponent,
-    loadChildren: () =>
-      import('@modules/auth/auth.module').then(m => m.AuthModule)
-  },
-  {
-    path: 'booking',
-    component: CandidateLayoutComponent,
-    loadChildren: () =>
-      import('@modules/booking/booking.module').then(m => m.BookingModule)
   },
 
 

@@ -1,0 +1,39 @@
+<section>
+    <div class="card table-card ">
+      <div class="card-header">
+        <h5> Nvdr List 
+            <a  href="/admin/nvdr/nvdr-create" class="float-right">
+                <button type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i>Add New </button>
+            </a>
+        </h5>
+    </div>
+  
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead class="thead ">
+            <tr class='clickable-row' data-href='url://'>
+              <th scope="col">Device Name</th>
+              <th scope="col">Serial Number</th>
+              <th scope="col">Description</th>
+              <th scope="col">Client Name</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr *ngFor="let nvdr of nvdrList">
+              <td>
+                <a [routerLink]="'/admin/nvdr/nvdr-edit/'+ nvdr.id">
+                  {{nvdr.nvdrName}}
+                </a>
+              </td>
+  
+              <td> {{nvdr.nvdrSerialNumber}} </td>
+              <td>{{nvdr.nvdrDescription}}</td>
+              <td>{{nvdr.clientName}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  

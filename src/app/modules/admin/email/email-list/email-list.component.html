@@ -1,0 +1,36 @@
+<section>
+    <div class="card table-card ">
+      <div class="card-header">
+        <h5> Emails List 
+            <a  href="/admin/nvdr/nvdr-create" class="float-right">
+                <button type="button" class="btn btn-primary"> <i class="fas fa-plus-circle"></i>Sync Emails</button>
+            </a>
+        </h5>
+    </div>
+  
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead class="thead ">
+            <tr class='clickable-row' data-href='url://'>
+              <th scope="col">Device Name</th>
+              <th scope="col">Email Title</th>
+              <th scope="col">Client Name</th>
+              <th scope="col">Sender IP</th>
+              <th scope="col">Email Time</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr *ngFor="let email of emailList">
+              <td>{{nvdr.nvdrName}}</td>
+              <td> {{nvdr.emailTitle}} </td>
+              <td>{{nvdr.clientName}}</td>
+              <td>{{nvdr.senderIP}}</td>
+              <td>{{nvdr.emailTime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
